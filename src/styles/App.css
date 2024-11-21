@@ -1,0 +1,32 @@
+.hide {
+  display: none;
+}
+.sidebar {
+  overflow-y: auto;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f9f9f9;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #bbb;
+}
+.material-icons,
+.material-icons-round {
+  padding-right: 5px;
+}
+.vlb {
+  vertical-align: bottom;
+}
