@@ -1,11 +1,9 @@
-import React from "react";
-
 const Boxs = () => {
   return (
     <>
       <div className="row">
         <div className="col-sm-6">
-          <div className="card bg-success">
+          <div className="card bg-success bg-img">
             <div className="card-body">
               <div className="row">
                 <div className="col mt-0">
@@ -23,7 +21,7 @@ const Boxs = () => {
               <h1 className="mt-1 mb-3">60,000</h1>
             </div>
           </div>
-          <div className="card bg-warning">
+          <div className="card bg-warning bg-img">
             <div className="card-body">
               <div className="row">
                 <div className="col mt-0">
@@ -43,7 +41,7 @@ const Boxs = () => {
           </div>
         </div>
         <div className="col-sm-6">
-          <div className="card bg-danger">
+          <div className="card bg-danger bg-img">
             <div className="card-body">
               <div className="row">
                 <div className="col mt-0">
@@ -61,7 +59,7 @@ const Boxs = () => {
               <h1 className="mt-1 mb-3">25,656</h1>
             </div>
           </div>
-          <div className="card bg-primary">
+          <div className="card bg-primary bg-img">
             <div className="card-body">
               <div className="row">
                 <div className="col mt-0">

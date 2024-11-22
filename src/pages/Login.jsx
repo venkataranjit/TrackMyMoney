@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -13,9 +12,12 @@ const Login = () => {
                   <img
                     src="/public/logo.png"
                     alt="logo"
-                    className="img-fluid"
+                    className="img-fluid mb-3"
+                    style={{ width: "64px" }}
                   />
-                  <h2 className="text-info">Track My Money</h2>
+                  <h2 className="text-info mb-3">
+                    <b>Track My Money</b>
+                  </h2>
                 </div>
                 <div className="card">
                   <div className="card-body">

@@ -1,12 +1,20 @@
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-
+const logo_w = "/public/logo-white.png";
 const SideNav = ({ sidebarRef }) => {
   return (
     <>
       <nav id="sidebar" className="sidebar js-sidebar" ref={sidebarRef}>
         <div className="sidebar-content js-simplebar">
           <NavLink className="sidebar-brand" to="/">
+            <img
+              src={logo_w}
+              style={{
+                width: "24px",
+                marginRight: "10px",
+                verticalAlign: "text-bottom",
+              }}
+            />
             <span className="align-middle">Track My Money</span>
           </NavLink>
           <ul className="sidebar-nav">
