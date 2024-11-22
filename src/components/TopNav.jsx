@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const TopNav = ({ handleSidebar }) => {
   return (
@@ -11,27 +12,22 @@ const TopNav = ({ handleSidebar }) => {
           <ul className="navbar-nav navbar-align">
             <li className="nav-item dropdown">
               <a
-                className="nav-icon dropdown-toggle d-inline-block d-sm-none"
-                href="#"
-                data-bs-toggle="dropdown"
-              ></a>
-              <a
-                className="nav-link dropdown-toggle d-none d-sm-inline-block"
+                className="nav-link dropdown-toggle d-sm-inline-block"
                 href="#"
                 data-bs-toggle="dropdown"
               >
-                <span className="text-dark">User Name</span>
+                <span className="text-dark">User Name </span>
               </a>
               <div className="dropdown-menu dropdown-menu-end">
-                <a className="dropdown-item" href="pages-profile.html">
+                <Link className="dropdown-item" to="/profile">
                   <span className="material-icons vlb">person_outline</span>
                   Profile
-                </a>
+                </Link>
                 <div className="dropdown-divider" />
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" to="/login">
                   <span className="material-icons vlb">logout</span>
                   Log out
-                </a>
+                </Link>
               </div>
             </li>
           </ul>
