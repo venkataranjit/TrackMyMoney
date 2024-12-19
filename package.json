@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
     "axios": "^1.7.7",
+    "formik": "^2.4.6",
     "material-icons": "^1.13.12",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^6.28.0",
     "react-simple-captcha": "^9.3.1",
     "recharts": "^2.13.3",

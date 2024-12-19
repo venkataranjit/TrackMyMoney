@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const TopNav = ({ handleSidebar }) => {
+  const userState = useSelector((state) => state.auth);
+
   return (
     <>
       <nav className="navbar navbar-expand navbar-light navbar-bg">
@@ -16,7 +19,7 @@ const TopNav = ({ handleSidebar }) => {
                 href="#"
                 data-bs-toggle="dropdown"
               >
-                <span className="text-dark">User Name </span>
+                <span className="text-dark">{userState.userName}</span>
               </a>
               <div className="dropdown-menu dropdown-menu-end">
                 <Link className="dropdown-item" to="/profile">
