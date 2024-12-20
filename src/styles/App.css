@@ -147,3 +147,12 @@ a.sidebar-link {
     transform: rotate(1turn);
   }
 }
+.form-label {
+  margin-bottom: 0.2rem;
+}
+.danger {
+  color: #dc3545;
+}
+.danger-border {
+  border-color: #dc3545;
+}
