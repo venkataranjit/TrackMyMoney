@@ -39,7 +39,9 @@ const Register = () => {
     lastName: Yup.string()
       .required("Enter Last Name")
       .min(3, "Last Name Must be 3 Characters"),
-    email: Yup.string().email("Invalid Format").required("Email required"),
+    email: Yup.string()
+      .email("Invalid Email Format")
+      .required("Email required"),
     password: Yup.string()
       .required("Password is required")
       .min(8, "Password must be at least 8 characters long")
@@ -70,10 +72,12 @@ const Register = () => {
       });
       setCaptchaError("");
       resetForm();
+      loadCaptchaEnginge(6);
     } else {
       setCaptchaError("Captcha Does Not Match");
     }
   };
+  console.log(formData);
   return (
     <>
       <main className="d-flex w-100 login">
@@ -107,7 +111,6 @@ const Register = () => {
                         validationSchema={validationSchema}
                       >
                         {(formikProps) => {
-                          console.log(formikProps);
                           const { errors, touched, isValid, dirty } =
                             formikProps;
                           return (

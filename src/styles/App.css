@@ -156,3 +156,6 @@ a.sidebar-link {
 .danger-border {
   border-color: #dc3545;
 }
+.captcha-container canvas {
+  padding: 4px 0 0;
+}
