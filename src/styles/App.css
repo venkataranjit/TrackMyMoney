@@ -159,3 +159,16 @@ a.sidebar-link {
 .captcha-container canvas {
   padding: 4px 0 0;
 }
+.eye-pos {
+  position: relative;
+}
+.eye-pos .eye {
+  position: absolute;
+  right: 1px;
+  top: 25px;
+  padding: 7px;
+  cursor: pointer;
+  background: #efefef;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}

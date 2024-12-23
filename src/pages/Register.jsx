@@ -13,6 +13,10 @@ import {
 const Register = () => {
   const [formData, setFormData] = useState({});
   const [captchaError, setCaptchaError] = useState("");
+  const [showPassword, setShowPassword] = useState({
+    password: false,
+    confirmPassword: false,
+  });
   const refreshCaptcha = (e) => {
     e.preventDefault();
     loadCaptchaEnginge(6);
@@ -204,7 +208,7 @@ const Register = () => {
                                   </div>
                                 </div>
                                 <div className="col-sm-6">
-                                  <div className="mb-3">
+                                  <div className="mb-3 eye-pos">
                                     <label className="form-label">
                                       Password
                                     </label>
@@ -214,11 +218,28 @@ const Register = () => {
                                         errors.password &&
                                         "danger-border"
                                       }`}
-                                      type="password"
+                                      type={
+                                        showPassword.password
+                                          ? "text"
+                                          : "password"
+                                      }
                                       name="password"
                                       placeholder="Enter password"
                                       autoComplete="new-password"
                                     />
+                                    <span
+                                      className="material-icons-round align-middle eye"
+                                      onClick={() =>
+                                        setShowPassword((prevState) => ({
+                                          ...prevState,
+                                          password: !showPassword.password,
+                                        }))
+                                      }
+                                    >
+                                      {showPassword.password
+                                        ? "visibility"
+                                        : "visibility_off"}
+                                    </span>
                                     {touched.password && errors.password && (
                                       <span className="danger">
                                         {errors.password}
@@ -227,7 +248,7 @@ const Register = () => {
                                   </div>
                                 </div>
                                 <div className="col-sm-6">
-                                  <div className="mb-3">
+                                  <div className="mb-3 eye-pos">
                                     <label className="form-label">
                                       Confirm Password
                                     </label>
@@ -238,11 +259,29 @@ const Register = () => {
                                           ? "danger-border"
                                           : ""
                                       }`}
-                                      type="password"
+                                      type={
+                                        showPassword.confirmPassword
+                                          ? "text"
+                                          : "password"
+                                      }
                                       name="confirmPassword"
                                       placeholder="Confirm password"
                                       autoComplete="new-password"
                                     />
+                                    <span
+                                      className="material-icons-round align-middle eye"
+                                      onClick={() =>
+                                        setShowPassword((prevState) => ({
+                                          ...prevState,
+                                          confirmPassword:
+                                            !showPassword.confirmPassword,
+                                        }))
+                                      }
+                                    >
+                                      {showPassword.confirmPassword
+                                        ? "visibility"
+                                        : "visibility_off"}
+                                    </span>
                                     {touched.confirmPassword &&
                                       errors.confirmPassword && (
                                         <span className="danger">

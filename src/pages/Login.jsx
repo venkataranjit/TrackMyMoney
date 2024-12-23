@@ -11,6 +11,8 @@ import {
 const Login = () => {
   const [formData, setFormData] = useState("");
   const [captchaError, setCaptchaError] = useState("");
+  const [showPassword, setShowpassword] = useState(false);
+
   const initialValues = {
     email: "",
     password: "",
@@ -98,7 +100,7 @@ const Login = () => {
                                   <span className="danger">{errors.email}</span>
                                 )}
                               </div>
-                              <div className="mb-3">
+                              <div className="mb-3 eye-pos">
                                 <label className="form-label">Password</label>
                                 <Field
                                   className={`form-control form-control-lg ${
@@ -106,10 +108,18 @@ const Login = () => {
                                     errors.password &&
                                     "danger-border"
                                   }`}
-                                  type="password"
+                                  type={showPassword ? "text" : "password"}
                                   name="password"
                                   placeholder="Enter your password"
                                 />
+                                <span
+                                  className="material-icons-round align-middle eye"
+                                  onClick={() => setShowpassword(!showPassword)}
+                                >
+                                  {showPassword
+                                    ? "visibility"
+                                    : "visibility_off"}
+                                </span>
                                 {touched.password && errors.password && (
                                   <span className="danger">
                                     {errors.password}
