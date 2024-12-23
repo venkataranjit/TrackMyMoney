@@ -85,7 +85,11 @@ const Login = () => {
                               <div className="mb-3">
                                 <label className="form-label">Email</label>
                                 <Field
-                                  className="form-control form-control-lg"
+                                  className={`form-control form-control-lg ${
+                                    touched.email &&
+                                    errors.email &&
+                                    "danger-border"
+                                  }`}
                                   type="email"
                                   name="email"
                                   placeholder="Enter your email"
@@ -97,7 +101,11 @@ const Login = () => {
                               <div className="mb-3">
                                 <label className="form-label">Password</label>
                                 <Field
-                                  className="form-control form-control-lg"
+                                  className={`form-control form-control-lg ${
+                                    touched.password &&
+                                    errors.password &&
+                                    "danger-border"
+                                  }`}
                                   type="password"
                                   name="password"
                                   placeholder="Enter your password"
@@ -112,7 +120,11 @@ const Login = () => {
                                 <div className="mb-1 col-sm-6">
                                   <label className="form-label">Captcha</label>
                                   <Field
-                                    className={`form-control form-control-lg`}
+                                    className={`form-control form-control-lg ${
+                                      touched.captcha &&
+                                      errors.captcha &&
+                                      "danger-border"
+                                    }`}
                                     type="text"
                                     name="captcha"
                                     placeholder="Enter Captcha"
