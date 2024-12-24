@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Heading from "../components/Heading";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
+import { useSelector, useDispatch } from "react-redux";
+import { addTransaction } from "../features/addTransaction/addTransactionSlice";
+import Loading from "../components/Loading";
 
 const AddTransaction = () => {
-  const [formData, setFormData] = useState({});
+  const addTransactionState = useSelector((state) => state.addTransaction);
+  const dispatch = useDispatch();
+  // const [formData, setFormData] = useState({});
   const initialValues = {
     amount: "",
     date: "",
@@ -22,21 +27,26 @@ const AddTransaction = () => {
   });
 
   const onSubmit = (values, { resetForm }) => {
-    setFormData({
-      amount: values.amount,
-      date: values.date,
-      type: values.type,
-      category:
-        values.category === "addNewCategory"
-          ? values.customCategory === ""
-            ? "Others"
-            : values.customCategory
-          : values.category,
-      remarks: values.remarks,
-    });
+    dispatch(
+      addTransaction({
+        amount: values.amount,
+        date: values.date,
+        type: values.type,
+        category:
+          values.category === "addNewCategory"
+            ? values.customCategory === ""
+              ? "Others"
+              : values.customCategory
+            : values.category,
+        remarks: values.remarks,
+      })
+    );
     resetForm();
   };
-  console.log(formData);
+  if (addTransactionState.isLoading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <div className="container-fluid p-0 dashboard">

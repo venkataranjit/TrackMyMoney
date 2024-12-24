@@ -1,21 +1,21 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "John Doe",
       "email": "john.doe@example.com",
       "password": "password123",
       "mobile": 9568798965
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Jane Smith",
       "email": "jane.smith@example.com",
       "password": "mypassword",
       "mobile": 9568798968
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Admin User",
       "email": "admin@example.com",
       "password": "adminpass",
@@ -24,39 +24,39 @@
   ],
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Food",
       "userId": null
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Rent",
       "userId": null
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Utilities",
       "userId": null
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Salary",
       "userId": null
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Investment",
       "userId": null
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Travel",
       "userId": 1
     }
   ],
   "transactions": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "amount": 5000,
       "date": "2024-12-01",
@@ -65,7 +65,7 @@
       "remarks": "Monthly Salary"
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 1,
       "amount": 2000,
       "date": "2024-12-03",
@@ -74,7 +74,7 @@
       "remarks": "December Rent"
     },
     {
-      "id": 3,
+      "id": "3",
       "userId": 2,
       "amount": 300,
       "date": "2024-12-05",
@@ -83,7 +83,7 @@
       "remarks": "Grocery Shopping"
     },
     {
-      "id": 4,
+      "id": "4",
       "userId": 3,
       "amount": 1200,
       "date": "2023-06-15",
@@ -92,7 +92,7 @@
       "remarks": "Electricity Bill"
     },
     {
-      "id": 5,
+      "id": "5",
       "userId": 3,
       "amount": 4500,
       "date": "2023-07-10",
@@ -101,7 +101,7 @@
       "remarks": "Consulting Fee"
     },
     {
-      "id": 6,
+      "id": "6",
       "userId": 3,
       "amount": 320,
       "date": "2023-07-20",
@@ -110,7 +110,7 @@
       "remarks": "Lunch Meeting"
     },
     {
-      "id": 7,
+      "id": "7",
       "userId": 3,
       "amount": 600,
       "date": "2023-08-05",
@@ -119,7 +119,7 @@
       "remarks": "Cab Fare"
     },
     {
-      "id": 8,
+      "id": "8",
       "userId": 3,
       "amount": 3000,
       "date": "2023-08-15",
@@ -128,7 +128,7 @@
       "remarks": "Dividend"
     },
     {
-      "id": 9,
+      "id": "9",
       "userId": 3,
       "amount": 1000,
       "date": "2023-09-01",
@@ -137,7 +137,7 @@
       "remarks": "Water Bill"
     },
     {
-      "id": 10,
+      "id": "10",
       "userId": 3,
       "amount": 2500,
       "date": "2023-09-10",
@@ -146,7 +146,7 @@
       "remarks": "Freelance Project"
     },
     {
-      "id": 11,
+      "id": "11",
       "userId": 3,
       "amount": 900,
       "date": "2023-09-20",
@@ -155,7 +155,7 @@
       "remarks": "Dinner"
     },
     {
-      "id": 12,
+      "id": "12",
       "userId": 3,
       "amount": 550,
       "date": "2023-10-05",
@@ -164,7 +164,7 @@
       "remarks": "Train Ticket"
     },
     {
-      "id": 13,
+      "id": "13",
       "userId": 3,
       "amount": 1500,
       "date": "2023-10-20",
@@ -173,7 +173,7 @@
       "remarks": "Stock Profit"
     },
     {
-      "id": 14,
+      "id": "14",
       "userId": 3,
       "amount": 1200,
       "date": "2023-11-01",
@@ -182,7 +182,7 @@
       "remarks": "Internet Bill"
     },
     {
-      "id": 15,
+      "id": "15",
       "userId": 3,
       "amount": 700,
       "date": "2023-11-15",
@@ -191,7 +191,7 @@
       "remarks": "Groceries"
     },
     {
-      "id": 16,
+      "id": "16",
       "userId": 3,
       "amount": 3800,
       "date": "2023-11-30",
@@ -200,7 +200,7 @@
       "remarks": "Project Bonus"
     },
     {
-      "id": 17,
+      "id": "17",
       "userId": 3,
       "amount": 500,
       "date": "2023-12-10",
@@ -209,7 +209,7 @@
       "remarks": "Taxi Fare"
     },
     {
-      "id": 18,
+      "id": "18",
       "userId": 3,
       "amount": 2000,
       "date": "2024-01-05",
@@ -218,7 +218,7 @@
       "remarks": "Real Estate Return"
     },
     {
-      "id": 19,
+      "id": "19",
       "userId": 3,
       "amount": 900,
       "date": "2024-01-15",
@@ -227,7 +227,7 @@
       "remarks": "Gas Bill"
     },
     {
-      "id": 20,
+      "id": "20",
       "userId": 3,
       "amount": 600,
       "date": "2024-02-01",
@@ -236,7 +236,7 @@
       "remarks": "Restaurant"
     },
     {
-      "id": 21,
+      "id": "21",
       "userId": 3,
       "amount": 3200,
       "date": "2024-02-20",
@@ -245,7 +245,7 @@
       "remarks": "Performance Incentive"
     },
     {
-      "id": 22,
+      "id": "22",
       "userId": 3,
       "amount": 800,
       "date": "2024-03-10",
@@ -254,7 +254,7 @@
       "remarks": "Flight Ticket"
     },
     {
-      "id": 23,
+      "id": "23",
       "userId": 3,
       "amount": 1400,
       "date": "2024-03-25",
@@ -263,7 +263,7 @@
       "remarks": "Party Catering"
     },
     {
-      "id": 24,
+      "id": "24",
       "userId": 3,
       "amount": 4500,
       "date": "2024-04-05",
@@ -272,13 +272,45 @@
       "remarks": "Mutual Fund Payout"
     },
     {
-      "id": 25,
+      "id": "25",
       "userId": 3,
       "amount": 1200,
       "date": "2024-04-15",
       "type": "Expense",
       "category": "Utilities",
       "remarks": "Electricity Bill"
+    },
+    {
+      "id": "f52cd3a2-8fea-44ba-9698-c8ebccc610be",
+      "amount": 1234,
+      "date": "2024-12-24",
+      "type": "expense",
+      "category": "kirana",
+      "remarks": "kirana bill"
+    },
+    {
+      "id": "d53e7ac3-8584-420b-8055-98337efb7877",
+      "amount": 1236,
+      "date": "2024-12-11",
+      "type": "expense",
+      "category": "Mutual Funds",
+      "remarks": ""
+    },
+    {
+      "id": "fec8803b-84e9-49d3-b740-0e9e91651449",
+      "amount": 1000,
+      "date": "2024-12-24",
+      "type": "income",
+      "category": "Others",
+      "remarks": "others"
+    },
+    {
+      "id": "71cf056c-1822-4187-9aff-416fddcd16cd",
+      "amount": 500,
+      "date": "2024-12-17",
+      "type": "income",
+      "category": "vegetables",
+      "remarks": "f"
     }
   ]
 }
