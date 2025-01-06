@@ -1,6 +1,10 @@
 import React from "react";
 
+import { useSelector } from "react-redux";
+
 const RecentTransactions = () => {
+  const transactions = useSelector((state) => state.recentTransactions);
+
   return (
     <>
       <div className="row">
@@ -9,6 +13,7 @@ const RecentTransactions = () => {
             <div className="card-header">
               <h4 className="card-title mb-0">Recent Transactions</h4>
             </div>
+
             <table className="table table-hover my-0">
               <thead>
                 <tr>
@@ -20,18 +25,32 @@ const RecentTransactions = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>25,000</td>
-                  <td>01/01/2021</td>
-                  <td>
-                    <span className="badge bg-success">Credit</span>
-                  </td>
+                {transactions.recentTransactions
+                  ? transactions.recentTransactions.slice(0, 10).map((t) => {
+                      return (
+                        <tr key={t.id}>
+                          <td>{t.amount}</td>
+                          <td>{t.date}</td>
 
-                  <td>Category</td>
-                  <td className="d-none d-xl-table-cell">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  </td>
-                </tr>
+                          <td>
+                            <span
+                              className={`badge ${
+                                t.type.toLowerCase() === "income"
+                                  ? "bg-success"
+                                  : "bg-danger"
+                              }`}
+                            >
+                              {t.type}
+                            </span>
+                          </td>
+                          <td>{t.category}</td>
+                          <td className="d-none d-xl-table-cell">
+                            {t.remarks}
+                          </td>
+                        </tr>
+                      );
+                    })
+                  : ""}
               </tbody>
             </table>
           </div>

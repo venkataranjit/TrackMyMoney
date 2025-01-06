@@ -172,3 +172,15 @@ a.sidebar-link {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
+.alert {
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  color: #fff;
+}
+.alert-danger {
+  background: #dc3545;
+}
+.alert-success {
+  background: #1cbb8c;
+}

@@ -3,7 +3,10 @@ import Heading from "../components/Heading";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
-import { addTransaction } from "../features/addTransaction/addTransactionSlice";
+import {
+  addTransaction,
+  clearMsg,
+} from "../features/addTransaction/addTransactionSlice";
 import Loading from "../components/Loading";
 
 const AddTransaction = () => {
@@ -43,16 +46,29 @@ const AddTransaction = () => {
     );
     resetForm();
   };
+
+  useEffect(() => {
+    if (addTransactionState.successMsg || addTransactionState.error) {
+      const timer = setTimeout(() => {
+        dispatch(
+          clearMsg({
+            successMsg: null,
+            error: null,
+          })
+        );
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [addTransactionState.successMsg, addTransactionState.error]);
+
   if (addTransactionState.isLoading) {
     return <Loading />;
   }
-
   return (
     <>
       <div className="container-fluid p-0 dashboard">
         <div className="row">
-          <div className="col-xl-3"></div>
-          <div className="col-xl-6 col-xxl-6 d-flex">
+          <div className="col-xl-12 col-xxl-12 d-flex">
             <div className="w-100">
               <Heading heading="Add Transaction" />
               <div className="card">
@@ -68,7 +84,7 @@ const AddTransaction = () => {
                       return (
                         <Form>
                           <div className="row">
-                            <div className="col-sm-6 mb-3">
+                            <div className="col-sm-3 mb-3">
                               <label className="form-label">Amount</label>
                               <Field
                                 type="number"
@@ -84,7 +100,7 @@ const AddTransaction = () => {
                                 <span className="danger"> {errors.amount}</span>
                               )}
                             </div>
-                            <div className="col-sm-6 mb-3">
+                            <div className="col-sm-3 mb-3">
                               <label className="form-label">Date</label>
                               <Field
                                 type="date"
@@ -98,7 +114,7 @@ const AddTransaction = () => {
                                 <span className="danger"> {errors.date}</span>
                               )}
                             </div>
-                            <div className="col-sm-6 mb-3">
+                            <div className="col-sm-3 mb-3">
                               <label className="form-label">Type</label>
                               <Field
                                 as="select"
@@ -118,7 +134,7 @@ const AddTransaction = () => {
                                 <span className="danger"> {errors.type}</span>
                               )}
                             </div>
-                            <div className="col-sm-6 mb-3">
+                            <div className="col-sm-3 mb-3">
                               <label className="form-label">Category</label>
                               <Field
                                 as="select"
@@ -195,6 +211,14 @@ const AddTransaction = () => {
           </div>
         </div>
       </div>
+      {addTransactionState.successMsg && (
+        <div className="alert alert-success">
+          {addTransactionState.successMsg}
+        </div>
+      )}
+      {addTransactionState.error && (
+        <div className="alert alert-danger">{addTransactionState.error}</div>
+      )}
     </>
   );
 };

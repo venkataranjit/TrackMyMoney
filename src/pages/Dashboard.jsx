@@ -4,8 +4,18 @@ import RecentTransactions from "../components/RecentTransactions";
 import LastTransaction from "../components/LastTransaction";
 import Boxs from "../components/Boxs";
 import ThisMonthOverview from "../components/ThisMonthOverview";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { recentTransactions } from "../features/transactions/recentTransactionsSlice";
 
 const Dashboard = () => {
+  const transactions = useSelector((state) => state.recentTransactions);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(recentTransactions());
+  }, []);
+  console.log(transactions);
   return (
     <>
       <div className="container-fluid p-0 dashboard">

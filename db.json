@@ -311,6 +311,86 @@
       "type": "income",
       "category": "vegetables",
       "remarks": "f"
+    },
+    {
+      "id": "50b521fb-b4b2-4d31-98d6-d5f4af9fe73e",
+      "amount": 250,
+      "date": "2025-01-06",
+      "type": "expense",
+      "category": "rent",
+      "remarks": "rent paid"
+    },
+    {
+      "id": "40326231-841c-44ed-9cbd-f430f6d94313",
+      "amount": 5000,
+      "date": "2025-01-02",
+      "type": "income",
+      "category": "salary",
+      "remarks": "salary credited"
+    },
+    {
+      "id": "7655368e-ad09-4714-a573-7408f18a5d2c",
+      "amount": 500,
+      "date": "2025-01-05",
+      "type": "expense",
+      "category": "kirana",
+      "remarks": "kirana"
+    },
+    {
+      "id": "1fdeb404-7b57-40ca-97db-65be77f25426",
+      "amount": 25,
+      "date": "2025-01-03",
+      "type": "expense",
+      "category": "Snacks",
+      "remarks": "snacks"
+    },
+    {
+      "id": "699b4993-4383-4c30-8bfc-82b98a3292cf",
+      "amount": 30,
+      "date": "2025-01-02",
+      "type": "expense",
+      "category": "kirana",
+      "remarks": "milk"
+    },
+    {
+      "id": "07ce3cdc-9c8c-4c0a-860a-2b3c6d176ceb",
+      "amount": 36,
+      "date": "2025-01-03",
+      "type": "expense",
+      "category": "vegetables",
+      "remarks": "veg"
+    },
+    {
+      "id": "f8ee6589-b2b0-432f-8321-5b85353bb983",
+      "amount": 1000,
+      "date": "2025-01-05",
+      "type": "income",
+      "category": "Others",
+      "remarks": "other income"
+    },
+    {
+      "id": "10b229c7-5b0a-4bab-9036-6ba4050dd854",
+      "amount": 1,
+      "date": "2025-01-06",
+      "type": "expense",
+      "category": "others",
+      "remarks": "others"
+    },
+    {
+      "id": "c1d1affe-858f-44a6-a37e-29f3dff34dc0",
+      "amount": 3,
+      "date": "2025-01-06",
+      "type": "expense",
+      "category": "kirana",
+      "remarks": ""
+    },
+    {
+      "id": "5d38ae3a-d901-4ef1-805f-4b9722621e93",
+      "amount": 5,
+      "date": "2025-01-06",
+      "type": "expense",
+      "category": "kirana",
+      "remarks": "f"
     }
   ]
 }

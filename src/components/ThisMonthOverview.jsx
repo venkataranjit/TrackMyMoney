@@ -1,10 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-
-const data = [
-  { name: "Group B", value: 300 },
-  { name: "Group D", value: 200 },
-];
 
 const COLORS = ["#00C49F", "#FF8042"];
 
@@ -34,7 +30,48 @@ const renderCustomizedLabel = ({
     </text>
   );
 };
+
 const ThisMonthOverview = () => {
+  const transactions = useSelector((state) => state.recentTransactions);
+
+  const thisMonthtIncome = transactions.recentTransactions.reduce(
+    (total, t) => {
+      if (t.type.toLowerCase() === "income") {
+        const currentDate = new Date();
+        const transactionDate = new Date(t.date);
+        if (
+          transactionDate.getFullYear() === currentDate.getFullYear() &&
+          transactionDate.getMonth() === currentDate.getMonth()
+        ) {
+          return total + Number(t.amount);
+        }
+      }
+      return total;
+    },
+    0
+  );
+
+  const thisMonthtExpense = transactions.recentTransactions.reduce(
+    (total, t) => {
+      if (t.type.toLowerCase() === "expense") {
+        const currentDate = new Date();
+        const transactionDate = new Date(t.date);
+        if (
+          transactionDate.getFullYear() === currentDate.getFullYear() &&
+          transactionDate.getMonth() === currentDate.getMonth()
+        ) {
+          return total + Number(t.amount);
+        }
+      }
+      return total;
+    },
+    0
+  );
+
+  const data = [
+    { name: "Income", value: thisMonthtIncome },
+    { name: "Expense", value: thisMonthtExpense },
+  ];
   return (
     <>
       <div className="card">
