@@ -184,3 +184,6 @@ a.sidebar-link {
 .alert-success {
   background: #1cbb8c;
 }
+.capitalize {
+  text-transform: capitalize;
+}

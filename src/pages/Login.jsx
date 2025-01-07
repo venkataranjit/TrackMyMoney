@@ -54,7 +54,7 @@ const Login = () => {
   };
 
   React.useEffect(() => {
-    if (user.error || user.successMsg) {
+    if (user.successMsg) {
       loadCaptchaEnginge(6);
       const clear = setTimeout(() => {
         dispatch(
@@ -64,7 +64,19 @@ const Login = () => {
           })
         );
         navigate("/dashboard");
-      }, 100);
+      }, 10);
+      return () => clearTimeout(clear);
+    }
+    if (user.error) {
+      loadCaptchaEnginge(6);
+      const clear = setTimeout(() => {
+        dispatch(
+          clearMsg({
+            error: "",
+            successMsg: "",
+          })
+        );
+      }, 10000);
       return () => clearTimeout(clear);
     }
   }, [user.error, user.successMsg]);

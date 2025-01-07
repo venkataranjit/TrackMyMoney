@@ -1,7 +1,11 @@
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
+import { logout } from "../features/auth/authSlice";
+import { useDispatch } from "react-redux";
 const logo_w = "/public/logo-white.png";
+
 const SideNav = ({ sidebarRef }) => {
+  const dispatch = useDispatch();
   return (
     <>
       <nav id="sidebar" className="sidebar js-sidebar" ref={sidebarRef}>
@@ -61,7 +65,14 @@ const SideNav = ({ sidebarRef }) => {
                 <span className="align-middle">View Profile</span>
               </span>
             </NavLink>
-            <NavLink className="sidebar-item" to="/login">
+            <NavLink
+              className="sidebar-item"
+              to="/login"
+              onClick={() => {
+                dispatch(logout());
+                localStorage.removeItem("reduxState");
+              }}
+            >
               <span className="sidebar-link">
                 <span className="material-icons-round align-middle">
                   logout

@@ -97,7 +97,7 @@ const ThisMonthOverview = () => {
                       cy="50%"
                       labelLine={false}
                       label={renderCustomizedLabel}
-                      outerRadius="90%"
+                      outerRadius="100%"
                       innerRadius="30%"
                       fill="#8884d8"
                       dataKey="value"
@@ -113,7 +113,7 @@ const ThisMonthOverview = () => {
                 </ResponsiveContainer>
               ) : (
                 <p style={{ textAlign: "center" }}>
-                  "This Month There are No Transactions"
+                  This Month There are No Transactions
                 </p>
               )}
             </div>

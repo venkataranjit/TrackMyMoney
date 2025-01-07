@@ -100,7 +100,7 @@ const Register = () => {
   };
 
   React.useEffect(() => {
-    if (user.error || user.successMsg) {
+    if (user.successMsg) {
       const clear = setTimeout(() => {
         dispatch(
           clearMsg({
@@ -109,7 +109,21 @@ const Register = () => {
           })
         );
         navigate("/login");
-      }, 5000);
+      }, 2000);
+
+      return () => {
+        clearTimeout(clear);
+      };
+    }
+    if (user.error) {
+      const clear = setTimeout(() => {
+        dispatch(
+          clearMsg({
+            error: "",
+            successMsg: "",
+          })
+        );
+      }, 10000);
 
       return () => {
         clearTimeout(clear);

@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../features/auth/authSlice";
 
 const TopNav = ({ handleSidebar }) => {
   const userState = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -19,7 +21,9 @@ const TopNav = ({ handleSidebar }) => {
                 href="#"
                 data-bs-toggle="dropdown"
               >
-                <span className="text-dark">{userState.userName}</span>
+                <span className="text-dark capitalize">
+                  {userState.user.firstName + " " + userState.user.lastName}
+                </span>
               </a>
               <div className="dropdown-menu dropdown-menu-end">
                 <Link className="dropdown-item" to="/profile">
@@ -27,9 +31,16 @@ const TopNav = ({ handleSidebar }) => {
                   Profile
                 </Link>
                 <div className="dropdown-divider" />
-                <Link className="dropdown-item" to="/login">
+                <Link
+                  className="dropdown-item"
+                  to="/login"
+                  onClick={() => {
+                    dispatch(logout());
+                    localStorage.removeItem("reduxState");
+                  }}
+                >
                   <span className="material-icons vlb">logout</span>
-                  Log out
+                  Logout
                 </Link>
               </div>
             </li>
