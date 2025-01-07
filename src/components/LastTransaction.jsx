@@ -30,7 +30,7 @@ const LastTransaction = () => {
                   </tr>
                   <tr>
                     <th>Date</th>
-                    <td>{lastTransaction[0].date}</td>
+                    <td>{lastTransaction[0].transactionDate}</td>
                   </tr>
                   <tr>
                     <th>Type</th>

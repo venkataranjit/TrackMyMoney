@@ -25,32 +25,36 @@ const RecentTransactions = () => {
                 </tr>
               </thead>
               <tbody>
-                {transactions.recentTransactions
-                  ? transactions.recentTransactions.slice(0, 10).map((t) => {
-                      return (
-                        <tr key={t.id}>
-                          <td>{t.amount}</td>
-                          <td>{t.date}</td>
+                {transactions.recentTransactions.length !== 0 ? (
+                  transactions.recentTransactions.slice(0, 10).map((t) => {
+                    return (
+                      <tr key={t.id}>
+                        <td>{t.amount}</td>
+                        <td>{t.transactionDate}</td>
 
-                          <td>
-                            <span
-                              className={`badge ${
-                                t.type.toLowerCase() === "income"
-                                  ? "bg-success"
-                                  : "bg-danger"
-                              }`}
-                            >
-                              {t.type}
-                            </span>
-                          </td>
-                          <td>{t.category}</td>
-                          <td className="d-none d-xl-table-cell">
-                            {t.remarks}
-                          </td>
-                        </tr>
-                      );
-                    })
-                  : ""}
+                        <td>
+                          <span
+                            className={`badge ${
+                              t.type.toLowerCase() === "income"
+                                ? "bg-success"
+                                : "bg-danger"
+                            }`}
+                          >
+                            {t.type}
+                          </span>
+                        </td>
+                        <td>{t.category}</td>
+                        <td className="d-none d-xl-table-cell">{t.remarks}</td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td colSpan="5">
+                      <span>There are No Recent Transactions</span>
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

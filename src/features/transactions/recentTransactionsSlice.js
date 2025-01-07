@@ -15,7 +15,7 @@ export const recentTransactions = createAsyncThunk(
         `${import.meta.env.VITE_JSON_SERVER_URL}/transactions`
       );
       const sortedTransactions = response.data.sort(
-        (a, b) => new Date(b.date) - new Date(a.date)
+        (a, b) => Number(b.updatedAt) - Number(a.updatedAt)
       );
       return sortedTransactions;
     } catch (error) {

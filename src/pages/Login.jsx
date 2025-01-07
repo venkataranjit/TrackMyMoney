@@ -7,11 +7,17 @@ import {
   loadCaptchaEnginge,
   validateCaptcha,
 } from "react-simple-captcha";
+import { useDispatch, useSelector } from "react-redux";
+import Loading from "../components/Loading";
+import { clearMsg, userLogin } from "../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [formData, setFormData] = useState("");
   const [captchaError, setCaptchaError] = useState("");
   const [showPassword, setShowpassword] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.auth);
 
   const initialValues = {
     email: "",
@@ -38,7 +44,7 @@ const Login = () => {
   const onSubmit = (values, { resetForm }) => {
     const user_captcha_value = values.captcha;
     if (validateCaptcha(user_captcha_value, false) == true) {
-      setFormData({ email: values.email, password: values.password });
+      dispatch(userLogin({ email: values.email, password: values.password }));
       setCaptchaError("");
       resetForm();
       loadCaptchaEnginge(6);
@@ -46,8 +52,26 @@ const Login = () => {
       setCaptchaError("Captcha Does Not Match");
     }
   };
-  console.log(formData);
 
+  React.useEffect(() => {
+    if (user.error || user.successMsg) {
+      loadCaptchaEnginge(6);
+      const clear = setTimeout(() => {
+        dispatch(
+          clearMsg({
+            error: "",
+            successMsg: "",
+          })
+        );
+        navigate("/dashboard");
+      }, 100);
+      return () => clearTimeout(clear);
+    }
+  }, [user.error, user.successMsg]);
+
+  if (user.isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <main className="d-flex w-100 login">
@@ -189,6 +213,13 @@ const Login = () => {
                           );
                         }}
                       </Formik>
+                      <br />
+                      {user.error && (
+                        <div className="alert alert-danger">{user.error}</div>
+                      )}
+                      {user.email && (
+                        <div className="alert alert-danger">{user.email}</div>
+                      )}
                     </div>
                   </div>
                 </div>

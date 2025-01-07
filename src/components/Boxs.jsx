@@ -17,7 +17,7 @@ const Boxs = () => {
   const thisMonthIncome = transactions.recentTransactions.reduce((total, t) => {
     // Check if the type is "income" and the date is in the current month
     if (t.type.toLowerCase() === "income") {
-      const transactionDate = new Date(t.date);
+      const transactionDate = new Date(t.transactionDate);
       const currentDate = new Date();
 
       if (
@@ -34,7 +34,7 @@ const Boxs = () => {
     (total, t) => {
       // Check if the type is "income" and the date is in the current month
       if (t.type.toLowerCase() === "expense") {
-        const transactionDate = new Date(t.date);
+        const transactionDate = new Date(t.transactionDate);
         const currentDate = new Date();
 
         if (

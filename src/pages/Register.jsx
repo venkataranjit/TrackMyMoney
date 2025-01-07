@@ -1,6 +1,10 @@
 import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  clearMsg,
+  userRegistration,
+} from "../features/auth/userRegistrationSlice";
 import * as Yup from "yup";
 import {
   loadCaptchaEnginge,
@@ -9,14 +13,20 @@ import {
   validateCaptcha,
   // validateCaptcha,
 } from "react-simple-captcha";
+import { useDispatch, useSelector } from "react-redux";
+import Loading from "../components/Loading";
 
 const Register = () => {
-  const [formData, setFormData] = useState({});
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.userRegistration);
+  const [error, setError] = useState("");
   const [captchaError, setCaptchaError] = useState("");
   const [showPassword, setShowPassword] = useState({
     password: false,
     confirmPassword: false,
   });
+  const navigate = useNavigate();
+
   const refreshCaptcha = (e) => {
     e.preventDefault();
     loadCaptchaEnginge(6);
@@ -64,24 +74,52 @@ const Register = () => {
     captcha: Yup.string().required("Captcha Required"),
   });
 
-  const onSubmit = (values, { resetForm }) => {
+  const onSubmit = async (values, { resetForm }) => {
     let user_captcha_value = values.captcha;
-    if (validateCaptcha(user_captcha_value, false) == true) {
-      setFormData({
-        firstName: values.firstName,
-        lastName: values.lastName,
-        email: values.email,
-        mobile: values.mobile,
-        password: values.password,
-      });
-      setCaptchaError("");
-      resetForm();
-      loadCaptchaEnginge(6);
+    if (validateCaptcha(user_captcha_value, false)) {
+      try {
+        await dispatch(
+          userRegistration({
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            mobile: values.mobile,
+            password: values.password,
+          })
+        );
+        setCaptchaError("");
+        resetForm();
+        loadCaptchaEnginge(6);
+      } catch (error) {
+        setError("Error during user registration:", error);
+        // Optionally handle error feedback to the user
+      }
     } else {
       setCaptchaError("Captcha Does Not Match");
     }
   };
-  console.log(formData);
+
+  React.useEffect(() => {
+    if (user.error || user.successMsg) {
+      const clear = setTimeout(() => {
+        dispatch(
+          clearMsg({
+            error: "",
+            successMsg: "",
+          })
+        );
+        navigate("/login");
+      }, 5000);
+
+      return () => {
+        clearTimeout(clear);
+      };
+    }
+  }, [user.error, user.successMsg]);
+
+  if (user.isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <main className="d-flex w-100 login">
@@ -353,6 +391,18 @@ const Register = () => {
                           );
                         }}
                       </Formik>
+                      <br />
+                      {error && (
+                        <div className="alert alert-danger">{user.error}</div>
+                      )}
+                      {user.error && (
+                        <div className="alert alert-danger">{user.error}</div>
+                      )}
+                      {user.successMsg && (
+                        <div className="alert alert-success">
+                          {user.successMsg}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

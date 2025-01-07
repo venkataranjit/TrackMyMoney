@@ -11,11 +11,12 @@ import Loading from "../components/Loading";
 
 const AddTransaction = () => {
   const addTransactionState = useSelector((state) => state.addTransaction);
+  const authUser = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   // const [formData, setFormData] = useState({});
   const initialValues = {
     amount: "",
-    date: "",
+    transactionDate: "",
     type: "",
     category: "",
     customCategory: "",
@@ -24,7 +25,7 @@ const AddTransaction = () => {
 
   const validationSchema = Yup.object({
     amount: Yup.number().required("Amount is Required"),
-    date: Yup.string().required("Date is Required"),
+    transactionDate: Yup.string().required("Date is Required"),
     type: Yup.string().required("Transaction Type is Required"),
     category: Yup.string().required("Category is Required"),
   });
@@ -33,7 +34,8 @@ const AddTransaction = () => {
     dispatch(
       addTransaction({
         amount: values.amount,
-        date: values.date,
+        userId: authUser.userId === null ? "admin" : authUser.userId,
+        transactionDate: values.transactionDate,
         type: values.type,
         category:
           values.category === "addNewCategory"
@@ -101,18 +103,26 @@ const AddTransaction = () => {
                               )}
                             </div>
                             <div className="col-sm-3 mb-3">
-                              <label className="form-label">Date</label>
+                              <label className="form-label">
+                                Transaction Date
+                              </label>
                               <Field
                                 type="date"
-                                name="date"
+                                name="transactionDate"
                                 className={`form-control ${
-                                  touched.date && errors.date && "danger-border"
+                                  touched.transactionDate &&
+                                  errors.transactionDate &&
+                                  "danger-border"
                                 }`}
                                 placeholder="Select Date"
                               />
-                              {touched.date && errors.date && (
-                                <span className="danger"> {errors.date}</span>
-                              )}
+                              {touched.transactionDate &&
+                                errors.transactionDate && (
+                                  <span className="danger">
+                                    {" "}
+                                    {errors.transactionDate}
+                                  </span>
+                                )}
                             </div>
                             <div className="col-sm-3 mb-3">
                               <label className="form-label">Type</label>

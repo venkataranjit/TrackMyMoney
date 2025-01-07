@@ -15,6 +15,7 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(recentTransactions());
   }, []);
+
   console.log(transactions);
   return (
     <>

@@ -14,7 +14,7 @@ const renderCustomizedLabel = ({
   percent,
   index,
 }) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.25;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
@@ -38,7 +38,7 @@ const ThisMonthOverview = () => {
     (total, t) => {
       if (t.type.toLowerCase() === "income") {
         const currentDate = new Date();
-        const transactionDate = new Date(t.date);
+        const transactionDate = new Date(t.transactionDate);
         if (
           transactionDate.getFullYear() === currentDate.getFullYear() &&
           transactionDate.getMonth() === currentDate.getMonth()
@@ -55,7 +55,7 @@ const ThisMonthOverview = () => {
     (total, t) => {
       if (t.type.toLowerCase() === "expense") {
         const currentDate = new Date();
-        const transactionDate = new Date(t.date);
+        const transactionDate = new Date(t.transactionDate);
         if (
           transactionDate.getFullYear() === currentDate.getFullYear() &&
           transactionDate.getMonth() === currentDate.getMonth()
@@ -72,6 +72,7 @@ const ThisMonthOverview = () => {
     { name: "Income", value: thisMonthtIncome },
     { name: "Expense", value: thisMonthtExpense },
   ];
+
   return (
     <>
       <div className="card">
@@ -87,28 +88,34 @@ const ThisMonthOverview = () => {
                 height: "200px",
               }}
             >
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={data}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={renderCustomizedLabel}
-                    outerRadius="95%"
-                    innerRadius="30%"
-                    fill="#8884d8"
-                    dataKey="value"
-                  >
-                    {data.map((entry, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={COLORS[index % COLORS.length]}
-                      />
-                    ))}
-                  </Pie>
-                </PieChart>
-              </ResponsiveContainer>
+              {data[0].value !== 0 || data[1].value !== 0 ? (
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={data}
+                      cx="50%"
+                      cy="50%"
+                      labelLine={false}
+                      label={renderCustomizedLabel}
+                      outerRadius="90%"
+                      innerRadius="30%"
+                      fill="#8884d8"
+                      dataKey="value"
+                    >
+                      {data.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={COLORS[index % COLORS.length]}
+                        />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                </ResponsiveContainer>
+              ) : (
+                <p style={{ textAlign: "center" }}>
+                  "This Month There are No Transactions"
+                </p>
+              )}
             </div>
           </div>
         </div>

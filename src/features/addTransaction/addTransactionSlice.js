@@ -18,6 +18,7 @@ export const addTransaction = createAsyncThunk(
         {
           ...transactionDetails,
           id: uuidv4(),
+          updatedAt: Date.now(),
         }
       );
       return response.data;
