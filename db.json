@@ -1,46 +1,19 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "John Doe",
-      "email": "john.doe@example.com",
-      "password": "password123",
-      "mobile": 9568798965
-    },
-    {
-      "id": "2",
-      "name": "Jane Smith",
-      "email": "jane.smith@example.com",
-      "password": "mypassword",
-      "mobile": 9568798968
-    },
-    {
-      "id": "3",
-      "name": "Admin User",
+      "id": "admin",
+      "firstName": "Admin",
+      "lastName": "User",
       "email": "admin@example.com",
-      "password": "adminpass",
+      "password": "admin",
       "mobile": 9999999999
     },
     {
-      "id": "a129700f-c5ff-4c90-9ac7-9b852e8a73ef"
-    },
-    {
-      "id": "0f3795a6-2890-42e4-ab3a-95479491baa2"
-    },
-    {
       "id": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "firstName": "venkata",
+      "firstName": "victory",
       "lastName": "ranjit",
       "email": "venkataranjit@live.com",
       "mobile": 9966189948,
-      "password": "0p;/)P:?"
-    },
-    {
-      "id": "d51f4426-610f-4746-b9a2-eb1366a536bb",
-      "firstName": "suresh",
-      "lastName": "babu",
-      "email": "sureshbabu@gmail.com",
-      "mobile": 9876543210,
       "password": "0p;/)P:?"
     },
     {
@@ -52,59 +25,11 @@
       "password": "9ol.(OL>"
     },
     {
-      "id": "a6bb1541-7913-4f6d-acd6-893a4c72c1df",
-      "firstName": "siva",
-      "lastName": "kumar",
-      "email": "siva@gmail.com",
-      "mobile": 2456987456,
-      "password": "9ol.(OL>"
-    },
-    {
-      "id": "0ac19928-6b5b-456a-b4c8-37c57eac5aa6",
-      "firstName": "ram",
-      "lastName": "nadh",
-      "email": "ram@gmail.com",
-      "mobile": 9874563210,
-      "password": "0p;/)P:?"
-    },
-    {
-      "id": "e6b05863-53d7-456e-88bd-27b4afaf3750",
-      "firstName": "ram2",
-      "lastName": "nadh2",
-      "email": "ram@gmail.com",
-      "mobile": 7412589630,
-      "password": "0p;/)P:?"
-    },
-    {
-      "id": "8f02243c-bb1d-4d6f-b1bb-4a627cfdd4de",
-      "firstName": "final",
-      "lastName": "final",
-      "email": "final@gmail.com",
-      "mobile": 9874563210,
-      "password": "0p;/)P:?"
-    },
-    {
-      "id": "ec09c2f1-2c02-4a09-93bd-1d1c212b1288",
-      "firstName": "vvv",
-      "lastName": "vvv",
-      "email": "venkataranjit@live.com",
-      "mobile": 9966189948,
-      "password": "0p;/)P:?"
-    },
-    {
-      "id": "bbaff327-7436-444a-bc35-1f283d32e12d",
-      "firstName": "fef",
-      "lastName": "fef",
-      "email": "v@g.com",
-      "mobile": 7896541230,
-      "password": "0p;/)P:?"
-    },
-    {
-      "id": "d379ca37-5872-4b70-be3b-4f8cf4768688",
-      "firstName": "registerq",
-      "lastName": "registered",
-      "email": "reg@gmail.com",
-      "mobile": 9874563210,
+      "id": "3400cd71-50dc-47f9-87d9-1e6b2f6b6a0d",
+      "firstName": "Aparna",
+      "lastName": "ranjit",
+      "email": "aparna@gmail.com",
+      "mobile": 9553500003,
       "password": "0p;/)P:?"
     }
   ],
@@ -132,18 +57,23 @@
     {
       "id": "5",
       "name": "Investment",
-      "userId": "2"
+      "userId": "admin"
     },
     {
       "id": "6",
       "name": "Travel",
-      "userId": "1"
+      "userId": "admin"
+    },
+    {
+      "id": "7",
+      "name": "Games",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c"
     }
   ],
   "transactions": [
     {
       "id": "1",
-      "userId": "1",
+      "userId": "admin",
       "amount": 5000,
       "transactionDate": "2024-12-01",
       "type": "Income",
@@ -153,7 +83,7 @@
     },
     {
       "id": "2",
-      "userId": "1",
+      "userId": "admin",
       "amount": 2000,
       "transactionDate": "2024-12-03",
       "type": "Expense",
@@ -163,7 +93,7 @@
     },
     {
       "id": "3",
-      "userId": 2,
+      "userId": "admin",
       "amount": 300,
       "transactionDate": "2024-12-05",
       "type": "Expense",
@@ -173,7 +103,7 @@
     },
     {
       "id": "4",
-      "userId": 3,
+      "userId": "admin",
       "amount": 1200,
       "transactionDate": "2023-06-15",
       "type": "Expense",
@@ -183,7 +113,7 @@
     },
     {
       "id": "5",
-      "userId": 3,
+      "userId": "admin",
       "amount": 4500,
       "transactionDate": "2023-07-10",
       "type": "Income",
@@ -193,7 +123,7 @@
     },
     {
       "id": "6",
-      "userId": 3,
+      "userId": "admin",
       "amount": 320,
       "transactionDate": "2023-07-20",
       "type": "Expense",
@@ -203,7 +133,7 @@
     },
     {
       "id": "7",
-      "userId": 3,
+      "userId": "admin",
       "amount": 600,
       "transactionDate": "2023-08-05",
       "type": "Expense",
@@ -213,7 +143,7 @@
     },
     {
       "id": "8",
-      "userId": 3,
+      "userId": "admin",
       "amount": 3000,
       "transactionDate": "2023-08-15",
       "type": "Income",
@@ -223,7 +153,7 @@
     },
     {
       "id": "9",
-      "userId": 3,
+      "userId": "admin",
       "amount": 1000,
       "transactionDate": "2023-09-01",
       "type": "Expense",
@@ -233,7 +163,7 @@
     },
     {
       "id": "10",
-      "userId": 3,
+      "userId": "admin",
       "amount": 2500,
       "transactionDate": "2023-09-10",
       "type": "Income",
@@ -242,33 +172,24 @@
       "updatedAt": "1736145753107"
     },
     {
-      "id": "cb8f1431-8d37-4802-935a-f944a242a581",
-      "amount": 465,
-      "transactionDate": "2025-01-06",
-      "type": "expense",
-      "category": "vegetables",
-      "remarks": "veggies",
-      "updatedAt": 1736235756043
-    },
-    {
-      "id": "5e4fff99-9a32-4296-819d-c31e110890a8",
-      "amount": 444,
+      "id": "a853345c-a03c-4887-9c5d-2e1b053f236f",
+      "amount": 12500,
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
       "transactionDate": "2025-01-07",
       "type": "expense",
-      "category": "vegetables",
-      "remarks": "veggies",
-      "userId": "admin",
-      "updatedAt": 1736238481091
+      "category": "rent",
+      "remarks": "Rent",
+      "updatedAt": 1736334016568
     },
     {
-      "id": "bc74062c-069a-4dd1-9994-b833d1fa6015",
-      "amount": 100,
-      "userId": "admin",
-      "transactionDate": "2025-01-01",
+      "id": "7bf949ae-7e39-4bac-8363-d956569f5c43",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 56000,
+      "transactionDate": "2025-01-08",
       "type": "income",
-      "category": "others",
-      "remarks": "other income",
-      "updatedAt": 1736239083786
+      "category": "Salary",
+      "remarks": "Salary",
+      "updatedAt": 1736334582691
     }
   ]
 }

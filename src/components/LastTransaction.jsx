@@ -37,7 +37,7 @@ const LastTransaction = () => {
                     <td>
                       <span
                         className={`badge ${
-                          lastTransaction[0].type.toLowerCase() === "income"
+                          lastTransaction[0].type?.toLowerCase() === "income"
                             ? "bg-success"
                             : "bg-danger"
                         }`}

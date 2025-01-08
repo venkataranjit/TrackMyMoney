@@ -82,7 +82,7 @@ const Register = () => {
           userRegistration({
             firstName: values.firstName,
             lastName: values.lastName,
-            email: values.email,
+            email: values.email.trim().toLowerCase(),
             mobile: values.mobile,
             password: values.password,
           })

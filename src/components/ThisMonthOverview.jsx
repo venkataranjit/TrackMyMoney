@@ -36,7 +36,7 @@ const ThisMonthOverview = () => {
 
   const thisMonthtIncome = transactions.recentTransactions.reduce(
     (total, t) => {
-      if (t.type.toLowerCase() === "income") {
+      if (t?.type?.toLowerCase() === "income") {
         const currentDate = new Date();
         const transactionDate = new Date(t.transactionDate);
         if (
@@ -53,7 +53,7 @@ const ThisMonthOverview = () => {
 
   const thisMonthtExpense = transactions.recentTransactions.reduce(
     (total, t) => {
-      if (t.type.toLowerCase() === "expense") {
+      if (t?.type?.toLowerCase() === "expense") {
         const currentDate = new Date();
         const transactionDate = new Date(t.transactionDate);
         if (

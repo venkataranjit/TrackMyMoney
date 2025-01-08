@@ -9,12 +9,13 @@ const initialState = {
 
 export const recentTransactions = createAsyncThunk(
   "transactions/recent",
-  async (transactions, { rejectWithValue }) => {
+  async (userId, { rejectWithValue }) => {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_JSON_SERVER_URL}/transactions`
       );
-      const sortedTransactions = response.data.sort(
+      const myTransactions = response.data.filter((t) => t.userId === userId);
+      const sortedTransactions = myTransactions.sort(
         (a, b) => Number(b.updatedAt) - Number(a.updatedAt)
       );
       return sortedTransactions;

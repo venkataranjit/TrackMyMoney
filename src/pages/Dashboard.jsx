@@ -10,10 +10,11 @@ import { recentTransactions } from "../features/transactions/recentTransactionsS
 
 const Dashboard = () => {
   const transactions = useSelector((state) => state.recentTransactions);
+  const userDetails = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(recentTransactions());
+    dispatch(recentTransactions(userDetails.user.id));
   }, []);
 
   console.log(transactions);

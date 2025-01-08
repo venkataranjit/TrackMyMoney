@@ -5,18 +5,20 @@ const Boxs = () => {
   const transactions = useSelector((state) => state.recentTransactions);
 
   const totalIncome = transactions.recentTransactions.reduce((total, t) => {
-    return t.type.toLowerCase() === "income" ? total + Number(t.amount) : total;
+    return t?.type?.toLowerCase() === "income"
+      ? total + Number(t.amount)
+      : total;
   }, 0);
 
   const totalExpense = transactions.recentTransactions.reduce((total, t) => {
-    return t.type.toLowerCase() === "expense"
+    return t?.type?.toLowerCase() === "expense"
       ? total + Number(t.amount)
       : total;
   }, 0);
 
   const thisMonthIncome = transactions.recentTransactions.reduce((total, t) => {
     // Check if the type is "income" and the date is in the current month
-    if (t.type.toLowerCase() === "income") {
+    if (t?.type?.toLowerCase() === "income") {
       const transactionDate = new Date(t.transactionDate);
       const currentDate = new Date();
 
@@ -33,7 +35,7 @@ const Boxs = () => {
   const thisMonthExpense = transactions.recentTransactions.reduce(
     (total, t) => {
       // Check if the type is "income" and the date is in the current month
-      if (t.type.toLowerCase() === "expense") {
+      if (t?.type?.toLowerCase() === "expense") {
         const transactionDate = new Date(t.transactionDate);
         const currentDate = new Date();
 
@@ -71,7 +73,7 @@ const Boxs = () => {
               <h1 className="mt-1 mb-3">{thisMonthIncome.toLocaleString()}</h1>
             </div>
           </div>
-          <div className="card bg-warning bg-img">
+          <div className="card bg-primary bg-img">
             <div className="card-body">
               <div className="row">
                 <div className="col mt-0">
@@ -109,7 +111,7 @@ const Boxs = () => {
               <h1 className="mt-1 mb-3">{thisMonthExpense.toLocaleString()}</h1>
             </div>
           </div>
-          <div className="card bg-primary bg-img">
+          <div className="card bg-warning bg-img">
             <div className="card-body">
               <div className="row">
                 <div className="col mt-0">

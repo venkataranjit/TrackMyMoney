@@ -22,7 +22,13 @@ const TopNav = ({ handleSidebar }) => {
                 data-bs-toggle="dropdown"
               >
                 <span className="text-dark capitalize">
-                  {userState.user.firstName + " " + userState.user.lastName}
+                  <span className="material-icons-round align-middle">
+                    person
+                  </span>
+                  {userState.user.firstName +
+                    " " +
+                    userState.user.lastName +
+                    " "}
                 </span>
               </a>
               <div className="dropdown-menu dropdown-menu-end">

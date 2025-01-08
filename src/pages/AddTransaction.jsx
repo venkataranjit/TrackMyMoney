@@ -8,9 +8,11 @@ import {
   clearMsg,
 } from "../features/addTransaction/addTransactionSlice";
 import Loading from "../components/Loading";
+import { getCategory } from "../features/categories/categoriesSlice";
 
 const AddTransaction = () => {
   const addTransactionState = useSelector((state) => state.addTransaction);
+  const myCategories = useSelector((state) => state.categories);
   const authUser = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   // const [formData, setFormData] = useState({});
@@ -33,8 +35,8 @@ const AddTransaction = () => {
   const onSubmit = (values, { resetForm }) => {
     dispatch(
       addTransaction({
+        userId: authUser.user.id === null ? "admin" : authUser.user.id,
         amount: values.amount,
-        userId: authUser.userId === null ? "admin" : authUser.userId,
         transactionDate: values.transactionDate,
         type: values.type,
         category:
@@ -62,6 +64,10 @@ const AddTransaction = () => {
       return () => clearTimeout(timer);
     }
   }, [addTransactionState.successMsg, addTransactionState.error]);
+
+  useEffect(() => {
+    dispatch(getCategory(authUser.user.id));
+  }, []);
 
   if (addTransactionState.isLoading) {
     return <Loading />;
@@ -158,12 +164,16 @@ const AddTransaction = () => {
                                 <option disabled value="">
                                   Select Category
                                 </option>
-                                <option value="rent">Rent</option>
-                                <option value="kirana">Kirana</option>
-                                <option value="vegetables">Vegetables</option>
                                 <option value="addNewCategory">
                                   Add New Category
                                 </option>
+                                {myCategories.categories.map((c) => {
+                                  return (
+                                    <option value={c.name} key={c.id}>
+                                      {c.name}
+                                    </option>
+                                  );
+                                })}
                               </Field>
                               {touched.category && errors.category && (
                                 <span className="danger">
