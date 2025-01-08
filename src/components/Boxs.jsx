@@ -63,10 +63,8 @@ const Boxs = () => {
                 </div>
 
                 <div className="col-auto">
-                  <div className="stat text-primary">
-                    <span className="material-icons-round align-middle">
-                      attach_money
-                    </span>
+                  <div className="stat text-success">
+                    <span className="rupee">&#8377;</span>
                   </div>
                 </div>
               </div>
@@ -82,9 +80,7 @@ const Boxs = () => {
 
                 <div className="col-auto">
                   <div className="stat text-primary">
-                    <span className="material-icons-round align-middle">
-                      attach_money
-                    </span>
+                    <span className="rupee">&#8377;</span>
                   </div>
                 </div>
               </div>
@@ -101,10 +97,8 @@ const Boxs = () => {
                 </div>
 
                 <div className="col-auto">
-                  <div className="stat text-primary">
-                    <span className="material-icons-round align-middle">
-                      attach_money
-                    </span>
+                  <div className="stat text-danger">
+                    <span className="rupee">&#8377;</span>
                   </div>
                 </div>
               </div>
@@ -119,10 +113,8 @@ const Boxs = () => {
                 </div>
 
                 <div className="col-auto">
-                  <div className="stat text-primary">
-                    <span className="material-icons-round align-middle">
-                      attach_money
-                    </span>
+                  <div className="stat text-warning">
+                    <span className="rupee">&#8377;</span>
                   </div>
                 </div>
               </div>

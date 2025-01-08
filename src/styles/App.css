@@ -187,3 +187,6 @@ a.sidebar-link {
 .capitalize {
   text-transform: capitalize;
 }
+.rupee {
+  font-size: 24px;
+}

@@ -8,14 +8,17 @@ import {
   clearMsg,
 } from "../features/addTransaction/addTransactionSlice";
 import Loading from "../components/Loading";
-import { getCategory } from "../features/categories/categoriesSlice";
+import {
+  getCategory,
+  postCategory,
+} from "../features/categories/categoriesSlice";
 
 const AddTransaction = () => {
   const addTransactionState = useSelector((state) => state.addTransaction);
   const myCategories = useSelector((state) => state.categories);
   const authUser = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  // const [formData, setFormData] = useState({});
+
   const initialValues = {
     amount: "",
     transactionDate: "",
@@ -32,8 +35,8 @@ const AddTransaction = () => {
     category: Yup.string().required("Category is Required"),
   });
 
-  const onSubmit = (values, { resetForm }) => {
-    dispatch(
+  const onSubmit = async (values, { resetForm }) => {
+    await dispatch(
       addTransaction({
         userId: authUser.user.id === null ? "admin" : authUser.user.id,
         amount: values.amount,
@@ -47,7 +50,12 @@ const AddTransaction = () => {
             : values.category,
         remarks: values.remarks,
       })
-    );
+    ).unwrap();
+    if (values.category === "addNewCategory" && values.customCategory) {
+      await dispatch(
+        postCategory({ userId: authUser.user.id, name: values.customCategory })
+      );
+    }
     resetForm();
   };
 
@@ -67,7 +75,7 @@ const AddTransaction = () => {
 
   useEffect(() => {
     dispatch(getCategory(authUser.user.id));
-  }, []);
+  }, [myCategories.successMsg]);
 
   if (addTransactionState.isLoading) {
     return <Loading />;
@@ -144,7 +152,6 @@ const AddTransaction = () => {
                                 </option>
                                 <option value="expense">Expense</option>
                                 <option value="income">Income</option>
-                                <option value="investment">Investment</option>
                               </Field>
                               {touched.type && errors.type && (
                                 <span className="danger"> {errors.type}</span>
@@ -167,13 +174,17 @@ const AddTransaction = () => {
                                 <option value="addNewCategory">
                                   Add New Category
                                 </option>
-                                {myCategories.categories.map((c) => {
-                                  return (
-                                    <option value={c.name} key={c.id}>
-                                      {c.name}
-                                    </option>
-                                  );
-                                })}
+                                {myCategories.categories?.length > 0 ? (
+                                  myCategories.categories.map((c) => {
+                                    return (
+                                      <option value={c.name} key={c.id}>
+                                        {c.name}
+                                      </option>
+                                    );
+                                  })
+                                ) : (
+                                  <option disabled>No Categories Found</option>
+                                )}
                               </Field>
                               {touched.category && errors.category && (
                                 <span className="danger">
@@ -238,6 +249,9 @@ const AddTransaction = () => {
       )}
       {addTransactionState.error && (
         <div className="alert alert-danger">{addTransactionState.error}</div>
+      )}
+      {myCategories.error && (
+        <div className="alert alert-danger">{myCategories.error}</div>
       )}
     </>
   );

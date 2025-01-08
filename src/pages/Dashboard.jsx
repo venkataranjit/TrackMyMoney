@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import { recentTransactions } from "../features/transactions/recentTransactionsSlice";
 
 const Dashboard = () => {
-  const transactions = useSelector((state) => state.recentTransactions);
   const userDetails = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -17,7 +16,6 @@ const Dashboard = () => {
     dispatch(recentTransactions(userDetails.user.id));
   }, []);
 
-  console.log(transactions);
   return (
     <>
       <div className="container-fluid p-0 dashboard">

@@ -44,7 +44,9 @@ const RecentTransactions = () => {
                           </span>
                         </td>
                         <td>{t.category}</td>
-                        <td className="d-none d-xl-table-cell">{t.remarks}</td>
+                        <td className="d-none d-xl-table-cell">
+                          {t.remarks === "" ? " ------ " : t.remarks}
+                        </td>
                       </tr>
                     );
                   })

@@ -4,7 +4,7 @@
       "id": "admin",
       "firstName": "Admin",
       "lastName": "User",
-      "email": "admin@example.com",
+      "email": "admin@gmail.com",
       "password": "admin",
       "mobile": 9999999999
     },
@@ -68,6 +68,51 @@
       "id": "7",
       "name": "Games",
       "userId": "ada6744c-7572-4a4f-b318-4338a267043c"
+    },
+    {
+      "id": "9bab6420-f503-428f-8581-2e10f1d55217",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "Kirana"
+    },
+    {
+      "id": "748df870-2946-4c47-80d5-9d86c4530d63",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "s1"
+    },
+    {
+      "id": "d25e46b4-4207-4a11-9d81-0299314a982a",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "s2"
+    },
+    {
+      "id": "02837175-6290-4445-9dd8-6714c9372132",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "new"
+    },
+    {
+      "id": "99e4f016-f32a-407d-b7a1-26a72380033f",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "s4"
+    },
+    {
+      "id": "908cd921-b2e5-4761-a127-cfb12d53b5a0",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "new income"
+    },
+    {
+      "id": "5cf45b46-5ee3-4616-a7d8-7769b2b10e8e",
+      "userId": "admin",
+      "name": "Ice Cream"
+    },
+    {
+      "id": "972c3c1c-605f-442e-90ef-766e3f1eee17",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "d"
+    },
+    {
+      "id": "e10da2d2-8552-4e0e-b554-f4f0ae2d8442",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "ff"
     }
   ],
   "transactions": [
@@ -190,6 +235,116 @@
       "category": "Salary",
       "remarks": "Salary",
       "updatedAt": 1736334582691
+    },
+    {
+      "id": "302f1657-811f-42a1-b547-c86342b2f067",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 1000,
+      "transactionDate": "2025-01-08",
+      "type": "expense",
+      "category": "Kirana",
+      "remarks": "Kirana ",
+      "updatedAt": 1736352573529
+    },
+    {
+      "id": "62ad766b-cef6-4185-ae9f-3d483e4e03e5",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 123,
+      "transactionDate": "2025-01-10",
+      "type": "expense",
+      "category": "s1",
+      "remarks": "s1",
+      "updatedAt": 1736352720483
+    },
+    {
+      "id": "8e8d1f04-0eab-424c-bbe4-debd2f21f32a",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 22,
+      "transactionDate": "2025-01-01",
+      "type": "expense",
+      "category": "s2",
+      "remarks": "s2",
+      "updatedAt": 1736353084656
+    },
+    {
+      "id": "df928023-afb5-4f20-b13a-e8fcd25540de",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 22,
+      "transactionDate": "2025-01-01",
+      "type": "expense",
+      "category": "Food",
+      "remarks": "f",
+      "updatedAt": 1736353113636
+    },
+    {
+      "id": "2e55aedc-351d-4f61-8846-41588c8ef0ea",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 22,
+      "transactionDate": "2025-01-02",
+      "type": "expense",
+      "category": "new",
+      "remarks": "f",
+      "updatedAt": 1736353151065
+    },
+    {
+      "id": "b6b821f3-e5ec-424a-a496-8d78cd881060",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 3,
+      "transactionDate": "2025-01-09",
+      "type": "expense",
+      "category": "s4",
+      "remarks": "",
+      "updatedAt": 1736353391918
+    },
+    {
+      "id": "55b3593f-d580-4dfd-8083-c60e4bd050ce",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 143,
+      "transactionDate": "2025-01-09",
+      "type": "income",
+      "category": "new income",
+      "remarks": "",
+      "updatedAt": 1736353540464
+    },
+    {
+      "id": "6e41558a-72c3-4008-a7ff-2b2f2a90b80d",
+      "userId": "admin",
+      "amount": 24,
+      "transactionDate": "2025-01-02",
+      "type": "expense",
+      "category": "Ice Cream",
+      "remarks": "",
+      "updatedAt": 1736354143227
+    },
+    {
+      "id": "f456c885-0be2-4bbc-b51f-338ba6de8c32",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 22,
+      "transactionDate": "2025-01-01",
+      "type": "expense",
+      "category": "s1",
+      "remarks": "",
+      "updatedAt": 1736355838069
+    },
+    {
+      "id": "8c99309f-0395-48d3-847e-e4539f17b213",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 23,
+      "transactionDate": "2025-01-03",
+      "type": "expense",
+      "category": "d",
+      "remarks": "",
+      "updatedAt": 1736355849346
+    },
+    {
+      "id": "aff27c11-cebc-40f7-a9e0-d8015d4e9323",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 223,
+      "transactionDate": "2025-01-08",
+      "type": "expense",
+      "category": "ff",
+      "remarks": "",
+      "updatedAt": 1736359837783
     }
   ]
 }
