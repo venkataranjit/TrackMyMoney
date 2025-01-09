@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   clearMsg,
@@ -26,6 +26,7 @@ const Register = () => {
     confirmPassword: false,
   });
   const navigate = useNavigate();
+  const buttonRef = useRef(null);
 
   const refreshCaptcha = (e) => {
     e.preventDefault();
@@ -130,6 +131,15 @@ const Register = () => {
       };
     }
   }, [user.error, user.successMsg]);
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      if (buttonRef.current) {
+        buttonRef.current.click();
+      }
+    }
+  };
 
   if (user.isLoading) {
     return <Loading />;
@@ -355,6 +365,7 @@ const Register = () => {
                                     type="text"
                                     name="captcha"
                                     placeholder="Enter Captcha"
+                                    onKeyDown={handleKeyDown}
                                   />
                                   {captchaError && (
                                     <span className="danger">
@@ -397,6 +408,7 @@ const Register = () => {
                                   type="submit"
                                   className="btn btn-lg btn-info"
                                   disabled={!(isValid && dirty)}
+                                  ref={buttonRef}
                                 >
                                   Register
                                 </button>

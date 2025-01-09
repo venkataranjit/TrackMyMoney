@@ -6,7 +6,7 @@ const Footer = () => {
       <footer className="footer">
         <div className="container-fluid">
           <div className="row text-muted">
-            <div className="col-6 text-start">
+            <div className="col-5 text-start">
               <p className="mb-0">
                 <Link className="text-muted" to="#">
                   <strong>Track My Money</strong>
@@ -14,7 +14,7 @@ const Footer = () => {
                 © 2024
               </p>
             </div>
-            <div className="col-6 text-end">
+            <div className="col-7 text-end">
               <ul className="list-inline">
                 <li className="list-inline-item">
                   <Link className="text-muted" to="#">

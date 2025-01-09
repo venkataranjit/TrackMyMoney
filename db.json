@@ -10,7 +10,7 @@
     },
     {
       "id": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "firstName": "victory",
+      "firstName": "venkata",
       "lastName": "ranjit",
       "email": "venkataranjit@live.com",
       "mobile": 9966189948,
@@ -307,16 +307,6 @@
       "updatedAt": 1736353540464
     },
     {
-      "id": "6e41558a-72c3-4008-a7ff-2b2f2a90b80d",
-      "userId": "admin",
-      "amount": 24,
-      "transactionDate": "2025-01-02",
-      "type": "expense",
-      "category": "Ice Cream",
-      "remarks": "",
-      "updatedAt": 1736354143227
-    },
-    {
       "id": "f456c885-0be2-4bbc-b51f-338ba6de8c32",
       "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
       "amount": 22,
@@ -345,6 +335,66 @@
       "category": "ff",
       "remarks": "",
       "updatedAt": 1736359837783
+    },
+    {
+      "id": "39bc53e1-b024-4697-b4aa-dc05d4560478",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 10000,
+      "transactionDate": "2025-01-09",
+      "type": "expense",
+      "category": "Rent",
+      "remarks": "Rent Paid",
+      "updatedAt": 1736404905236
+    },
+    {
+      "id": "a4c6f4de-d7ca-4642-a80b-738122faaf87",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 1000,
+      "transactionDate": "2025-01-09",
+      "type": "income",
+      "category": "Salary",
+      "remarks": "salary",
+      "updatedAt": 1736404947980
+    },
+    {
+      "id": "6e41558a-72c3-4008-a7ff-2b2f2a90b80d",
+      "userId": "admin",
+      "amount": 10,
+      "transactionDate": "2025-01-02",
+      "type": "expense",
+      "category": "Ice Cream",
+      "remarks": "",
+      "updatedAt": 1736354143227
+    },
+    {
+      "id": "c66f2e82-aed3-4328-8314-0760e0ec5492",
+      "userId": "admin",
+      "amount": 100,
+      "transactionDate": "2025-01-08",
+      "type": "income",
+      "category": "Food",
+      "remarks": "",
+      "updatedAt": 1736412304138
+    },
+    {
+      "id": "67a8b8ae-8997-47d0-bb0d-d303b85936ca",
+      "userId": "admin",
+      "amount": 100,
+      "transactionDate": "2025-02-09",
+      "type": "expense",
+      "category": "Food",
+      "remarks": "",
+      "updatedAt": 1736426778284
+    },
+    {
+      "id": "f74f8225-b6f4-465e-b3f3-5137b03bff47",
+      "userId": "admin",
+      "amount": 360,
+      "transactionDate": "2024-12-09",
+      "type": "expense",
+      "category": "Food",
+      "remarks": "",
+      "updatedAt": 1736426801613
     }
   ]
 }

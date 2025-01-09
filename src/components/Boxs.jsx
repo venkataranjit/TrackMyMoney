@@ -59,32 +59,40 @@ const Boxs = () => {
             <div className="card-body">
               <div className="row">
                 <div className="col mt-0">
-                  <h5 className="card-title">This Months Income</h5>
-                </div>
-
-                <div className="col-auto">
-                  <div className="stat text-success">
-                    <span className="rupee">&#8377;</span>
-                  </div>
+                  <h5 className="card-title text-center mb-0">
+                    Income This Month
+                  </h5>
+                  <h1 className="digital text-center">
+                    {thisMonthIncome.toLocaleString()}
+                  </h1>
                 </div>
               </div>
-              <h1 className="mt-1 mb-3">{thisMonthIncome.toLocaleString()}</h1>
+
+              <div className="col-auto pos-rupee">
+                <div className="stat text-success">
+                  <span className="rupee">&#8377;</span>
+                </div>
+              </div>
             </div>
           </div>
           <div className="card bg-primary bg-img">
             <div className="card-body">
               <div className="row">
                 <div className="col mt-0">
-                  <h5 className="card-title">Total Income</h5>
-                </div>
-
-                <div className="col-auto">
-                  <div className="stat text-primary">
-                    <span className="rupee">&#8377;</span>
-                  </div>
+                  <h5 className="card-title text-center mb-0">
+                    Cumulative Income
+                  </h5>
+                  <h1 className="digital text-center">
+                    {totalIncome.toLocaleString()}
+                  </h1>
                 </div>
               </div>
-              <h1 className="mt-1 mb-3">{totalIncome.toLocaleString()}</h1>
+
+              <div className="col-auto pos-rupee">
+                <div className="stat text-primary">
+                  <span className="rupee">&#8377;</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -93,32 +101,38 @@ const Boxs = () => {
             <div className="card-body">
               <div className="row">
                 <div className="col mt-0">
-                  <h5 className="card-title">This Month Expense</h5>
-                </div>
-
-                <div className="col-auto">
-                  <div className="stat text-danger">
-                    <span className="rupee">&#8377;</span>
-                  </div>
+                  <h5 className="card-title text-center mb-0">
+                    Expense This Month
+                  </h5>
+                  <h1 className="digital text-center">
+                    {thisMonthExpense.toLocaleString()}
+                  </h1>
                 </div>
               </div>
-              <h1 className="mt-1 mb-3">{thisMonthExpense.toLocaleString()}</h1>
+              <div className="col-auto pos-rupee">
+                <div className="stat text-danger">
+                  <span className="rupee">&#8377;</span>
+                </div>
+              </div>
             </div>
           </div>
           <div className="card bg-warning bg-img">
             <div className="card-body">
               <div className="row">
                 <div className="col mt-0">
-                  <h5 className="card-title">Total Expense</h5>
-                </div>
-
-                <div className="col-auto">
-                  <div className="stat text-warning">
-                    <span className="rupee">&#8377;</span>
-                  </div>
+                  <h5 className="card-title text-center mb-0">
+                    Cumulative Expenses
+                  </h5>
+                  <h1 className="digital text-center">
+                    {totalExpense.toLocaleString()}
+                  </h1>
                 </div>
               </div>
-              <h1 className="mt-1 mb-3">{totalExpense.toLocaleString()}</h1>
+              <div className="col-auto pos-rupee">
+                <div className="stat text-warning">
+                  <span className="rupee">&#8377;</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

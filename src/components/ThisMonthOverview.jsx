@@ -69,7 +69,7 @@ const ThisMonthOverview = () => {
   );
 
   const data = [
-    { name: "Income", value: thisMonthtIncome },
+    { name: "Income", value: thisMonthtIncome - thisMonthtExpense },
     { name: "Expense", value: thisMonthtExpense },
   ];
 
@@ -77,9 +77,9 @@ const ThisMonthOverview = () => {
     <>
       <div className="card">
         <div className="card_title p-3">
-          <h4 className="card-title mb-0">This Month Overview</h4>
+          <h4 className="card-title mb-0">Monthly Overview</h4>
         </div>
-        <div className="card_body">
+        <div className="card_body mb-3">
           <div className="row">
             <div
               className="col-sm-12"
