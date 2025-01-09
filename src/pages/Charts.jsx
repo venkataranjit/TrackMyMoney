@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import Heading from "../components/Heading";
 
 import {
@@ -60,19 +60,17 @@ const Charts = () => {
 
     return last12Months;
   }, [transactions.recentTransactions]);
+
   return (
     <>
       <div className="container-fluid p-0 dashboard">
         <div className="row">
           <div className="col-xl-12 col-xxl-12 d-flex">
             <div className="w-100">
-              <Heading heading="Charts" />
+              <Heading heading="Last 12 Months Data" />
               <div className="card">
-                <div className="card-header">
-                  <h4 className="card-title mb-0">Last 12 Months Data</h4>
-                </div>
                 <div className="card-body">
-                  <ResponsiveContainer width={"100%"} height={300}>
+                  <ResponsiveContainer width={"100%"} height={400}>
                     <BarChart
                       data={chartData}
                       margin={{

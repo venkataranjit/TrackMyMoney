@@ -66,6 +66,7 @@ const ViewTransactions = () => {
     link.click();
   }
 
+  // eslint-disable-next-line react/prop-types
   const Export = ({ onExport }) => (
     <button
       className="btn btn-primary"

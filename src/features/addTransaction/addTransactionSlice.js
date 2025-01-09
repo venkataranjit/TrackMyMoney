@@ -44,7 +44,7 @@ const addTransactionSlice = createSlice({
         state.error = null;
         state.successMsg = null;
       })
-      .addCase(addTransaction.fulfilled, (state, action) => {
+      .addCase(addTransaction.fulfilled, (state) => {
         state.isLoading = false;
         state.error = null;
         state.successMsg = "Transaction Successful";

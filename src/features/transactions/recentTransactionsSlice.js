@@ -47,6 +47,6 @@ const recentTransactionsSlice = createSlice({
   },
 });
 
-export const {} = recentTransactionsSlice.actions;
+// export const {} = recentTransactionsSlice.actions;
 
 export default recentTransactionsSlice.reducer;

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Heading from "../components/Heading";
 import { useSelector, useDispatch } from "react-redux";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { userEdit } from "../features/auth/userEditSlice";
 import { updateUser } from "../features/auth/authSlice";
+import Loading from "../components/Loading";
 
 const Profile = () => {
   const userDetails = useSelector((state) => state.auth);

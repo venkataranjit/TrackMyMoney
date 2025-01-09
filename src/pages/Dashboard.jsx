@@ -34,7 +34,7 @@ const Dashboard = () => {
             <LastTransaction />
           </div>
         </div>
-        <RecentTransactions heading="Last 5 Transactions" size={5} />
+        <RecentTransactions />
       </div>
     </>
   );

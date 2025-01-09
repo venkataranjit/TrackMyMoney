@@ -50,6 +50,6 @@ const userEditSlice = createSlice({
   },
 });
 
-export const {} = userEditSlice.actions;
+// export const {} = userEditSlice.actions;
 
 export default userEditSlice.reducer;

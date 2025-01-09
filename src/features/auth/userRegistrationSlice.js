@@ -52,7 +52,7 @@ const userRegistrationSlice = createSlice({
         state.error = null;
         state.successMsg = null;
       })
-      .addCase(userRegistration.fulfilled, (state, action) => {
+      .addCase(userRegistration.fulfilled, (state) => {
         state.isLoading = false;
         state.error = null;
         state.successMsg = "User Registered";

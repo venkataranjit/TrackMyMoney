@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
@@ -12,7 +11,6 @@ const renderCustomizedLabel = ({
   innerRadius,
   outerRadius,
   percent,
-  index,
 }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.25;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
