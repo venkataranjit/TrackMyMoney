@@ -18,6 +18,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.auth);
+  const buttonRef = React.useRef(null);
 
   const initialValues = {
     email: "",
@@ -81,6 +82,15 @@ const Login = () => {
     }
   }, [user.error, user.successMsg]);
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      if (buttonRef.current) {
+        buttonRef.current.click();
+      }
+    }
+  };
+
   if (user.isLoading) {
     return <Loading />;
   }
@@ -95,8 +105,8 @@ const Login = () => {
                   <img
                     src={`${import.meta.env.VITE_PUBLIC_URL}/logo.png`}
                     alt="logo"
-                    className="img-fluid mb-3"
-                    style={{ width: "64px" }}
+                    className="img-fluid my-2"
+                    style={{ width: "32px" }}
                   />
                   <h2 className="text-info mb-3">
                     <b>Track My Money</b>
@@ -132,6 +142,7 @@ const Login = () => {
                                   type="email"
                                   name="email"
                                   placeholder="Enter your email"
+                                  onKeyDown={handleKeyDown}
                                 />
                                 {touched.email && errors.email && (
                                   <span className="danger">{errors.email}</span>
@@ -148,6 +159,7 @@ const Login = () => {
                                   type={showPassword ? "text" : "password"}
                                   name="password"
                                   placeholder="Enter your password"
+                                  onKeyDown={handleKeyDown}
                                 />
                                 <span
                                   className="material-icons-round align-middle eye"
@@ -175,6 +187,7 @@ const Login = () => {
                                     type="text"
                                     name="captcha"
                                     placeholder="Enter Captcha"
+                                    onKeyDown={handleKeyDown}
                                   />
                                   {touched.captcha && errors.captcha && (
                                     <span className="danger">
@@ -217,6 +230,7 @@ const Login = () => {
                                 <button
                                   className="btn btn-lg btn-info"
                                   disabled={!(isValid && dirty)}
+                                  ref={buttonRef}
                                 >
                                   Sign in
                                 </button>

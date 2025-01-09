@@ -17,9 +17,9 @@ const LastTransaction = () => {
     <>
       <div className="row">
         <div className="col-12">
-          <div className="card flex-fill">
+          <div className="card flex-fill h-120">
             <div className="card-header">
-              <h4 className="card-title mb-0">Last Transaction</h4>
+              <h4 className="card-title mb-0">Recent Transaction</h4>
             </div>
             {lastTransaction[0] ? (
               <table className="table table-hover my-0">

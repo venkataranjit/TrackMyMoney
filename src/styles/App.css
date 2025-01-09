@@ -190,3 +190,25 @@ a.sidebar-link {
 .rupee {
   font-size: 24px;
 }
+.digital {
+  font-family: "Technology";
+  font-weight: bold;
+  font-size: 48px;
+  margin: 0px;
+}
+.card {
+  position: relative;
+}
+.pos-rupee {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+}
+.badge {
+  text-transform: capitalize;
+}
+@media (min-width: 991.98px) {
+  .h-120 {
+    height: 102%;
+  }
+}
