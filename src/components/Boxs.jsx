@@ -59,7 +59,7 @@ const Boxs = () => {
               <div className="row">
                 <div className="col mt-0">
                   <h5 className="card-title text-center mb-0">
-                    Income This Month
+                    Current Month Income
                   </h5>
                   <h1 className="digital text-center">
                     {thisMonthIncome.toLocaleString()}
@@ -74,6 +74,29 @@ const Boxs = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="col-sm-6">
+          <div className="card bg-danger bg-img">
+            <div className="card-body">
+              <div className="row">
+                <div className="col mt-0">
+                  <h5 className="card-title text-center mb-0">
+                    Current Month Expenses
+                  </h5>
+                  <h1 className="digital text-center">
+                    {thisMonthExpense.toLocaleString()}
+                  </h1>
+                </div>
+              </div>
+              <div className="col-auto pos-rupee">
+                <div className="stat text-danger">
+                  <span className="rupee">&#8377;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-sm-6">
           <div className="card bg-primary bg-img">
             <div className="card-body">
               <div className="row">
@@ -96,25 +119,6 @@ const Boxs = () => {
           </div>
         </div>
         <div className="col-sm-6">
-          <div className="card bg-danger bg-img">
-            <div className="card-body">
-              <div className="row">
-                <div className="col mt-0">
-                  <h5 className="card-title text-center mb-0">
-                    Expense This Month
-                  </h5>
-                  <h1 className="digital text-center">
-                    {thisMonthExpense.toLocaleString()}
-                  </h1>
-                </div>
-              </div>
-              <div className="col-auto pos-rupee">
-                <div className="stat text-danger">
-                  <span className="rupee">&#8377;</span>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="card bg-warning bg-img">
             <div className="card-body">
               <div className="row">

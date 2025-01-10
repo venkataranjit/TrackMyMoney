@@ -18,7 +18,6 @@ const TopNav = ({ handleSidebar }) => {
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle d-sm-inline-block"
-             
                 data-bs-toggle="dropdown"
               >
                 <span className="text-dark capitalize">

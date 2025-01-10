@@ -75,7 +75,7 @@ const ThisMonthOverview = () => {
     <>
       <div className="card">
         <div className="card_title p-3">
-          <h4 className="card-title mb-0">Monthly Overview</h4>
+          <h4 className="card-title mb-0">Current Month</h4>
         </div>
         <div className="card_body mb-3">
           <div className="row">

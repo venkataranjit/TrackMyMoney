@@ -395,6 +395,26 @@
       "category": "Food",
       "remarks": "",
       "updatedAt": 1736426801613
+    },
+    {
+      "id": "65af2a54-8e43-439a-9d4f-a9fb08b37c36",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 55000,
+      "transactionDate": "2024-02-10",
+      "type": "income",
+      "category": "Salary",
+      "remarks": "salary",
+      "updatedAt": 1736502620923
+    },
+    {
+      "id": "d635dc7c-8270-4085-a8d6-3e61828937ff",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 26000,
+      "transactionDate": "2024-02-10",
+      "type": "expense",
+      "category": "Rent",
+      "remarks": "15000",
+      "updatedAt": 1736502643514
     }
   ]
 }

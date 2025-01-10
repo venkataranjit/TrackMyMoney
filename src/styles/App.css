@@ -82,7 +82,7 @@
 .dashboard {
   .bg-img:after {
     content: "";
-    background: url(/public/box-bg.png) no-repeat;
+    background: url(/box-bg.png) no-repeat;
     position: absolute;
     top: 0px;
     left: 0px;

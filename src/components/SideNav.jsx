@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import { logout } from "../features/auth/authSlice";
 import { useDispatch } from "react-redux";
-const logo_w = "/public/logo-white.png";
+const logo_w = "/logo-white.png";
 
 const SideNav = ({ sidebarRef }) => {
   const dispatch = useDispatch();

@@ -3,6 +3,7 @@ import Heading from "../components/Heading";
 import { useDispatch, useSelector } from "react-redux";
 import DataTable from "react-data-table-component";
 import { recentTransactions } from "../features/transactions/recentTransactionsSlice";
+import { jsPDF } from "jspdf";
 
 const ViewTransactions = () => {
   const userDetails = useSelector((state) => state.auth);
@@ -66,14 +67,63 @@ const ViewTransactions = () => {
     link.click();
   }
 
+  // Function to export data as PDF using jsPDF with a table format
+  function downloadPDF(array) {
+    const doc = new jsPDF();
+
+    doc.setFontSize(13);
+    doc.text("Transactions Report", 10, 10);
+
+    let startY = 20; // Starting Y position for data rows
+
+    // Adding the header row
+    doc.setFontSize(10);
+    doc.text("S.No", 10, startY);
+    doc.text("Amount", 25, startY);
+    doc.text("Date", 45, startY);
+    doc.text("Type", 70, startY);
+    doc.text("Category", 100, startY);
+    doc.text("Remarks", 130, startY);
+
+    startY += 10; // Move to the next row
+
+    // Adding table data to PDF
+    array.forEach((transaction, index) => {
+      const row = `${index + 1}`;
+      doc.text(row, 10, startY + index * 10);
+      doc.text(transaction.amount.toString(), 25, startY + index * 10);
+      doc.text(transaction.transactionDate, 45, startY + index * 10);
+      doc.text(transaction.type, 70, startY + index * 10);
+      doc.text(transaction.category, 100, startY + index * 10);
+      doc.text(
+        transaction.remarks.length > 25
+          ? transaction.remarks.slice(0, 25) + "..."
+          : transaction.remarks,
+        130,
+        startY + index * 10
+      );
+    });
+
+    // Save the generated PDF
+    doc.save("transactions.pdf");
+  }
+
   // eslint-disable-next-line react/prop-types
-  const Export = ({ onExport }) => (
-    <button
-      className="btn btn-primary"
-      onClick={(e) => onExport(e.target.value)}
-    >
-      Export
-    </button>
+  const Export = ({ onExport, onExportPDF }) => (
+    <>
+      <button
+        className="btn btn-info btn-sm"
+        onClick={(e) => onExport(e.target.value)}
+      >
+        CSV
+      </button>
+      <button
+        className="btn btn-info btn-sm"
+        onClick={(e) => onExportPDF(e.target.value)}
+      >
+        PDF
+      </button>
+    </>
   );
 
   const columns = [
@@ -152,10 +202,14 @@ const ViewTransactions = () => {
   );
 
   const actionsMemo = React.useMemo(
-    () => <Export onExport={() => downloadCSV(data)} />,
+    () => (
+      <Export
+        onExportCSV={() => downloadCSV(data)}
+        onExportPDF={() => downloadPDF(data)}
+      />
+    ),
     [data]
   );
-
   return (
     <>
       <div className="container-fluid p-0 dashboard">
