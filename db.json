@@ -368,13 +368,13 @@
     {
       "id": "8eb12e0a-b13f-4dd5-9b92-ba24741e572c",
       "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "amount": 10,
+      "amount": 123,
       "transactionDate": "2025-02-04",
       "type": "expense",
       "category": "Food",
       "remarks": "10",
       "createdAt": 1738686583657,
-      "updatedAt": 1738687523038
+      "updatedAt": 1738689015325
     }
   ]
 }

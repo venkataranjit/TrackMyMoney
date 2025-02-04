@@ -32,13 +32,9 @@ const ViewTransactions = () => {
   const [transactionToEdit, setTransactionToEdit] = useState(null);
   const [transactionToDelete, setTransactionToDelete] = useState(null);
 
-  useEffect(
-    () => {
-      dispatch(getTransactions(userDetails.user.id));
-    },
-    [dispatch, userDetails.user.id],
-    editTransactionState.successMsg
-  );
+  useEffect(() => {
+    dispatch(getTransactions(userDetails.user.id));
+  }, [dispatch, userDetails.user.id, editTransactionState.successMsg]);
 
   useEffect(() => {
     if (
