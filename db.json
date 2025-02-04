@@ -1,0 +1,380 @@
+{
+  "users": [
+    {
+      "id": "admin",
+      "firstName": "Admin",
+      "lastName": "Users",
+      "email": "admin@gmail.com",
+      "mobile": 1111111111,
+      "password": "$2a$10$JmB4dvxqxRzy72Ctwsqcqeab2RcHN8N7BEToRhDToCrSA3ZicihSi",
+      "profilePic": "data:image/jpeg;base64,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"
+    },
+    {
+      "id": "4b35920c-17b0-45fd-83ba-70b331bf19af",
+      "firstName": "hash",
+      "lastName": "password",
+      "email": "hash@gmail.com",
+      "mobile": 7896541230,
+      "password": "$2a$10$LSUTut.lMi0vKqu.EbW.SuQJTO.BfzKw5OAiAlbou2rr1RdpCgo4."
+    },
+    {
+      "id": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "firstName": "venkata",
+      "lastName": "ranjit",
+      "email": "venkataranjit@live.com",
+      "mobile": 9966189948,
+      "password": "$2a$10$/B3hXGWgBojHfggywSNaWukQ/IqtOqava23whvXCp4phZ.XxjPJ.y",
+      "profilePic": "data:image/jpeg;base64,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"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Food",
+      "userId": "admin"
+    },
+    {
+      "id": "2",
+      "name": "Rent",
+      "userId": "admin"
+    },
+    {
+      "id": "3",
+      "name": "Utilities",
+      "userId": "admin"
+    },
+    {
+      "id": "4",
+      "name": "Salary",
+      "userId": "admin"
+    },
+    {
+      "id": "5",
+      "name": "Investment",
+      "userId": "admin"
+    },
+    {
+      "id": "6",
+      "name": "Travel",
+      "userId": "admin"
+    },
+    {
+      "id": "7",
+      "name": "Games",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c"
+    },
+    {
+      "id": "9bab6420-f503-428f-8581-2e10f1d55217",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "Kirana"
+    },
+    {
+      "id": "748df870-2946-4c47-80d5-9d86c4530d63",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "s1"
+    },
+    {
+      "id": "d25e46b4-4207-4a11-9d81-0299314a982a",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "s2"
+    },
+    {
+      "id": "02837175-6290-4445-9dd8-6714c9372132",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "new"
+    },
+    {
+      "id": "99e4f016-f32a-407d-b7a1-26a72380033f",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "s4"
+    },
+    {
+      "id": "908cd921-b2e5-4761-a127-cfb12d53b5a0",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "new income"
+    },
+    {
+      "id": "5cf45b46-5ee3-4616-a7d8-7769b2b10e8e",
+      "userId": "admin",
+      "name": "Ice Cream"
+    },
+    {
+      "id": "972c3c1c-605f-442e-90ef-766e3f1eee17",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "d"
+    },
+    {
+      "id": "e10da2d2-8552-4e0e-b554-f4f0ae2d8442",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "ff"
+    },
+    {
+      "id": "daab61d6-1a1e-4add-bce2-b938d0f344f6",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "other"
+    },
+    {
+      "id": "aaeb4359-5a0e-4957-8c77-08ff58780b33",
+      "userId": "admin",
+      "name": "investment"
+    },
+    {
+      "id": "dd7b236d-5284-41a0-b244-7a1ad79946af",
+      "userId": "admin",
+      "name": "Milk"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "1",
+      "userId": "admin",
+      "amount": 5000,
+      "transactionDate": "2024-12-01",
+      "type": "income",
+      "category": "Salary",
+      "remarks": "Monthly Salary",
+      "createdAt": "1736232153107"
+    },
+    {
+      "id": "2",
+      "userId": "admin",
+      "amount": 2000,
+      "transactionDate": "2024-12-03",
+      "type": "expense",
+      "category": "Rent",
+      "remarks": "December Rent",
+      "createdAt": "1736145753107"
+    },
+    {
+      "id": "3",
+      "userId": "admin",
+      "amount": 300,
+      "transactionDate": "2024-12-05",
+      "type": "expense",
+      "category": "Food",
+      "remarks": "Grocery Shopping",
+      "createdAt": "1736059353107"
+    },
+    {
+      "id": "4",
+      "userId": "admin",
+      "amount": 1200,
+      "transactionDate": "2023-06-15",
+      "type": "expense",
+      "category": "Utilities",
+      "remarks": "Electricity Bill",
+      "createdAt": "1735972953107"
+    },
+    {
+      "id": "5",
+      "userId": "admin",
+      "amount": 4500,
+      "transactionDate": "2023-07-10",
+      "type": "income",
+      "category": "Salary",
+      "remarks": "Consulting Fee",
+      "createdAt": "1735886553107"
+    },
+    {
+      "id": "9",
+      "userId": "admin",
+      "amount": 1000,
+      "transactionDate": "2023-09-01",
+      "type": "expense",
+      "category": "Utilities",
+      "remarks": "Water Bill",
+      "createdAt": "1736145753107"
+    },
+    {
+      "id": "a853345c-a03c-4887-9c5d-2e1b053f236f",
+      "amount": 12500,
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "transactionDate": "2025-01-07",
+      "type": "expense",
+      "category": "rent",
+      "remarks": "Rent",
+      "createdAt": 1736334016568
+    },
+    {
+      "id": "7bf949ae-7e39-4bac-8363-d956569f5c43",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 56000,
+      "transactionDate": "2025-01-08",
+      "type": "income",
+      "category": "Salary",
+      "remarks": "Salary",
+      "createdAt": 1736334582691
+    },
+    {
+      "id": "302f1657-811f-42a1-b547-c86342b2f067",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 1000,
+      "transactionDate": "2025-01-08",
+      "type": "expense",
+      "category": "Kirana",
+      "remarks": "Kirana ",
+      "createdAt": 1736352573529
+    },
+    {
+      "id": "62ad766b-cef6-4185-ae9f-3d483e4e03e5",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 123,
+      "transactionDate": "2025-01-10",
+      "type": "expense",
+      "category": "s1",
+      "remarks": "s1",
+      "createdAt": 1736352720483
+    },
+    {
+      "id": "8e8d1f04-0eab-424c-bbe4-debd2f21f32a",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 22,
+      "transactionDate": "2025-01-01",
+      "type": "expense",
+      "category": "s2",
+      "remarks": "s2",
+      "createdAt": 1736353084656
+    },
+    {
+      "id": "df928023-afb5-4f20-b13a-e8fcd25540de",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 22,
+      "transactionDate": "2025-01-01",
+      "type": "expense",
+      "category": "Food",
+      "remarks": "f",
+      "createdAt": 1736353113636
+    },
+    {
+      "id": "2e55aedc-351d-4f61-8846-41588c8ef0ea",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 22,
+      "transactionDate": "2025-01-02",
+      "type": "expense",
+      "category": "new",
+      "remarks": "f",
+      "createdAt": 1736353151065
+    },
+    {
+      "id": "39bc53e1-b024-4697-b4aa-dc05d4560478",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 10000,
+      "transactionDate": "2025-01-09",
+      "type": "expense",
+      "category": "Rent",
+      "remarks": "Rent Paid",
+      "createdAt": 1736404905236
+    },
+    {
+      "id": "a4c6f4de-d7ca-4642-a80b-738122faaf87",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 1000,
+      "transactionDate": "2025-01-09",
+      "type": "income",
+      "category": "Salary",
+      "remarks": "salary",
+      "createdAt": 1736404947980
+    },
+    {
+      "id": "65af2a54-8e43-439a-9d4f-a9fb08b37c36",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 55000,
+      "transactionDate": "2024-02-10",
+      "type": "income",
+      "category": "Salary",
+      "remarks": "salary",
+      "createdAt": 1736502620923
+    },
+    {
+      "id": "d635dc7c-8270-4085-a8d6-3e61828937ff",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 26000,
+      "transactionDate": "2024-02-10",
+      "type": "expense",
+      "category": "Rent",
+      "remarks": "15000",
+      "createdAt": 1736502643514
+    },
+    {
+      "id": "0eb6e36f-41a3-4bb4-9958-4285d1220645",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 10000,
+      "transactionDate": "2025-01-14",
+      "type": "income",
+      "category": "Rent",
+      "remarks": "",
+      "createdAt": 1736872443297
+    },
+    {
+      "id": "fe65659b-029e-4ed5-8c34-38c5f69e5ab1",
+      "userId": "admin",
+      "amount": 31,
+      "transactionDate": "2025-02-04",
+      "type": "expense",
+      "category": "Milk",
+      "remarks": "",
+      "createdAt": 1738587036351
+    },
+    {
+      "id": "3fa3713c-62b7-4160-8a70-d59f5eadaf18",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 321,
+      "transactionDate": "2025-02-21",
+      "type": "expense",
+      "category": "Food",
+      "remarks": "",
+      "createdAt": 1738674082506
+    },
+    {
+      "id": "a4df742f-9690-4c40-b2f7-23cb84bf83b9",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 22,
+      "transactionDate": "2025-02-02",
+      "type": "expense",
+      "category": "Food",
+      "remarks": "",
+      "createdAt": 1738674233279
+    },
+    {
+      "id": "f27357e1-29e4-4f4f-8372-16eedf1cac06",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 66,
+      "transactionDate": "2025-02-01",
+      "type": "expense",
+      "category": "Food",
+      "remarks": "",
+      "createdAt": 1738674261644
+    },
+    {
+      "id": "bcb94cea-cbb8-479b-a432-f3820622c7be",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 6777,
+      "transactionDate": "2025-02-01",
+      "type": "expense",
+      "category": "Food",
+      "remarks": "",
+      "createdAt": 1738686439947
+    },
+    {
+      "id": "966daa45-3700-4e70-aa53-dffb3f3308a4",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 100,
+      "transactionDate": "2025-02-05",
+      "type": "expense",
+      "category": "Food",
+      "remarks": "snacks",
+      "createdAt": 1738674609827
+    },
+    {
+      "id": "8eb12e0a-b13f-4dd5-9b92-ba24741e572c",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 10,
+      "transactionDate": "2025-02-04",
+      "type": "expense",
+      "category": "Food",
+      "remarks": "10",
+      "createdAt": 1738686583657,
+      "updatedAt": 1738687523038
+    }
+  ]
+}
