@@ -99,9 +99,11 @@ const Login = () => {
   return (
     <>
       <main className="d-flex w-100 login">
-        <div className="container d-flex flex-column">
+        <div className="container-fluid d-flex flex-column">
           <div className="row vh-100">
-            <div className="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+            <div className="col-sm-12 col-md-5 col-lg-6 login-bg"></div>
+            <div className="col-md-1 col-lg-1 login-bg-patch"></div>
+            <div className="col-sm-10 col-md-6 col-lg-5 mx-auto d-table h-100">
               <div className="d-table-cell align-middle">
                 <div className="text-center">
                   <img

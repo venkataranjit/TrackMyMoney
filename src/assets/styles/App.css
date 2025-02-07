@@ -281,6 +281,19 @@ a.sidebar-link {
 .ReactModal__Overlay {
   z-index: 1;
 }
+.login-bg {
+  background: #128293;
+  position: relative;
+}
+.login-bg::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 0%;
+  height: 100%;
+  background: url(/images/bg-waves.png);
+  width: 120px;
+}
 @media (min-width: 991.98px) {
   .content {
     padding: 1.5rem 1.5rem 0.75rem;
