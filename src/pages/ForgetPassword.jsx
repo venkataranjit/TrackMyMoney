@@ -3,6 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { clearMsg, forgetPassword } from "../features/auth/forgetPasswordSlice";
+import Loading from "../components/Loading";
 
 const ForgetPassword = () => {
   const dispatch = useDispatch();
