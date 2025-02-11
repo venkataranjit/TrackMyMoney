@@ -1,3 +1,9 @@
+body {
+  background: #fff;
+}
+a {
+  color: #137763;
+}
 .hide {
   display: none;
 }
@@ -49,9 +55,6 @@
 }
 
 .captcha-container canvas {
-  background-color: #fff;
-  border: 1px solid #ced4da;
-  border-radius: 0.3rem;
   color: #495057;
 }
 .captcha-container button {
@@ -113,7 +116,7 @@
 
 .sidebar-item.active .sidebar-link:hover,
 .sidebar-item.active > .sidebar-link {
-  border-left-color: #17a2b8;
+  border-left-color: #27b397;
 }
 .sidebar-link,
 a.sidebar-link {
@@ -126,7 +129,7 @@ a.sidebar-link {
   width: 50px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: #17a2b8;
+  background: #27b397;
   -webkit-mask: radial-gradient(
     circle closest-side at 50% 40%,
     #0000 94%,
@@ -158,10 +161,9 @@ a.sidebar-link {
 .eye-pos .eye {
   position: absolute;
   right: 1px;
-  top: 25px;
+  top: 26px;
   padding: 7px;
   cursor: pointer;
-  background: #efefef;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -282,17 +284,41 @@ a.sidebar-link {
   z-index: 1;
 }
 .login-bg {
-  background: #128293;
+  background: #27b397;
   position: relative;
 }
-.login-bg::after {
-  content: "";
-  position: absolute;
-  left: 100%;
-  top: 0%;
+.login-left-block {
+  background-image: url("./images/pattern.png");
+  width: 100%;
   height: 100%;
-  background: url(/images/bg-waves.png);
-  width: 120px;
+}
+.login-left-block {
+  padding-top: 200px;
+}
+.login-left-block .text-info b {
+  color: #fff;
+}
+.login-box {
+  box-shadow: none;
+  background: transparent;
+}
+.login-box .form-control {
+  background-color: #edf5f3;
+}
+.captcha-container canvas {
+  width: 100%;
+}
+input[type="file"]::file-selector-button {
+  border: 2px solid #27b397;
+  padding: 0.2em 0.4em;
+  border-radius: 0.2em;
+  background-color: #27b397;
+  color: #fff;
+  transition: 1s;
+}
+input[type="file"]::file-selector-button:hover {
+  background-color: #27b39790;
+  border: 2px solid #27b39790;
 }
 @media (min-width: 991.98px) {
   .content {
@@ -302,12 +328,21 @@ a.sidebar-link {
     height: 102%;
   }
 }
+@media (max-width: 767px) {
+  .login-left-block {
+    padding: 24px 0;
+  }
+}
 @media (max-width: 991.98px) {
   .pos-abs-link-box {
     position: absolute;
     z-index: 999;
     top: -2px;
     right: 25px;
+  }
+
+  .h-100 {
+    height: initial !important;
   }
 }
 @media (min-width: 1200px) {

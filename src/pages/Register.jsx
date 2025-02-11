@@ -151,30 +151,29 @@ const Register = () => {
   return (
     <>
       <main className="d-flex w-100 login">
-        <div className="container d-flex flex-column">
+        <div className="container-fluid d-flex flex-column">
           <div className="row vh-100">
-            <div className="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+            <div className="col-sm-12 col-md-6 col-lg-7 login-bg p-0">
+              <div className="text-center login-left-block">
+                <img
+                  src={`${
+                    import.meta.env.VITE_PUBLIC_IMAGES_URL
+                  }/logo-white.png`}
+                  alt="logo"
+                  className="img-fluid my-2"
+                  style={{ width: "84px" }}
+                />
+                <h2 className="text-info mt-2 mb-3">
+                  <b>Track My Money</b>
+                </h2>
+              </div>
+            </div>
+            <div className="col-sm-10 col-md-6 col-lg-5 mx-auto d-table h-100">
               <div className="d-table-cell align-middle">
-                <div className="text-center">
-                  <img
-                    src={`${import.meta.env.VITE_PUBLIC_IMAGES_URL}/logo.png`}
-                    alt="logo"
-                    className="img-fluid my-2"
-                    style={{ width: "32px" }}
-                  />
-                  <h2 className="text-info mb-3">
-                    <b>Track My Money</b>
-                  </h2>
-                </div>
-                <div className="card">
+                <div className="card login-box">
                   <div className="card-body">
-                    <div
-                      className="text-center bg-light p-2"
-                      style={{ borderRadius: "5px" }}
-                    >
-                      <h4 className="m-0">Register</h4>
-                    </div>
                     <div className="m-sm-4">
+                      <h2 className="mb-3">Register</h2>
                       <Formik
                         initialValues={initialValues}
                         onSubmit={onSubmit}
