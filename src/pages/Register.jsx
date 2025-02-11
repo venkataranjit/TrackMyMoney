@@ -396,15 +396,6 @@ const Register = () => {
                                   </div>
                                 </div>
                               </div>
-                              <div className="block mb-2">
-                                {/* <small className="float-start">
-                            <Link to="/forgetPassword">Forgot password?</Link>
-                          </small> */}
-                                <small>
-                                  Already Have an Account?
-                                  <Link to="/login"> Login Here</Link>
-                                </small>
-                              </div>
 
                               <div className="text-center mt-3">
                                 <button
@@ -415,6 +406,17 @@ const Register = () => {
                                 >
                                   Register
                                 </button>
+                              </div>
+                              <div className="block mt-2">
+                                <small className="float-start">
+                                  <Link to="/forgetPassword">
+                                    Forgot password?
+                                  </Link>
+                                </small>
+                                <small className="float-end">
+                                  Already Have an Account?
+                                  <Link to="/login"> Login Here</Link>
+                                </small>
                               </div>
                             </Form>
                           );

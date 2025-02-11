@@ -9,6 +9,8 @@ import TopNav from "./components/TopNav";
 import Footer from "./components/Footer";
 import Loading from "./components/Loading";
 import { useSelector } from "react-redux";
+import ForgetPassword from "./pages/ForgetPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const AddTransaction = lazy(() => import("./pages/AddTransaction"));
@@ -42,7 +44,9 @@ function App() {
   const guest =
     location.pathname === "/" ||
     location.pathname === "/login" ||
-    location.pathname === "/register";
+    location.pathname === "/register" ||
+    location.pathname === "/forgetPassword" ||
+    location.pathname === "/resetPassword";
 
   return (
     <>
@@ -51,6 +55,8 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forgetPassword" element={<ForgetPassword />} />
+          <Route path="/resetPassword" element={<ResetPassword />} />
           <Route path="*" element={<Error />} />
         </Routes>
       ) : (

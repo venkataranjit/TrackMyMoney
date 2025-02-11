@@ -1,77 +1,44 @@
 import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import * as Yup from "yup";
-import {
-  LoadCanvasTemplateNoReload,
-  loadCaptchaEnginge,
-  validateCaptcha,
-} from "react-simple-captcha";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../components/Loading";
-import { clearMsg, userLogin } from "../features/auth/authSlice";
-import { useNavigate } from "react-router-dom";
-import { usePWAInstall } from "react-use-pwa-install";
+import * as Yup from "yup";
+import { clearMsg } from "../features/auth/forgetPasswordSlice";
 
-const Login = () => {
-  const install = usePWAInstall();
-  const [captchaError, setCaptchaError] = useState("");
-  const [showPassword, setShowpassword] = useState(false);
+const ResetPassword = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const user = useSelector((state) => state.auth);
-  const buttonRef = React.useRef(null);
-
+  const isUser = useSelector((state) => state.forgetPassword);
+  const [showPassword, setShowPassword] = useState({
+    password: false,
+    confirmPassword: false,
+  });
   const initialValues = {
     email: "",
     password: "",
-    captcha: "",
+    confirmPassword: "",
   };
-  const refreshCaptcha = (e) => {
-    e.preventDefault();
-    loadCaptchaEnginge(6);
-  };
-
-  React.useEffect(() => {
-    loadCaptchaEnginge(6);
-  }, []);
 
   const validationSchema = Yup.object({
-    email: Yup.string()
-      .email("Invalid Email Format")
-      .required("Email required"),
-    password: Yup.string().required("Password is Required"),
-    captcha: Yup.string().required("Captcha is Required"),
+    password: Yup.string()
+      .required("Password is required")
+      .min(8, "Password must be at least 8 characters long")
+      .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .matches(/[0-9]/, "Password must contain at least one number")
+      .matches(
+        /[!@#$%^&*(),.?":{}|<>]/,
+        "Password must contain at least one special character"
+      ),
+    confirmPassword: Yup.string()
+      .required("Confirm Password required")
+      .oneOf([Yup.ref("password"), null], "Passwords must match"),
   });
 
   const onSubmit = (values, { resetForm }) => {
-    const user_captcha_value = values.captcha;
-    if (validateCaptcha(user_captcha_value, false) == true) {
-      dispatch(userLogin({ email: values.email, password: values.password }));
-      setCaptchaError("");
-      resetForm();
-      loadCaptchaEnginge(6);
-    } else {
-      setCaptchaError("Captcha Does Not Match");
-    }
+    console.log(values);
+    resetForm();
   };
 
   React.useEffect(() => {
-    if (user.successMsg) {
-      loadCaptchaEnginge(6);
-      const clear = setTimeout(() => {
-        dispatch(
-          clearMsg({
-            error: "",
-            successMsg: "",
-          })
-        );
-        navigate("/dashboard");
-      }, 10);
-      return () => clearTimeout(clear);
-    }
-    if (user.error) {
-      loadCaptchaEnginge(6);
+    if (isUser.successMsg) {
       const clear = setTimeout(() => {
         dispatch(
           clearMsg({
@@ -82,18 +49,20 @@ const Login = () => {
       }, 10000);
       return () => clearTimeout(clear);
     }
-  }, [user.error, user.successMsg]);
-
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      if (buttonRef.current) {
-        buttonRef.current.click();
-      }
+    if (isUser.error) {
+      const clear = setTimeout(() => {
+        dispatch(
+          clearMsg({
+            error: "",
+            successMsg: "",
+          })
+        );
+      }, 10000);
+      return () => clearTimeout(clear);
     }
-  };
+  }, [isUser.error, isUser.successMsg]);
 
-  if (user.isLoading) {
+  if (isUser.isLoading) {
     return <Loading />;
   }
   return (
@@ -121,7 +90,7 @@ const Login = () => {
                 <div className="card login-box">
                   <div className="card-body">
                     <div className="m-sm-4">
-                      <h2 className="mb-3">Login</h2>
+                      <h2 className="mb-3">Reset Password</h2>
                       <Formik
                         initialValues={initialValues}
                         onSubmit={onSubmit}
@@ -143,7 +112,6 @@ const Login = () => {
                                   type="email"
                                   name="email"
                                   placeholder="Enter your email"
-                                  onKeyDown={handleKeyDown}
                                 />
                                 {touched.email && errors.email && (
                                   <span className="danger">{errors.email}</span>
@@ -157,16 +125,23 @@ const Login = () => {
                                     errors.password &&
                                     "danger-border"
                                   }`}
-                                  type={showPassword ? "text" : "password"}
+                                  type={
+                                    showPassword.password ? "text" : "password"
+                                  }
                                   name="password"
-                                  placeholder="Enter your password"
-                                  onKeyDown={handleKeyDown}
+                                  placeholder="Enter password"
+                                  autoComplete="new-password"
                                 />
                                 <span
                                   className="material-icons-round align-middle eye"
-                                  onClick={() => setShowpassword(!showPassword)}
+                                  onClick={() =>
+                                    setShowPassword((prevState) => ({
+                                      ...prevState,
+                                      password: !showPassword.password,
+                                    }))
+                                  }
                                 >
-                                  {showPassword
+                                  {showPassword.password
                                     ? "visibility"
                                     : "visibility_off"}
                                 </span>
@@ -176,65 +151,58 @@ const Login = () => {
                                   </span>
                                 )}
                               </div>
-                              <div className="row">
-                                <div className="mb-1 col-sm-6">
-                                  <label className="form-label">Captcha</label>
-                                  <Field
-                                    className={`form-control form-control-lg ${
-                                      touched.captcha &&
-                                      errors.captcha &&
-                                      "danger-border"
-                                    }`}
-                                    type="text"
-                                    name="captcha"
-                                    placeholder="Enter Captcha"
-                                    onKeyDown={handleKeyDown}
-                                  />
-                                  {touched.captcha && errors.captcha && (
+                              <div className="mb-3 eye-pos">
+                                <label className="form-label">
+                                  Confirm Password
+                                </label>
+                                <Field
+                                  className={`form-control form-control-lg ${
+                                    touched.confirmPassword &&
+                                    errors.confirmPassword
+                                      ? "danger-border"
+                                      : ""
+                                  }`}
+                                  type={
+                                    showPassword.confirmPassword
+                                      ? "text"
+                                      : "password"
+                                  }
+                                  name="confirmPassword"
+                                  placeholder="Confirm password"
+                                  autoComplete="new-password"
+                                />
+                                <span
+                                  className="material-icons-round align-middle eye"
+                                  onClick={() =>
+                                    setShowPassword((prevState) => ({
+                                      ...prevState,
+                                      confirmPassword:
+                                        !showPassword.confirmPassword,
+                                    }))
+                                  }
+                                >
+                                  {showPassword.confirmPassword
+                                    ? "visibility"
+                                    : "visibility_off"}
+                                </span>
+                                {touched.confirmPassword &&
+                                  errors.confirmPassword && (
                                     <span className="danger">
-                                      {errors.captcha}
+                                      {errors.confirmPassword}
                                     </span>
                                   )}
-                                  {captchaError && (
-                                    <span className="danger">
-                                      {captchaError}
-                                    </span>
-                                  )}
-                                </div>
-                                <div className="col-sm-6 mb-1">
-                                  <label className="form-label">&nbsp;</label>
-                                  <div className="captcha-container">
-                                    <LoadCanvasTemplateNoReload />
-                                    <button
-                                      className="btn btn-info"
-                                      onClick={refreshCaptcha}
-                                    >
-                                      <span className="material-icons-round align-middle">
-                                        refresh
-                                      </span>
-                                    </button>
-                                  </div>
-                                </div>
                               </div>
-
                               <div className="text-center mt-3">
                                 <button
                                   className={`btn btn-lg btn-info w-100`}
                                   disabled={!(isValid && dirty)}
-                                  ref={buttonRef}
                                 >
-                                  Sign in
+                                  Send
                                 </button>
                               </div>
                               <div className="block mt-2">
                                 <small className="float-start">
-                                  <Link to="/forgetPassword">
-                                    Forgot password?
-                                  </Link>
-                                </small>
-                                <small className="float-end">
-                                  Dont Have an Account?
-                                  <Link to="/register"> Register Here</Link>
+                                  Password Reset Link Send to Mail
                                 </small>
                               </div>
                             </Form>
@@ -242,19 +210,16 @@ const Login = () => {
                         }}
                       </Formik>
                       <br />
-                      {user.error && (
-                        <div className="alert alert-danger">{user.error}</div>
+                      {isUser.error && (
+                        <div className="alert alert-danger">{isUser.error}</div>
+                      )}
+                      {isUser.successMsg && (
+                        <div className="alert alert-success">
+                          {isUser.successMsg}
+                        </div>
                       )}
                     </div>
                   </div>
-                  {install && (
-                    <button
-                      className="btn btn-info btn-custom"
-                      onClick={install}
-                    >
-                      Install Mobile App
-                    </button>
-                  )}
                 </div>
               </div>
             </div>
@@ -265,4 +230,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ResetPassword;
