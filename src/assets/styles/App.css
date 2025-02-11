@@ -228,12 +228,8 @@ a.sidebar-link {
 }
 .btn-custom {
   position: absolute;
-  bottom: 0px;
+  bottom: -20px;
   left: calc(50% - 73px);
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
 }
 .search-Feilds {
   position: absolute;
