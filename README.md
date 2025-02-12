@@ -8,6 +8,7 @@
 
 - **User Login**: Secure login functionality for registered users.
 - **User Registration**: Allows new users to register and create an account.
+- **Reset Password**: Users can request a password reset via email. A secure reset link will be sent, allowing them to set a new password.
 - **Password**: Passwords will be encrypted using a one-way hashing method.
 
 ### 2. **Dashboard**
