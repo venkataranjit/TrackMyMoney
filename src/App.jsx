@@ -46,7 +46,7 @@ function App() {
     location.pathname === "/login" ||
     location.pathname === "/register" ||
     location.pathname === "/forgetPassword" ||
-    location.pathname === "/resetPassword";
+    location.pathname.startsWith("/resetPassword");
 
   return (
     <>
@@ -56,7 +56,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgetPassword" element={<ForgetPassword />} />
-          <Route path="/resetPassword" element={<ResetPassword />} />
+          <Route
+            path="/resetPassword/:receivedEmail/:receivedToken"
+            element={<ResetPassword />}
+          />
           <Route path="*" element={<Error />} />
         </Routes>
       ) : (

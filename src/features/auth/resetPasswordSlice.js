@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { nanoid } from "nanoid";
+import bcrypt from "bcryptjs";
 
 const initialState = {
   user: {},
@@ -9,36 +9,36 @@ const initialState = {
   successMsg: null,
 };
 
-export const forgetPassword = createAsyncThunk(
-  "user/forgetPassword",
-  async (mailId, { rejectWithValue }) => {
+export const resetPassword = createAsyncThunk(
+  "user/resetPassword",
+  async (userDetails, { rejectWithValue }) => {
     try {
       const users = await axios.get(
         `${import.meta.env.VITE_JSON_SERVER_URL}/users`
       );
-      const user = users.data.find((u) => u.email === mailId);
+      const user = users.data.find(
+        (u) => u.email === userDetails.email && u.token === userDetails.token
+      );
       if (!user) {
-        throw new Error("User Not Exist");
+        throw new Error(
+          "The password reset link is invalid or has expired. Please request a new one."
+        );
       }
-      const token = nanoid();
-      await axios.post(`${import.meta.env.VITE_PUBLIC_RESET_LINK}`, {
-        email: mailId,
-        token: token,
-      });
+      const hashedPassword = await bcrypt.hash(userDetails.password, 10);
       await axios.patch(
         `${import.meta.env.VITE_JSON_SERVER_URL}/users/${user.id}`,
-        { token: token }
+        { password: hashedPassword, token: "" }
       );
 
-      return { user, token };
+      return { user };
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
     }
   }
 );
 
-const forgetPasswordSlice = createSlice({
-  name: "forget",
+const resetPasswordSlice = createSlice({
+  name: "reset",
   initialState,
   reducers: {
     clearMsg: (state) => {
@@ -48,18 +48,18 @@ const forgetPasswordSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(forgetPassword.pending, (state) => {
+      .addCase(resetPassword.pending, (state) => {
         state.isLoading = true;
         state.error = null;
         state.successMsg = null;
       })
-      .addCase(forgetPassword.fulfilled, (state, action) => {
+      .addCase(resetPassword.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.successMsg = "A password reset link has been sent to your email.";
-        state.user = { ...action.payload.user, token: action.payload.token };
+        state.successMsg = "Your password has been changed successfully!";
+        state.user = action.payload;
       })
-      .addCase(forgetPassword.rejected, (state, action) => {
+      .addCase(resetPassword.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.successMsg = null;
@@ -67,6 +67,6 @@ const forgetPasswordSlice = createSlice({
   },
 });
 
-export const { clearMsg } = forgetPasswordSlice.actions;
+export const { clearMsg } = resetPasswordSlice.actions;
 
-export default forgetPasswordSlice.reducer;
+export default resetPasswordSlice.reducer;

@@ -2,17 +2,22 @@ import { Field, Form, Formik } from "formik";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
-import { clearMsg } from "../features/auth/forgetPasswordSlice";
+import { clearMsg } from "../features/auth/resetPasswordSlice";
+import Loading from "../components/Loading";
+import { useNavigate, useParams } from "react-router-dom";
+import { resetPassword } from "../features/auth/resetPasswordSlice";
 
 const ResetPassword = () => {
+  const navigate = useNavigate();
+  const { receivedEmail, receivedToken } = useParams();
   const dispatch = useDispatch();
-  const isUser = useSelector((state) => state.forgetPassword);
+  const resetState = useSelector((state) => state.resetPassword);
   const [showPassword, setShowPassword] = useState({
     password: false,
     confirmPassword: false,
   });
   const initialValues = {
-    email: "",
+    email: receivedEmail,
     password: "",
     confirmPassword: "",
   };
@@ -34,11 +39,18 @@ const ResetPassword = () => {
 
   const onSubmit = (values, { resetForm }) => {
     console.log(values);
+    dispatch(
+      resetPassword({
+        email: values.email,
+        password: values.password,
+        token: receivedToken,
+      })
+    );
     resetForm();
   };
 
   React.useEffect(() => {
-    if (isUser.successMsg) {
+    if (resetState.successMsg) {
       const clear = setTimeout(() => {
         dispatch(
           clearMsg({
@@ -46,23 +58,27 @@ const ResetPassword = () => {
             successMsg: "",
           })
         );
-      }, 10000);
-      return () => clearTimeout(clear);
-    }
-    if (isUser.error) {
-      const clear = setTimeout(() => {
-        dispatch(
-          clearMsg({
-            error: "",
-            successMsg: "",
-          })
-        );
-      }, 10000);
-      return () => clearTimeout(clear);
-    }
-  }, [isUser.error, isUser.successMsg]);
+      }, 5000);
+      setTimeout(() => {
+        navigate("/login"); // Redirect to login after success
+      }, 3000);
 
-  if (isUser.isLoading) {
+      return () => clearTimeout(clear);
+    }
+    if (resetState.error) {
+      const clear = setTimeout(() => {
+        dispatch(
+          clearMsg({
+            error: "",
+            successMsg: "",
+          })
+        );
+      }, 15000);
+      return () => clearTimeout(clear);
+    }
+  }, [resetState.error, resetState.successMsg]);
+
+  if (resetState.isLoading) {
     return <Loading />;
   }
   return (
@@ -73,9 +89,7 @@ const ResetPassword = () => {
             <div className="col-sm-12 col-md-6 col-lg-7 login-bg p-0">
               <div className="text-center login-left-block">
                 <img
-                  src={`${
-                    import.meta.env.VITE_PUBLIC_IMAGES_URL
-                  }/logo-white.png`}
+                  src="/images/logo-white.png"
                   alt="logo"
                   className="img-fluid my-2"
                   style={{ width: "84px" }}
@@ -109,9 +123,14 @@ const ResetPassword = () => {
                                     errors.email &&
                                     "danger-border"
                                   }`}
+                                  style={{
+                                    background: "#27b397",
+                                    color: "#fff",
+                                  }}
                                   type="email"
                                   name="email"
                                   placeholder="Enter your email"
+                                  disabled
                                 />
                                 {touched.email && errors.email && (
                                   <span className="danger">{errors.email}</span>
@@ -200,22 +219,19 @@ const ResetPassword = () => {
                                   Send
                                 </button>
                               </div>
-                              <div className="block mt-2">
-                                <small className="float-start">
-                                  Password Reset Link Send to Mail
-                                </small>
-                              </div>
                             </Form>
                           );
                         }}
                       </Formik>
                       <br />
-                      {isUser.error && (
-                        <div className="alert alert-danger">{isUser.error}</div>
+                      {resetState.error && (
+                        <div className="alert alert-danger">
+                          {resetState.error}
+                        </div>
                       )}
-                      {isUser.successMsg && (
+                      {resetState.successMsg && (
                         <div className="alert alert-success">
-                          {isUser.successMsg}
+                          {resetState.successMsg}
                         </div>
                       )}
                     </div>

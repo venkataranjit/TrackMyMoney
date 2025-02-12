@@ -156,9 +156,7 @@ const Register = () => {
             <div className="col-sm-12 col-md-6 col-lg-7 login-bg p-0">
               <div className="text-center login-left-block">
                 <img
-                  src={`${
-                    import.meta.env.VITE_PUBLIC_IMAGES_URL
-                  }/logo-white.png`}
+                  src="/images/logo-white.png"
                   alt="logo"
                   className="img-fluid my-2"
                   style={{ width: "84px" }}

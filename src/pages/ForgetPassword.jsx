@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { clearMsg, forgetPassword } from "../features/auth/forgetPasswordSlice";
 import Loading from "../components/Loading";
+import { Link } from "react-router-dom";
 
 const ForgetPassword = () => {
   const dispatch = useDispatch();
@@ -59,9 +60,7 @@ const ForgetPassword = () => {
             <div className="col-sm-12 col-md-6 col-lg-7 login-bg p-0">
               <div className="text-center login-left-block">
                 <img
-                  src={`${
-                    import.meta.env.VITE_PUBLIC_IMAGES_URL
-                  }/logo-white.png`}
+                  src="/images/logo-white.png"
                   alt="logo"
                   className="img-fluid my-2"
                   style={{ width: "84px" }}
@@ -113,7 +112,12 @@ const ForgetPassword = () => {
                               </div>
                               <div className="block mt-2">
                                 <small className="float-start">
-                                  Password Reset Link Send to Mail
+                                  Already Have an Account?
+                                  <Link to="/login"> Login Here</Link>
+                                </small>
+                                <small className="float-end">
+                                  Dont Have an Account?
+                                  <Link to="/register"> Register Here</Link>
                                 </small>
                               </div>
                             </Form>

@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import userRegistrationReducer from "../features/auth/userRegistrationSlice";
 import authReducer from "../features/auth/authSlice";
 import forgetPasswordReducer from "../features/auth/forgetPasswordSlice";
+import resetPasswordReducer from "../features/auth/resetPasswordSlice";
 import userEditReducer from "../features/auth/userEditSlice";
 import getTransactionsReducer from "../features/transactions/getTransactionsSlice";
 import addTransactionReducer from "../features/transactions/addTransactionSlice";
@@ -18,6 +19,7 @@ const store = configureStore({
     userRegistration: userRegistrationReducer,
     auth: authReducer,
     forgetPassword: forgetPasswordReducer,
+    resetPassword: resetPasswordReducer,
     profilePic: profilePicReducer,
     transactions: getTransactionsReducer,
     addTransaction: addTransactionReducer,
