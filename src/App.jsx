@@ -11,6 +11,7 @@ import Loading from "./components/Loading";
 import { useSelector } from "react-redux";
 import ForgetPassword from "./pages/ForgetPassword";
 import ResetPassword from "./pages/ResetPassword";
+import { Slide, ToastContainer } from "react-toastify";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const AddTransaction = lazy(() => import("./pages/AddTransaction"));
@@ -50,6 +51,19 @@ function App() {
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Slide}
+      />
       {guest ? (
         <Routes>
           <Route path="/" element={<Login />} />

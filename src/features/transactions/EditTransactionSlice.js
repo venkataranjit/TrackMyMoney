@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const initialState = {
   isLoading: false,
@@ -46,12 +47,14 @@ const editTransactionSlice = createSlice({
       .addCase(editTransaction.fulfilled, (state) => {
         state.isLoading = false;
         state.error = null;
-        state.successMsg = "Transaction Edited";
+        state.successMsg = "Transaction Updated";
+        toast.success(state.successMsg);
       })
       .addCase(editTransaction.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.successMsg = null;
+        toast.error(state.error);
       });
   },
 });

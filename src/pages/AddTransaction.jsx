@@ -242,17 +242,6 @@ const AddTransaction = () => {
           </div>
         </div>
       </div>
-      {addTransactionState.successMsg && (
-        <div className="alert alert-success">
-          {addTransactionState.successMsg}
-        </div>
-      )}
-      {addTransactionState.error && (
-        <div className="alert alert-danger">{addTransactionState.error}</div>
-      )}
-      {myCategories.error && (
-        <div className="alert alert-danger">{myCategories.error}</div>
-      )}
     </>
   );
 };

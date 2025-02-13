@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const initialState = {
   transactions: [],
@@ -43,6 +44,7 @@ const getTransactionsSlice = createSlice({
       .addCase(getTransactions.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+        toast.error(state.error);
       });
   },
 });

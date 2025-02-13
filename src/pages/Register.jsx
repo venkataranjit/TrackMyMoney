@@ -11,15 +11,15 @@ import {
   // LoadCanvasTemplate,
   LoadCanvasTemplateNoReload,
   validateCaptcha,
-  // validateCaptcha,
 } from "react-simple-captcha";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../components/Loading";
-import { usePWAInstall } from "react-use-pwa-install";
 import bcrypt from "bcryptjs";
+import LogoBlock from "../components/LogoBlock";
+import { toast } from "react-toastify";
+import PwaBtn from "../components/PwaBtn";
 
 const Register = () => {
-  const install = usePWAInstall();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.userRegistration);
   const [error, setError] = useState("");
@@ -79,7 +79,7 @@ const Register = () => {
   });
 
   const onSubmit = async (values, { resetForm }) => {
-    const hashedPassword = await bcrypt.hash(values.password, 10);
+    const hashedPassword = await bcrypt.hash(values.password.trim(), 10);
     let user_captcha_value = values.captcha;
     if (validateCaptcha(user_captcha_value, false)) {
       try {
@@ -97,12 +97,13 @@ const Register = () => {
         loadCaptchaEnginge(6);
       } catch (error) {
         setError("Error during user registration:", error);
-        // Optionally handle error feedback to the user
       }
     } else {
       setCaptchaError("Captcha Does Not Match");
     }
   };
+
+  error && toast.error(error);
 
   React.useEffect(() => {
     if (user.successMsg) {
@@ -145,27 +146,12 @@ const Register = () => {
     }
   };
 
-  if (user.isLoading) {
-    return <Loading />;
-  }
   return (
     <>
       <main className="d-flex w-100 login">
         <div className="container-fluid d-flex flex-column">
           <div className="row vh-100">
-            <div className="col-sm-12 col-md-6 col-lg-7 login-bg p-0">
-              <div className="text-center login-left-block">
-                <img
-                  src="/images/logo-white.png"
-                  alt="logo"
-                  className="img-fluid my-2"
-                  style={{ width: "84px" }}
-                />
-                <h2 className="text-info mt-2 mb-3">
-                  <b>Track My Money</b>
-                </h2>
-              </div>
-            </div>
+            <LogoBlock />
             <div className="col-sm-10 col-md-6 col-lg-5 mx-auto d-table h-100">
               <div className="d-table-cell align-middle">
                 <div className="card login-box">
@@ -402,7 +388,13 @@ const Register = () => {
                                   disabled={!(isValid && dirty)}
                                   ref={buttonRef}
                                 >
-                                  Register
+                                  {user.isLoading ? (
+                                    <span className="material-icons-round spinner">
+                                      brightness_7
+                                    </span>
+                                  ) : (
+                                    "Register"
+                                  )}
                                 </button>
                               </div>
                               <div className="block mt-2">
@@ -420,28 +412,9 @@ const Register = () => {
                           );
                         }}
                       </Formik>
-                      <br />
-                      {error && (
-                        <div className="alert alert-danger">{user.error}</div>
-                      )}
-                      {user.error && (
-                        <div className="alert alert-danger">{user.error}</div>
-                      )}
-                      {user.successMsg && (
-                        <div className="alert alert-success">
-                          {user.successMsg}
-                        </div>
-                      )}
                     </div>
                   </div>
-                  {install && (
-                    <button
-                      className="btn btn-info btn-custom"
-                      onClick={install}
-                    >
-                      Install Mobile App
-                    </button>
-                  )}
+                  <PwaBtn />
                 </div>
               </div>
             </div>

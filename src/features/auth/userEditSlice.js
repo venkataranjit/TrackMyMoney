@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import bcrypt from "bcryptjs";
+import { toast } from "react-toastify";
 
 const initialState = {
   isLoading: false,
@@ -55,12 +56,14 @@ const userEditSlice = createSlice({
       .addCase(userEdit.fulfilled, (state) => {
         state.isLoading = false;
         state.error = null;
-        state.successMsg = "Profile Updated";
+        state.successMsg = "Profile Updated, Please Login Again";
+        toast.success(state.successMsg);
       })
       .addCase(userEdit.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.successMsg = null;
+        toast.error(state.error);
       });
   },
 });

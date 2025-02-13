@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import bcrypt from "bcryptjs";
+import { toast } from "react-toastify";
 
 const initialState = {
   user: {},
@@ -62,11 +63,17 @@ const authSlice = createSlice({
         state.error = null;
         state.successMsg = "Login Succesfull";
         state.user = action.payload;
+        const capitalize = (str) =>
+          str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+        toast.success(
+          `Hey  ${capitalize(state.user.firstName)},  Welcome Back 😊`
+        );
       })
       .addCase(userLogin.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.successMsg = null;
+        toast.error(state.error);
       });
   },
 });

@@ -9,9 +9,16 @@ const Footer = () => {
             <div className="col-5 text-start">
               <p className="mb-0">
                 <Link className="text-muted" to="#">
-                  <strong>Track My Money</strong>
+                  <strong>
+                    <img
+                      src="/images/logo-footer.png"
+                      className="logo-footer"
+                      alt="logo"
+                    />{" "}
+                    Track My Money
+                  </strong>
                 </Link>{" "}
-                © 2024
+                © 2025
               </p>
             </div>
             <div className="col-7 text-end">

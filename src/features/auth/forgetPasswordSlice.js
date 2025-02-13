@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { nanoid } from "nanoid";
+import { toast } from "react-toastify";
 
 const initialState = {
   user: {},
@@ -58,11 +59,13 @@ const forgetPasswordSlice = createSlice({
         state.error = null;
         state.successMsg = "A password reset link has been sent to your email.";
         state.user = { ...action.payload.user, token: action.payload.token };
+        toast.success(state.successMsg);
       })
       .addCase(forgetPassword.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.successMsg = null;
+        toast.error(state.error);
       });
   },
 });

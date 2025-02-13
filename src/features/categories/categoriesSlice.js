@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
@@ -16,9 +17,9 @@ export const getCategory = createAsyncThunk(
       const response = await axios.get(
         `${import.meta.env.VITE_JSON_SERVER_URL}/categories`
       );
-      const myCategories = response.data.filter(
-        (t) => t.userId === userId || t.userId === "admin"
-      );
+      const myCategories = response.data
+        .filter((t) => t.userId === userId || t.userId === "admin")
+        .sort((a, b) => a.name.localeCompare(b.name));
       return myCategories;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);
@@ -75,6 +76,7 @@ const categoriesSlice = createSlice({
         state.isLoading = false;
         state.successMsg = null;
         state.error = action.payload;
+        toast.error(state.error);
       });
   },
 });

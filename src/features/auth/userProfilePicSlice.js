@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const initialState = {
   isLoading: false,
@@ -48,11 +49,13 @@ const userProfilePicSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.successMsg = "Profile Photo Updated";
+        toast.success(state.successMsg);
       })
       .addCase(editProfilePic.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.successMsg = null;
+        toast.error(state.error);
       });
   },
 });

@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const initialState = {
   deletedTransaction: {},
@@ -43,11 +44,13 @@ const deleteTransactionSlice = createSlice({
         state.error = null;
         state.successMsg = "Transaction Deleted Succesfully";
         state.deletedTransaction = action.payload;
+        toast.success(state.successMsg);
       })
       .addCase(deleteTransaction.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.successMsg = null;
+        toast.error(state.error);
       });
   },
 });

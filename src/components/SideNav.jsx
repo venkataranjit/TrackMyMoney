@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import { Link, NavLink } from "react-router-dom";
 import { logout } from "../features/auth/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { usePWAInstall } from "react-use-pwa-install";
 
 const SideNav = ({ sidebarRef, handleMobileSidebar }) => {
+  const userState = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const install = usePWAInstall();
   return (
@@ -22,6 +23,18 @@ const SideNav = ({ sidebarRef, handleMobileSidebar }) => {
             />
             <span className="align-middle">Track My Money</span>
           </NavLink>
+
+          {userState.user.profilePic && (
+            <div className="profilePicDiv">
+              <div className="picContianer">
+                <img
+                  src={userState.user.profilePic}
+                  className="leftProfilePic"
+                />
+              </div>
+            </div>
+          )}
+
           <ul className="sidebar-nav">
             <li className="sidebar-header">Pages</li>
 

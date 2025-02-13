@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { clearMsg } from "../features/auth/resetPasswordSlice";
 import Loading from "../components/Loading";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { resetPassword } from "../features/auth/resetPasswordSlice";
+import LogoBlock from "../components/LogoBlock";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -78,27 +79,12 @@ const ResetPassword = () => {
     }
   }, [resetState.error, resetState.successMsg]);
 
-  if (resetState.isLoading) {
-    return <Loading />;
-  }
   return (
     <>
       <main className="d-flex w-100 login">
         <div className="container-fluid d-flex flex-column">
           <div className="row vh-100">
-            <div className="col-sm-12 col-md-6 col-lg-7 login-bg p-0">
-              <div className="text-center login-left-block">
-                <img
-                  src="/images/logo-white.png"
-                  alt="logo"
-                  className="img-fluid my-2"
-                  style={{ width: "84px" }}
-                />
-                <h1 className="text-info mt-2 mb-3">
-                  <b>Track My Money</b>
-                </h1>
-              </div>
-            </div>
+            <LogoBlock />
             <div className="col-sm-10 col-md-6 col-lg-5 mx-auto d-table h-100">
               <div className="d-table-cell align-middle">
                 <div className="card login-box">
@@ -216,24 +202,29 @@ const ResetPassword = () => {
                                   className={`btn btn-lg btn-info w-100`}
                                   disabled={!(isValid && dirty)}
                                 >
-                                  Send
+                                  {resetState.isLoading ? (
+                                    <span className="material-icons-round spinner">
+                                      brightness_7
+                                    </span>
+                                  ) : (
+                                    "Reset Password"
+                                  )}
                                 </button>
+                              </div>
+                              <div className="block mt-2">
+                                <small className="float-start">
+                                  Go to Login Page
+                                  <Link to="/login"> Click Here</Link>
+                                </small>
+                                <small className="float-end">
+                                  Go to Register Page
+                                  <Link to="/register"> Click Here</Link>
+                                </small>
                               </div>
                             </Form>
                           );
                         }}
                       </Formik>
-                      <br />
-                      {resetState.error && (
-                        <div className="alert alert-danger">
-                          {resetState.error}
-                        </div>
-                      )}
-                      {resetState.successMsg && (
-                        <div className="alert alert-success">
-                          {resetState.successMsg}
-                        </div>
-                      )}
                     </div>
                   </div>
                 </div>

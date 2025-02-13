@@ -11,10 +11,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Loading from "../components/Loading";
 import { clearMsg, userLogin } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { usePWAInstall } from "react-use-pwa-install";
+import LogoBlock from "../components/LogoBlock";
+import PwaBtn from "../components/PwaBtn";
 
 const Login = () => {
-  const install = usePWAInstall();
   const [captchaError, setCaptchaError] = useState("");
   const [showPassword, setShowpassword] = useState(false);
   const dispatch = useDispatch();
@@ -47,7 +47,12 @@ const Login = () => {
   const onSubmit = (values, { resetForm }) => {
     const user_captcha_value = values.captcha;
     if (validateCaptcha(user_captcha_value, false) == true) {
-      dispatch(userLogin({ email: values.email, password: values.password }));
+      dispatch(
+        userLogin({
+          email: values.email.toLowerCase(),
+          password: values.password,
+        })
+      );
       setCaptchaError("");
       resetForm();
       loadCaptchaEnginge(6);
@@ -93,27 +98,12 @@ const Login = () => {
     }
   };
 
-  if (user.isLoading) {
-    return <Loading />;
-  }
   return (
     <>
       <main className="d-flex w-100 login">
         <div className="container-fluid d-flex flex-column">
           <div className="row vh-100">
-            <div className="col-sm-12 col-md-6 col-lg-7 login-bg p-0">
-              <div className="text-center login-left-block">
-                <img
-                  src="/images/logo-white.png"
-                  alt="logo"
-                  className="img-fluid my-2"
-                  style={{ width: "84px" }}
-                />
-                <h1 className="text-info mt-2 mb-3">
-                  <b>Track My Money</b>
-                </h1>
-              </div>
-            </div>
+            <LogoBlock />
             <div className="col-sm-10 col-md-6 col-lg-5 mx-auto d-table h-100">
               <div className="d-table-cell align-middle">
                 <div className="card login-box">
@@ -221,7 +211,13 @@ const Login = () => {
                                   disabled={!(isValid && dirty)}
                                   ref={buttonRef}
                                 >
-                                  Sign in
+                                  {user.isLoading ? (
+                                    <span className="material-icons-round spinner">
+                                      brightness_7
+                                    </span>
+                                  ) : (
+                                    "Login"
+                                  )}
                                 </button>
                               </div>
                               <div className="block mt-2">
@@ -239,20 +235,9 @@ const Login = () => {
                           );
                         }}
                       </Formik>
-                      <br />
-                      {user.error && (
-                        <div className="alert alert-danger">{user.error}</div>
-                      )}
                     </div>
                   </div>
-                  {install && (
-                    <button
-                      className="btn btn-info btn-custom"
-                      onClick={install}
-                    >
-                      Install Mobile App
-                    </button>
-                  )}
+                  <PwaBtn />
                 </div>
               </div>
             </div>

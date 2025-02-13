@@ -13,6 +13,7 @@ import Loading from "../components/Loading";
 import Modal from "react-modal";
 import EditTransaction from "../components/EditTransaction";
 import { editClearMsg } from "../features/transactions/EditTransactionSlice";
+import { toast } from "react-toastify";
 
 Modal.setAppElement("#root");
 
@@ -59,7 +60,10 @@ const ViewTransactions = () => {
           })
         );
       }, 5000);
-      return () => clearTimeout(timer, timer2);
+      return () => {
+        clearTimeout(timer);
+        clearTimeout(timer2);
+      };
     }
   }, [
     deleteTransactionState.successMsg,
@@ -93,7 +97,10 @@ const ViewTransactions = () => {
     <>
       <button
         className="btn btn-info btn-sm"
-        onClick={(e) => onExportPDF(e.target.value)}
+        onClick={(e) => {
+          onExportPDF(e.target.value);
+          toast.success("PDF File Exported");
+        }}
       >
         Export to PDF
       </button>
@@ -344,22 +351,6 @@ const ViewTransactions = () => {
           <span className="material-icons-round align-middle p-0">close</span>
         </button>
       </Modal>
-      {deleteTransactionState.successMsg && (
-        <div className="alert alert-success">
-          {deleteTransactionState.successMsg}
-        </div>
-      )}
-      {deleteTransactionState.error && (
-        <div className="alert alert-danger">{deleteTransactionState.error}</div>
-      )}
-      {editTransactionState.successMsg && (
-        <div className="alert alert-success">
-          {editTransactionState.successMsg}
-        </div>
-      )}
-      {editTransactionState.error && (
-        <div className="alert alert-danger">{editTransactionState.error}</div>
-      )}
     </>
   );
 };

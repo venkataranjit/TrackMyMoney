@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { clearMsg, userEdit } from "../features/auth/userEditSlice";
-import { updateUser } from "../features/auth/authSlice";
+import { logout, updateUser } from "../features/auth/authSlice";
 import Loading from "../components/Loading";
 import ProfileImageCropper from "../components/ProfileImageCropper";
 import { useNavigate } from "react-router-dom";
@@ -49,6 +49,9 @@ const Profile = () => {
     ).unwrap();
     dispatch(updateUser(updatedUser));
     setEdit(false);
+    await dispatch(logout());
+    localStorage.removeItem("reduxState");
+    navigate("/login");
   };
 
   useEffect(() => {
@@ -60,8 +63,7 @@ const Profile = () => {
             error: null,
           })
         );
-        navigate("/login");
-      }, 2000);
+      }, 1000);
 
       return () => clearTimeout(timer);
     }
@@ -213,16 +215,6 @@ const Profile = () => {
                       );
                     }}
                   </Formik>
-                  {updateUserState.successMsg && (
-                    <div className="alert alert-success">
-                      {updateUserState.successMsg}
-                    </div>
-                  )}
-                  {updateUserState.error && (
-                    <div className="alert alert-danger">
-                      {updateUserState.error}
-                    </div>
-                  )}
                 </div>
               </div>
             </div>

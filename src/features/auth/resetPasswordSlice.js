@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import bcrypt from "bcryptjs";
+import { toast } from "react-toastify";
 
 const initialState = {
   user: {},
@@ -58,11 +59,13 @@ const resetPasswordSlice = createSlice({
         state.error = null;
         state.successMsg = "Your password has been changed successfully!";
         state.user = action.payload;
+        toast.success(state.successMsg);
       })
       .addCase(resetPassword.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.successMsg = null;
+        toast.error(state.error);
       });
   },
 });

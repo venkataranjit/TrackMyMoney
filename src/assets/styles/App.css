@@ -73,10 +73,14 @@ a {
     line-height: 200px;
   }
   h4 {
-    font-size: 50px;
+    font-size: 36px;
+    padding: 10px 0;
   }
 }
-
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #27b397 !important;
+}
 .dashboard {
   .bg-img:after {
     content: "";
@@ -160,7 +164,7 @@ a.sidebar-link {
 }
 .eye-pos .eye {
   position: absolute;
-  right: 1px;
+  right: 10px;
   top: 26px;
   padding: 7px;
   cursor: pointer;
@@ -226,6 +230,21 @@ a.sidebar-link {
 .pos-abs-link-box .material-icons-round {
   color: #fff;
 }
+.spinner {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.error_page h2 span {
+  color: #27b397;
+}
 .btn-custom {
   position: absolute;
   bottom: -20px;
@@ -253,9 +272,13 @@ a.sidebar-link {
   margin-bottom: 25px;
 }
 .defaultImg p {
-  padding-left: 28%;
+  text-align: center;
   font-size: 108px;
   color: #353535;
+}
+.logo-footer {
+  width: 16px;
+  vertical-align: text-bottom;
 }
 .profileUpload {
   margin-bottom: 20px;
@@ -297,9 +320,17 @@ a.sidebar-link {
 .login-box {
   box-shadow: none;
   background: transparent;
+  padding-bottom: 30px;
 }
 .login-box .form-control {
   background-color: #edf5f3;
+  border-radius: 20px;
+}
+.login-box .btn {
+  border-radius: 20px;
+}
+.login-box .material-icons-round {
+  padding-right: 0px;
 }
 .captcha-container canvas {
   width: 100%;
@@ -315,6 +346,42 @@ input[type="file"]::file-selector-button {
 input[type="file"]::file-selector-button:hover {
   background-color: #27b39790;
   border: 2px solid #27b39790;
+}
+.Toastify__toast--success {
+  background-color: #27b397 !important;
+  color: white !important;
+}
+.Toastify__toast--error {
+  background-color: #dc3545 !important;
+  color: white !important;
+}
+.fokyca {
+  min-height: 40px !important;
+  background: #27b397 !important;
+  color: #fff;
+  margin-top: 10px;
+}
+.sidebar-brand {
+  padding: 17px 1.5rem !important;
+}
+.profilePicDiv {
+  border-bottom: 1px solid #25364c;
+  border-top: 1px solid #25364c;
+  text-align: center;
+}
+.picContianer {
+  border: 2px dashed #27b397;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  text-align: center;
+  margin: 20px auto;
+}
+.leftProfilePic {
+  width: 108px;
+  height: 108px;
+  margin-top: 4px;
+  border-radius: 54px;
 }
 @media (min-width: 991.98px) {
   .content {

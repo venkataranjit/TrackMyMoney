@@ -1,31 +1,56 @@
 import { Field, Form, Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  LoadCanvasTemplateNoReload,
+  loadCaptchaEnginge,
+  validateCaptcha,
+} from "react-simple-captcha";
 import * as Yup from "yup";
 import { clearMsg, forgetPassword } from "../features/auth/forgetPasswordSlice";
 import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
+import LogoBlock from "../components/LogoBlock";
 
 const ForgetPassword = () => {
+  const [captchaError, setCaptchaError] = useState("");
   const dispatch = useDispatch();
   const isUser = useSelector((state) => state.forgetPassword);
   const initialValues = {
     email: "",
   };
 
+  const refreshCaptcha = (e) => {
+    e.preventDefault();
+    loadCaptchaEnginge(6);
+  };
+
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Invalid Email Format")
       .required("Email required"),
+    captcha: Yup.string().required("Captcha is Required"),
   });
 
   const onSubmit = (values, { resetForm }) => {
-    dispatch(forgetPassword(values.email));
-    resetForm();
+    const user_captcha_value = values.captcha;
+    if (validateCaptcha(user_captcha_value, false) == true) {
+      dispatch(forgetPassword(values.email));
+      setCaptchaError("");
+      resetForm();
+      loadCaptchaEnginge(6);
+    } else {
+      setCaptchaError("Captcha Does Not Match");
+    }
   };
 
   React.useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
+
+  React.useEffect(() => {
     if (isUser.successMsg) {
+      loadCaptchaEnginge(6);
       const clear = setTimeout(() => {
         dispatch(
           clearMsg({
@@ -37,6 +62,7 @@ const ForgetPassword = () => {
       return () => clearTimeout(clear);
     }
     if (isUser.error) {
+      loadCaptchaEnginge(6);
       const clear = setTimeout(() => {
         dispatch(
           clearMsg({
@@ -49,27 +75,12 @@ const ForgetPassword = () => {
     }
   }, [isUser.error, isUser.successMsg]);
 
-  if (isUser.isLoading) {
-    return <Loading />;
-  }
   return (
     <>
       <main className="d-flex w-100 login">
         <div className="container-fluid d-flex flex-column">
           <div className="row vh-100">
-            <div className="col-sm-12 col-md-6 col-lg-7 login-bg p-0">
-              <div className="text-center login-left-block">
-                <img
-                  src="/images/logo-white.png"
-                  alt="logo"
-                  className="img-fluid my-2"
-                  style={{ width: "84px" }}
-                />
-                <h1 className="text-info mt-2 mb-3">
-                  <b>Track My Money</b>
-                </h1>
-              </div>
-            </div>
+            <LogoBlock />
             <div className="col-sm-10 col-md-6 col-lg-5 mx-auto d-table h-100">
               <div className="d-table-cell align-middle">
                 <div className="card login-box">
@@ -102,12 +113,57 @@ const ForgetPassword = () => {
                                   <span className="danger">{errors.email}</span>
                                 )}
                               </div>
+                              <div className="row">
+                                <div className="mb-1 col-sm-6">
+                                  <label className="form-label">Captcha</label>
+                                  <Field
+                                    className={`form-control form-control-lg ${
+                                      touched.captcha &&
+                                      errors.captcha &&
+                                      "danger-border"
+                                    }`}
+                                    type="text"
+                                    name="captcha"
+                                    placeholder="Enter Captcha"
+                                  />
+                                  {touched.captcha && errors.captcha && (
+                                    <span className="danger">
+                                      {errors.captcha}
+                                    </span>
+                                  )}
+                                  {captchaError && (
+                                    <span className="danger">
+                                      {captchaError}
+                                    </span>
+                                  )}
+                                </div>
+                                <div className="col-sm-6 mb-1">
+                                  <label className="form-label">&nbsp;</label>
+                                  <div className="captcha-container">
+                                    <LoadCanvasTemplateNoReload />
+                                    <button
+                                      className="btn btn-info"
+                                      onClick={refreshCaptcha}
+                                    >
+                                      <span className="material-icons-round align-middle">
+                                        refresh
+                                      </span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
                               <div className="text-center mt-3">
                                 <button
                                   className={`btn btn-lg btn-info w-100`}
                                   disabled={!(isValid && dirty)}
                                 >
-                                  Send
+                                  {isUser.isLoading ? (
+                                    <span className="material-icons-round spinner">
+                                      brightness_7
+                                    </span>
+                                  ) : (
+                                    "Send Reset Link to Mail"
+                                  )}
                                 </button>
                               </div>
                               <div className="block mt-2">
@@ -124,15 +180,6 @@ const ForgetPassword = () => {
                           );
                         }}
                       </Formik>
-                      <br />
-                      {isUser.error && (
-                        <div className="alert alert-danger">{isUser.error}</div>
-                      )}
-                      {isUser.successMsg && (
-                        <div className="alert alert-success">
-                          {isUser.successMsg}
-                        </div>
-                      )}
                     </div>
                   </div>
                 </div>
