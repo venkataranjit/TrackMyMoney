@@ -46,6 +46,7 @@ const authSlice = createSlice({
     },
     logout: (state) => {
       state.user = {};
+      toast.success("Logout Succesful");
     },
     updateUser: (state, action) => {
       state.user = action.payload;
