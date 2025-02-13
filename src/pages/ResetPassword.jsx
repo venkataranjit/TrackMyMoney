@@ -39,7 +39,6 @@ const ResetPassword = () => {
   });
 
   const onSubmit = (values, { resetForm }) => {
-    console.log(values);
     dispatch(
       resetPassword({
         email: values.email,

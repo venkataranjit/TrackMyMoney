@@ -21,7 +21,6 @@ const ViewTransactions = () => {
   const userDetails = useSelector((state) => state.auth);
   const transactions = useSelector((state) => state.transactions);
   const editTransactionState = useSelector((state) => state.editTransaction);
-  console.log(transactions);
   const deleteTransactionState = useSelector(
     (state) => state.deleteTransaction
   );
