@@ -7,6 +7,7 @@ import { clearMsg, userEdit } from "../features/auth/userEditSlice";
 import { updateUser } from "../features/auth/authSlice";
 import Loading from "../components/Loading";
 import ProfileImageCropper from "../components/ProfileImageCropper";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const userDetails = useSelector((state) => state.auth);
@@ -14,7 +15,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   const [edit, setEdit] = useState(false);
   const [croppedImage, setCroppedImage] = useState("");
-
+  const navigate = useNavigate();
   const initialValues = {
     firstName: userDetails.user.firstName,
     lastName: userDetails.user.lastName,
@@ -59,7 +60,9 @@ const Profile = () => {
             error: null,
           })
         );
-      }, 5000);
+        navigate("/login");
+      }, 2000);
+
       return () => clearTimeout(timer);
     }
   }, [updateUserState.successMsg, updateUserState.error]);
