@@ -84,7 +84,7 @@
 - **Styling**: CSS/SCSS, Bootstrap
 - **Authentication**: Custom implementation
 - **Backend**: JSON Server
-- **Dependencies**: axios, formik, jspdf, jspdf-autotable, react-data-table-componenet, react-router-dom.
+- **Dependencies**: axios, formik, jspdf, jspdf-autotable, react-data-table-componenet, react-router-dom, bcryptjs, react-simple-captcha, yup.
 - **Features**: PWA (Progressive Web App) support.
 
 ## Folder Structure
