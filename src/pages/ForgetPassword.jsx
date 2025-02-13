@@ -8,7 +8,6 @@ import {
 } from "react-simple-captcha";
 import * as Yup from "yup";
 import { clearMsg, forgetPassword } from "../features/auth/forgetPasswordSlice";
-import Loading from "../components/Loading";
 import { Link } from "react-router-dom";
 import LogoBlock from "../components/LogoBlock";
 

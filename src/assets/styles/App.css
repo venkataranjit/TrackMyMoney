@@ -343,6 +343,11 @@ input[type="file"]::file-selector-button {
   color: #fff;
   transition: 1s;
 }
+.sidebar-toggle:hover .hamburger,
+.sidebar-toggle:hover .hamburger:after,
+.sidebar-toggle:hover .hamburger:before {
+  background: #27b397;
+}
 input[type="file"]::file-selector-button:hover {
   background-color: #27b39790;
   border: 2px solid #27b39790;
@@ -355,9 +360,10 @@ input[type="file"]::file-selector-button:hover {
   background-color: #dc3545 !important;
   color: white !important;
 }
-.fokyca {
+.fokyca,
+.thead {
   min-height: 40px !important;
-  background: #27b397 !important;
+  background: #899097 !important;
   color: #fff;
   margin-top: 10px;
 }
@@ -382,6 +388,9 @@ input[type="file"]::file-selector-button:hover {
   height: 108px;
   margin-top: 4px;
   border-radius: 54px;
+}
+a:hover {
+  color: #27b397;
 }
 @media (min-width: 991.98px) {
   .content {

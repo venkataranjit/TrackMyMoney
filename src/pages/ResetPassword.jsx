@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { clearMsg } from "../features/auth/resetPasswordSlice";
-import Loading from "../components/Loading";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { resetPassword } from "../features/auth/resetPasswordSlice";
 import LogoBlock from "../components/LogoBlock";

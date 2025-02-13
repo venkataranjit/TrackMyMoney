@@ -13,7 +13,6 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../components/Loading";
 import bcrypt from "bcryptjs";
 import LogoBlock from "../components/LogoBlock";
 import { toast } from "react-toastify";

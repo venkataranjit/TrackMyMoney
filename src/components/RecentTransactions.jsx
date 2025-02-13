@@ -23,7 +23,7 @@ const RecentTransactions = () => {
             </div>
 
             <table className="table table-hover my-0">
-              <thead>
+              <thead className="thead">
                 <tr>
                   <th>Amount</th>
                   <th>Date</th>
