@@ -38,6 +38,26 @@ export const resetPassword = createAsyncThunk(
   }
 );
 
+export const getUserName = createAsyncThunk(
+  "user/getUserName",
+  async (email, { rejectWithValue }) => {
+    try {
+      const users = await axios.get(
+        `${import.meta.env.VITE_JSON_SERVER_URL}/users`
+      );
+      const user = users.data.find((u) => u.email === email);
+      if (!user) {
+        throw new Error(
+          "The password reset link is invalid or has expired. Please request a new one."
+        );
+      }
+      return user;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+
 const resetPasswordSlice = createSlice({
   name: "reset",
   initialState,
@@ -62,6 +82,23 @@ const resetPasswordSlice = createSlice({
         toast.success(state.successMsg);
       })
       .addCase(resetPassword.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        state.successMsg = null;
+        toast.error(state.error);
+      })
+      .addCase(getUserName.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+        state.successMsg = null;
+      })
+      .addCase(getUserName.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.successMsg = "User Name Found";
+        state.user = action.payload;
+      })
+      .addCase(getUserName.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
         state.successMsg = null;

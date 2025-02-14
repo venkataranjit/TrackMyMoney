@@ -1,8 +1,8 @@
 import { Field, Form, Formik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
-import { clearMsg } from "../features/auth/resetPasswordSlice";
+import { clearMsg, getUserName } from "../features/auth/resetPasswordSlice";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { resetPassword } from "../features/auth/resetPasswordSlice";
 import LogoBlock from "../components/LogoBlock";
@@ -22,6 +22,10 @@ const ResetPassword = () => {
     confirmPassword: "",
   };
 
+  useEffect(() => {
+    dispatch(getUserName(receivedEmail));
+  }, []);
+  console.log(resetState);
   const validationSchema = Yup.object({
     password: Yup.string()
       .required("Password is required")
@@ -89,6 +93,18 @@ const ResetPassword = () => {
                   <div className="card-body">
                     <div className="m-sm-4">
                       <h2 className="mb-3">Reset Password</h2>
+                      <h5 className="resetUser">
+                        Hey,{" "}
+                        <span style={{ color: "#27b397" }}>
+                          <b>
+                            {resetState.user.firstName +
+                              " " +
+                              resetState.user.lastName}
+                          </b>{" "}
+                        </span>
+                        <small>Reset Your Password</small>
+                      </h5>
+
                       <Formik
                         initialValues={initialValues}
                         onSubmit={onSubmit}
@@ -99,7 +115,7 @@ const ResetPassword = () => {
                             formikProps;
                           return (
                             <Form>
-                              <div className="mb-3">
+                              {/* <div className="mb-3">
                                 <label className="form-label">Email</label>
                                 <Field
                                   className={`form-control form-control-lg ${
@@ -119,9 +135,11 @@ const ResetPassword = () => {
                                 {touched.email && errors.email && (
                                   <span className="danger">{errors.email}</span>
                                 )}
-                              </div>
+                              </div> */}
                               <div className="mb-3 eye-pos">
-                                <label className="form-label">Password</label>
+                                <label className="form-label">
+                                  New Password
+                                </label>
                                 <Field
                                   className={`form-control form-control-lg ${
                                     touched.password &&
@@ -132,7 +150,7 @@ const ResetPassword = () => {
                                     showPassword.password ? "text" : "password"
                                   }
                                   name="password"
-                                  placeholder="Enter password"
+                                  placeholder="Enter New password"
                                   autoComplete="new-password"
                                 />
                                 <span
