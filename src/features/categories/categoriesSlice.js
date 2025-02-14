@@ -42,10 +42,46 @@ export const postCategory = createAsyncThunk(
   }
 );
 
+export const deleteCategory = createAsyncThunk(
+  "categories/delete",
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete(
+        `${import.meta.env.VITE_JSON_SERVER_URL}/categories/${id}`
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+
+export const editCategory = createAsyncThunk(
+  "categories/edit",
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await axios.patch(
+        `${import.meta.env.VITE_JSON_SERVER_URL}/categories/${data.id}`,
+        {
+          name: data.name,
+        }
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+
 const categoriesSlice = createSlice({
   name: "recentTransactions",
   initialState,
-  reducers: {},
+  reducers: {
+    clearMsg: (state, action) => {
+      state.error = action.payload.error;
+      state.successMsg = action.payload.successMsg;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getCategory.pending, (state) => {
@@ -71,8 +107,43 @@ const categoriesSlice = createSlice({
         state.error = null;
         state.successMsg = "Category Added";
         state.categories = state.categories.push(action.payload);
+        toast.success(state.successMsg);
       })
       .addCase(postCategory.rejected, (state, action) => {
+        state.isLoading = false;
+        state.successMsg = null;
+        state.error = action.payload;
+        toast.error(state.error);
+      })
+      .addCase(deleteCategory.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+        state.successMsg = null;
+      })
+      .addCase(deleteCategory.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = null;
+        state.successMsg = "Category Deleted";
+        toast.success(state.successMsg);
+      })
+      .addCase(deleteCategory.rejected, (state, action) => {
+        state.isLoading = false;
+        state.successMsg = null;
+        state.error = action.payload;
+        toast.error(state.error);
+      })
+      .addCase(editCategory.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+        state.successMsg = null;
+      })
+      .addCase(editCategory.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = null;
+        state.successMsg = "Category Edited";
+        toast.success(state.successMsg);
+      })
+      .addCase(editCategory.rejected, (state, action) => {
         state.isLoading = false;
         state.successMsg = null;
         state.error = action.payload;
@@ -81,6 +152,6 @@ const categoriesSlice = createSlice({
   },
 });
 
-// export const {} = categoriesSlice.actions;
+export const { clearMsg } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

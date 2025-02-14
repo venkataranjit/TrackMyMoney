@@ -59,12 +59,20 @@
       "email": "sample@gmail.com",
       "mobile": 7896541230,
       "password": "$2a$10$N86Zhugz81skKtHiXIbo9OjKHtH5v1sIewHtCMV3eMK7yiZVREGg."
+    },
+    {
+      "id": "3db4f306-ab91-4260-9d12-863f21303ca9",
+      "firstName": "victory",
+      "lastName": "ranjit",
+      "email": "victoryranjit@gmail.com",
+      "mobile": 9874563210,
+      "password": "$2a$10$6xF8AKk99FKr0xl3bdUWeOr8J9U7avhl4FLAga8wdmJVZoZZy4eI2"
     }
   ],
   "categories": [
     {
       "id": "1",
-      "name": "Food",
+      "name": "Food123",
       "userId": "admin"
     },
     {
@@ -73,23 +81,8 @@
       "userId": "admin"
     },
     {
-      "id": "3",
-      "name": "Utilities",
-      "userId": "admin"
-    },
-    {
-      "id": "4",
-      "name": "Salary",
-      "userId": "admin"
-    },
-    {
       "id": "5",
       "name": "Investment",
-      "userId": "admin"
-    },
-    {
-      "id": "6",
-      "name": "Travel",
       "userId": "admin"
     },
     {
@@ -103,24 +96,9 @@
       "name": "Kirana"
     },
     {
-      "id": "748df870-2946-4c47-80d5-9d86c4530d63",
-      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "name": "s1"
-    },
-    {
-      "id": "d25e46b4-4207-4a11-9d81-0299314a982a",
-      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "name": "s2"
-    },
-    {
       "id": "02837175-6290-4445-9dd8-6714c9372132",
       "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
       "name": "new"
-    },
-    {
-      "id": "99e4f016-f32a-407d-b7a1-26a72380033f",
-      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "name": "s4"
     },
     {
       "id": "908cd921-b2e5-4761-a127-cfb12d53b5a0",
@@ -133,24 +111,9 @@
       "name": "Ice Cream"
     },
     {
-      "id": "972c3c1c-605f-442e-90ef-766e3f1eee17",
-      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "name": "d"
-    },
-    {
-      "id": "e10da2d2-8552-4e0e-b554-f4f0ae2d8442",
-      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "name": "ff"
-    },
-    {
       "id": "daab61d6-1a1e-4add-bce2-b938d0f344f6",
       "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
       "name": "other"
-    },
-    {
-      "id": "aaeb4359-5a0e-4957-8c77-08ff58780b33",
-      "userId": "admin",
-      "name": "investment"
     },
     {
       "id": "dd7b236d-5284-41a0-b244-7a1ad79946af",
@@ -158,9 +121,19 @@
       "name": "Milk"
     },
     {
-      "id": "60c746c8-2d93-47f8-8823-39b275a0baaf",
+      "id": "bd95eeca-039c-4efa-9868-4e3039e9ed98",
+      "name": "Ranjit",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c"
+    },
+    {
+      "id": "2b5876fa-f07d-4f58-9e5f-4255aaa2512e",
       "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "name": "26"
+      "name": "venkataranjit@gmail.com"
+    },
+    {
+      "id": "4ba7e8d1-2e19-4129-9d37-5095819881f3",
+      "userId": "3db4f306-ab91-4260-9d12-863f21303ca9",
+      "name": "cloths"
     }
   ],
   "transactions": [
@@ -413,6 +386,16 @@
       "category": "26",
       "remarks": "ffa",
       "createdAt": 1739455318417
+    },
+    {
+      "id": "2be3a7c2-3b16-47c3-ae48-4aa52df253b7",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "amount": 100,
+      "transactionDate": "2025-02-14",
+      "type": "expense",
+      "category": "SSS",
+      "remarks": "",
+      "createdAt": 1739527330650
     }
   ]
 }

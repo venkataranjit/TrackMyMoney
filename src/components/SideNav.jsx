@@ -76,6 +76,18 @@ const SideNav = ({ sidebarRef, handleMobileSidebar }) => {
             </NavLink>
             <NavLink
               className="sidebar-item"
+              to="/categories"
+              onClick={handleMobileSidebar}
+            >
+              <span className="sidebar-link">
+                <span className="material-icons-round align-middle">
+                  category
+                </span>
+                <span className="align-middle">Categories</span>
+              </span>
+            </NavLink>
+            <NavLink
+              className="sidebar-item"
               to="/charts"
               onClick={handleMobileSidebar}
             >
@@ -83,7 +95,7 @@ const SideNav = ({ sidebarRef, handleMobileSidebar }) => {
                 <span className="material-icons-round align-middle">
                   bar_chart
                 </span>
-                <span className="align-middle">Charts</span>
+                <span className="align-middle">Graph View</span>
               </span>
             </NavLink>
             {install && (

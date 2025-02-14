@@ -18,6 +18,7 @@ const AddTransaction = lazy(() => import("./pages/AddTransaction"));
 const ViewTransactions = lazy(() => import("./pages/ViewTransactions"));
 const Charts = lazy(() => import("./pages/Charts"));
 const Profile = lazy(() => import("./pages/Profile"));
+const Categories = lazy(() => import("./pages/Categories"));
 
 function App() {
   const userState = useSelector((state) => state.auth);
@@ -98,6 +99,7 @@ function App() {
                         path="/viewTransactions"
                         element={<ViewTransactions />}
                       />
+                      <Route path="/categories" element={<Categories />} />
                       <Route path="/charts" element={<Charts />} />
                       <Route path="/profile" element={<Profile />} />
                       <Route path="*" element={<Error />} />

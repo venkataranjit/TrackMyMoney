@@ -392,6 +392,24 @@ input[type="file"]::file-selector-button:hover {
 a:hover {
   color: #27b397;
 }
+.categories_list {
+  .category_icon {
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  .btn-category {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  .category_edit:hover {
+    color: #27b397;
+  }
+  .category_delete:hover {
+    color: red;
+  }
+}
+
 @media (min-width: 991.98px) {
   .content {
     padding: 1.5rem 1.5rem 0.75rem;
