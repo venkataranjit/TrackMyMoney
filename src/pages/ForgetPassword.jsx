@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   LoadCanvasTemplateNoReload,
@@ -17,8 +17,10 @@ const ForgetPassword = () => {
   const isUser = useSelector((state) => state.forgetPassword);
   const initialValues = {
     email: "",
+    captcha: "",
   };
 
+  const buttonRef = useRef(null);
   const refreshCaptcha = (e) => {
     e.preventDefault();
     loadCaptchaEnginge(6);
@@ -74,6 +76,14 @@ const ForgetPassword = () => {
     }
   }, [isUser.error, isUser.successMsg]);
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      if (buttonRef.current) {
+        buttonRef.current.click();
+      }
+    }
+  };
   return (
     <>
       <main className="d-flex w-100 login">
@@ -124,6 +134,7 @@ const ForgetPassword = () => {
                                     type="text"
                                     name="captcha"
                                     placeholder="Enter Captcha"
+                                    onKeyDown={handleKeyDown}
                                   />
                                   {touched.captcha && errors.captcha && (
                                     <span className="danger">
@@ -155,6 +166,7 @@ const ForgetPassword = () => {
                                 <button
                                   className={`btn btn-lg btn-info w-100`}
                                   disabled={!(isValid && dirty)}
+                                  ref={buttonRef}
                                 >
                                   {isUser.isLoading ? (
                                     <span className="material-icons-round spinner">

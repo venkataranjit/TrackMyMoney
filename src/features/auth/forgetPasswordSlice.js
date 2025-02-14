@@ -57,7 +57,7 @@ const forgetPasswordSlice = createSlice({
       .addCase(forgetPassword.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.successMsg = "A password reset link has been sent to your email.";
+        state.successMsg = "A password reset link is on its way to your email.";
         state.user = { ...action.payload.user, token: action.payload.token };
         toast.success(state.successMsg);
       })
