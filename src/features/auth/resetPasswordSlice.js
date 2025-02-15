@@ -95,7 +95,6 @@ const resetPasswordSlice = createSlice({
       .addCase(getUserName.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.successMsg = "User Name Found";
         state.user = action.payload;
       })
       .addCase(getUserName.rejected, (state, action) => {

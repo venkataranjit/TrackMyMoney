@@ -63,7 +63,7 @@ const ResetPassword = () => {
         );
       }, 5000);
       setTimeout(() => {
-        navigate("/login"); // Redirect to login after success
+        navigate("/login");
       }, 3000);
 
       return () => clearTimeout(clear);
@@ -94,15 +94,22 @@ const ResetPassword = () => {
                     <div className="m-sm-4">
                       <h2 className="mb-3">Reset Password</h2>
                       <h5 className="resetUser">
-                        Hey,{" "}
-                        <span style={{ color: "#27b397" }}>
-                          <b>
-                            {resetState.user.firstName +
-                              " " +
-                              resetState.user.lastName}
-                          </b>{" "}
-                        </span>
-                        <small>Reset Your Password</small>
+                        Hey,
+                        {resetState.user.firstName && (
+                          <>
+                            {" "}
+                            <span
+                              style={{ color: "#27b397", fontSize: "20px" }}
+                            >
+                              <b>
+                                {resetState.user.firstName +
+                                  " " +
+                                  resetState.user.lastName}
+                              </b>{" "}
+                            </span>
+                            <small>Reset Your Password Now</small>
+                          </>
+                        )}
                       </h5>
 
                       <Formik
@@ -115,27 +122,6 @@ const ResetPassword = () => {
                             formikProps;
                           return (
                             <Form>
-                              {/* <div className="mb-3">
-                                <label className="form-label">Email</label>
-                                <Field
-                                  className={`form-control form-control-lg ${
-                                    touched.email &&
-                                    errors.email &&
-                                    "danger-border"
-                                  }`}
-                                  style={{
-                                    background: "#27b397",
-                                    color: "#fff",
-                                  }}
-                                  type="email"
-                                  name="email"
-                                  placeholder="Enter your email"
-                                  disabled
-                                />
-                                {touched.email && errors.email && (
-                                  <span className="danger">{errors.email}</span>
-                                )}
-                              </div> */}
                               <div className="mb-3 eye-pos">
                                 <label className="form-label">
                                   New Password
