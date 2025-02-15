@@ -409,12 +409,7 @@ a:hover {
     color: red;
   }
 }
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-.dropdown:focus-within .dropdown-menu {
-  display: block;
-}
+
 @media (min-width: 991.98px) {
   .content {
     padding: 1.5rem 1.5rem 0.75rem;
