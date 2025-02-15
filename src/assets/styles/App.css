@@ -448,3 +448,8 @@ a:hover {
     margin-left: 0px;
   }
 }
+@media (max-width: 575.98px) {
+  .search-Feilds .form-select {
+    display: none;
+  }
+}
