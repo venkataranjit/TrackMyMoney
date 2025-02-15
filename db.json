@@ -125,6 +125,11 @@
       "id": "d8c00ceb-48a0-4752-a7b2-c52ee75d33c2",
       "userId": "admin",
       "name": "Health"
+    },
+    {
+      "id": "b91b23c6-afeb-4019-9fb3-17ccb842335f",
+      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
+      "name": "eatout"
     }
   ],
   "transactions": [
