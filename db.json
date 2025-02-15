@@ -396,7 +396,8 @@
       "type": "income",
       "category": "aa",
       "remarks": "",
-      "createdAt": 1739600331427
+      "createdAt": 1739600331427,
+      "updatedAt": 1739608486336
     }
   ]
 }

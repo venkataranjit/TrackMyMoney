@@ -410,6 +410,10 @@ a:hover {
   }
 }
 
+.ReactModal__Content {
+  width: 500px;
+}
+
 @media (min-width: 991.98px) {
   .content {
     padding: 1.5rem 1.5rem 0.75rem;
@@ -451,5 +455,8 @@ a:hover {
 @media (max-width: 575.98px) {
   .search-Feilds .form-select {
     display: none;
+  }
+  .ReactModal__Content {
+    width: 80%;
   }
 }

@@ -293,7 +293,6 @@ const ViewTransactions = () => {
         style={{
           overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
           content: {
-            width: "400px",
             margin: "auto",
             padding: "20px",
             borderRadius: "10px",
@@ -327,7 +326,6 @@ const ViewTransactions = () => {
         style={{
           overlay: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
           content: {
-            width: "500px",
             margin: "auto",
             padding: "20px",
             borderRadius: "10px",
