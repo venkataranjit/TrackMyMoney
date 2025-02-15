@@ -72,49 +72,9 @@
   ],
   "categories": [
     {
-      "id": "1",
-      "name": "Food123",
-      "userId": "admin"
-    },
-    {
       "id": "2",
       "name": "Rent",
       "userId": "admin"
-    },
-    {
-      "id": "5",
-      "name": "Investment",
-      "userId": "admin"
-    },
-    {
-      "id": "7",
-      "name": "Games",
-      "userId": "ada6744c-7572-4a4f-b318-4338a267043c"
-    },
-    {
-      "id": "9bab6420-f503-428f-8581-2e10f1d55217",
-      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "name": "Kirana"
-    },
-    {
-      "id": "02837175-6290-4445-9dd8-6714c9372132",
-      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "name": "new"
-    },
-    {
-      "id": "908cd921-b2e5-4761-a127-cfb12d53b5a0",
-      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "name": "new income"
-    },
-    {
-      "id": "5cf45b46-5ee3-4616-a7d8-7769b2b10e8e",
-      "userId": "admin",
-      "name": "Ice Cream"
-    },
-    {
-      "id": "daab61d6-1a1e-4add-bce2-b938d0f344f6",
-      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "name": "other"
     },
     {
       "id": "dd7b236d-5284-41a0-b244-7a1ad79946af",
@@ -122,24 +82,49 @@
       "name": "Milk"
     },
     {
-      "id": "bd95eeca-039c-4efa-9868-4e3039e9ed98",
-      "name": "Ranjit",
-      "userId": "ada6744c-7572-4a4f-b318-4338a267043c"
-    },
-    {
-      "id": "2b5876fa-f07d-4f58-9e5f-4255aaa2512e",
-      "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "name": "venkataranjit@gmail.com"
-    },
-    {
       "id": "4ba7e8d1-2e19-4129-9d37-5095819881f3",
       "userId": "3db4f306-ab91-4260-9d12-863f21303ca9",
       "name": "cloths"
     },
     {
-      "id": "a9d43ca8-a1df-4006-b162-9118f323938a",
+      "id": "7c737c16-b82a-43a5-ada0-d92d7d9f7522",
       "userId": "ada6744c-7572-4a4f-b318-4338a267043c",
-      "name": "aa"
+      "name": "venkataranjit@live"
+    },
+    {
+      "id": "74ef2f70-b443-4b06-a486-c8fa14743eea",
+      "userId": "admin",
+      "name": "Groceries"
+    },
+    {
+      "id": "3f121b86-e7b9-4ac0-b170-1410f5c545c3",
+      "userId": "admin",
+      "name": "Kirana"
+    },
+    {
+      "id": "a6c62b5c-9bb7-489e-8f4b-18d89b2f0c5c",
+      "userId": "admin",
+      "name": "Salary"
+    },
+    {
+      "id": "f1a9ce9c-f2d8-48e9-a866-7a0348d11682",
+      "userId": "admin",
+      "name": "Other Income"
+    },
+    {
+      "id": "e088e02e-e509-461c-97d4-120fe9391aff",
+      "userId": "admin",
+      "name": "Other Expenses"
+    },
+    {
+      "id": "93e1d69b-4fe0-4996-960d-106cf1862586",
+      "userId": "admin",
+      "name": "Food"
+    },
+    {
+      "id": "d8c00ceb-48a0-4752-a7b2-c52ee75d33c2",
+      "userId": "admin",
+      "name": "Health"
     }
   ],
   "transactions": [

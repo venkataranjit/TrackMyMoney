@@ -141,29 +141,35 @@ const Categories = () => {
                     <div className="col-sm-12 categories_list mt-3">
                       <h6>My Categories</h6>
                       {Array.isArray(categoryState.categories) &&
-                        categoryState.categories.map((c) => {
-                          return (
-                            <button
-                              type="button"
-                              className="btn btn-light btn-category"
-                              key={c.id}
-                            >
-                              {c.name}
-                              <span
-                                className="material-icons-round align-middle category_icon category_edit"
-                                onClick={() => editHandler(c.id)}
+                        (categoryState.categories.filter(
+                          (c) => c.userId === userDetails.user.id
+                        ).length > 0 ? (
+                          categoryState.categories
+                            .filter((c) => c.userId === userDetails.user.id)
+                            .map((c) => (
+                              <button
+                                type="button"
+                                className="btn btn-light btn-category"
+                                key={c.id}
                               >
-                                edit
-                              </span>
-                              <span
-                                className="material-icons-round align-middle category_icon category_delete"
-                                onClick={() => deleteHandler(c.id)}
-                              >
-                                delete
-                              </span>
-                            </button>
-                          );
-                        })}
+                                {c.name}
+                                <span
+                                  className="material-icons-round align-middle category_icon category_edit"
+                                  onClick={() => editHandler(c.id)}
+                                >
+                                  edit
+                                </span>
+                                <span
+                                  className="material-icons-round align-middle category_icon category_delete"
+                                  onClick={() => deleteHandler(c.id)}
+                                >
+                                  delete
+                                </span>
+                              </button>
+                            ))
+                        ) : (
+                          <p className="text-muted">Categories are Empty.</p>
+                        ))}
                     </div>
                   </div>
                 </div>
