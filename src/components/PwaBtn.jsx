@@ -1,4 +1,3 @@
-import React from "react";
 import { usePWAInstall } from "react-use-pwa-install";
 const PwaBtn = () => {
   const install = usePWAInstall();

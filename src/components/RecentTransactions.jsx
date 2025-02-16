@@ -61,7 +61,7 @@ const RecentTransactions = () => {
                 ) : (
                   <tr>
                     <td colSpan="5">
-                      <span>There are No Recent Transactions</span>
+                      <span>There are No Transactions</span>
                     </td>
                   </tr>
                 )}

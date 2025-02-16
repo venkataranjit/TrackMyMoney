@@ -170,7 +170,7 @@ const ForgetPassword = () => {
                                 >
                                   {isUser.isLoading ? (
                                     <span className="material-icons-round spinner">
-                                      brightness_7
+                                      motion_photos_on
                                     </span>
                                   ) : (
                                     "Send Reset Link to Mail"

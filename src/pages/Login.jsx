@@ -212,7 +212,7 @@ const Login = () => {
                                 >
                                   {user.isLoading ? (
                                     <span className="material-icons-round spinner">
-                                      brightness_7
+                                      motion_photos_on
                                     </span>
                                   ) : (
                                     "Login"

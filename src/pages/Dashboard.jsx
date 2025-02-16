@@ -1,11 +1,11 @@
 import Heading from "../components/Heading";
 import RecentTransactions from "../components/RecentTransactions";
 import Boxs from "../components/Boxs";
-import ThisMonthOverview from "../components/ThisMonthOverview";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getTransactions } from "../features/transactions/getTransactionsSlice";
 import AvailableBalance from "../components/AvailableBalance";
+import Overview from "../components/Overview";
 
 const Dashboard = () => {
   const userDetails = useSelector((state) => state.auth);
@@ -30,7 +30,7 @@ const Dashboard = () => {
           </div>
 
           <div className="col-xl-3 col-xxl-3">
-            <ThisMonthOverview />
+            <Overview />
           </div>
         </div>
         <RecentTransactions />

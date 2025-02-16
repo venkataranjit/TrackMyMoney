@@ -30,7 +30,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-const ThisMonthOverview = () => {
+const Overview = () => {
   const { cumulativeIncome, cumulativeExpense } = useTransactionStats();
   const data = [
     { name: "Income", value: cumulativeIncome - cumulativeExpense },
@@ -76,9 +76,7 @@ const ThisMonthOverview = () => {
                   </PieChart>
                 </ResponsiveContainer>
               ) : (
-                <p style={{ textAlign: "center" }}>
-                  This Month There are No Transactions
-                </p>
+                <p style={{ textAlign: "center" }}>There are No Transactions</p>
               )}
             </div>
           </div>
@@ -88,4 +86,4 @@ const ThisMonthOverview = () => {
   );
 };
 
-export default ThisMonthOverview;
+export default Overview;

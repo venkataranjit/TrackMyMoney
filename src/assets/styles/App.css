@@ -232,8 +232,12 @@ a.sidebar-link {
 }
 .spinner {
   animation: spin 2s linear infinite;
+  position: relative;
+  top: 2px;
 }
-
+.capitalize::first-letter {
+  text-transform: uppercase;
+}
 @keyframes spin {
   0% {
     transform: rotate(0deg);
