@@ -11,6 +11,7 @@ import Loading from "./components/Loading";
 import { useSelector } from "react-redux";
 import ForgetPassword from "./pages/ForgetPassword";
 import ResetPassword from "./pages/ResetPassword";
+import AccountActivation from "./pages/AccountActivation";
 import { Slide, ToastContainer } from "react-toastify";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
@@ -47,6 +48,7 @@ function App() {
     location.pathname === "/" ||
     location.pathname === "/login" ||
     location.pathname === "/register" ||
+    location.pathname.startsWith("/accountActivation") ||
     location.pathname === "/forgetPassword" ||
     location.pathname.startsWith("/resetPassword");
 
@@ -54,7 +56,7 @@ function App() {
     <>
       <ToastContainer
         position="top-right"
-        autoClose={5000}
+        autoClose={10000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick={false}
@@ -70,6 +72,10 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route
+            path="/accountActivation/:receivedEmail/:otp/:receivedToken"
+            element={<AccountActivation />}
+          />
           <Route path="/forgetPassword" element={<ForgetPassword />} />
           <Route
             path="/resetPassword/:receivedEmail/:receivedToken"
