@@ -68,6 +68,17 @@
       "mobile": 9874563210,
       "password": "$2a$10$6xF8AKk99FKr0xl3bdUWeOr8J9U7avhl4FLAga8wdmJVZoZZy4eI2",
       "token": "3yPLedx1--kXEZ-oNo24P"
+    },
+    {
+      "id": "8a18c25e-34ec-4dd6-8fbc-60aa6cb2e787",
+      "firstName": "venkata",
+      "lastName": "ranjit",
+      "email": "venkataranjit143@gmail.com",
+      "mobile": 9865986532,
+      "password": "$2a$10$OAyRP0pKG5EzfzJuXzHnbO.2UevllRyO7kgc2wqO.LUnafyzx59z2",
+      "token": "",
+      "otp": "",
+      "verification": "success"
     }
   ],
   "categories": [

@@ -413,11 +413,27 @@ a:hover {
     color: red;
   }
 }
-
+.circle-success {
+  background: #27b397;
+  border: 2px dashed #b2fff0;
+  height: 82px;
+  width: 82px;
+  border-radius: 41px;
+  text-align: center;
+  margin: auto;
+  span {
+    font-size: 48px;
+    color: #fff;
+    position: relative;
+    top: 14px;
+  }
+}
 .ReactModal__Content {
   width: 500px;
 }
-
+.resetUser {
+  text-transform: capitalize;
+}
 @media (min-width: 991.98px) {
   .content {
     padding: 1.5rem 1.5rem 0.75rem;

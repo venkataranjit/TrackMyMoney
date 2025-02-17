@@ -1,27 +1,58 @@
 import { Field, Form, Formik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import LogoBlock from "../components/LogoBlock";
-import OtpInput from "react-otp-input";
+import {
+  accountActivation,
+  clearMsg,
+} from "../features/auth/userRegistrationSlice";
+import { activatedUserLogin } from "../features/auth/authSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import { getUserName } from "../features/auth/resetPasswordSlice";
 
 const AccountActivation = () => {
   const dispatch = useDispatch();
-  const isUser = useSelector((state) => state.forgetPassword);
+  const isUser = useSelector((state) => state.userRegistration);
+  const resetState = useSelector((state) => state.resetPassword);
+  const { receivedEmail, receivedToken } = useParams();
+  const navigate = useNavigate();
   const initialValues = {
     otp: "",
   };
 
-  const validationSchema = Yup.object({});
+  const validationSchema = Yup.object({
+    otp: Yup.number().required("OTP required"),
+  });
 
-  const onSubmit = (values, { resetForm }) => {
-    resetForm();
-    console.log(values.otp);
+  useEffect(() => {
+    dispatch(getUserName(receivedEmail));
+  }, []);
+
+  const onSubmit = async (values, { resetForm }) => {
+    try {
+      const response = await dispatch(
+        accountActivation({
+          email: receivedEmail,
+          token: receivedToken,
+          otp: values.otp,
+        })
+      ).unwrap(); // Unwrap to get the response directly
+
+      if (response) {
+        // Auto-login after activation
+        dispatch(activatedUserLogin(response));
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.error("Activation failed:", error);
+    } finally {
+      resetForm();
+    }
   };
 
   React.useEffect(() => {
     if (isUser.successMsg) {
-      loadCaptchaEnginge(6);
       const clear = setTimeout(() => {
         dispatch(
           clearMsg({
@@ -33,7 +64,6 @@ const AccountActivation = () => {
       return () => clearTimeout(clear);
     }
     if (isUser.error) {
-      loadCaptchaEnginge(6);
       const clear = setTimeout(() => {
         dispatch(
           clearMsg({
@@ -58,6 +88,24 @@ const AccountActivation = () => {
                   <div className="card-body">
                     <div className="m-sm-4">
                       <h2 className="mb-3">Activate Account</h2>
+                      <h5 className="resetUser">
+                        Hey,
+                        {resetState.user.firstName && (
+                          <>
+                            {" "}
+                            <span
+                              style={{ color: "#27b397", fontSize: "20px" }}
+                            >
+                              <b>
+                                {resetState.user.firstName +
+                                  " " +
+                                  resetState.user.lastName}
+                              </b>{" "}
+                            </span>
+                            <small>Reset Your Password Now</small>
+                          </>
+                        )}
+                      </h5>
                       <Formik
                         initialValues={initialValues}
                         onSubmit={onSubmit}

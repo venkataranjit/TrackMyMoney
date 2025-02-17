@@ -18,16 +18,20 @@ export const userLogin = createAsyncThunk(
         `${import.meta.env.VITE_JSON_SERVER_URL}/users`
       );
       const user = users.data.find((u) => u.email === userDetails.email);
+
       if (!user) {
         throw new Error("User Not Registered");
       }
-
+      const unVerifiedUser = user.verification === "pending";
       const isPasswordValid = await bcrypt.compare(
         userDetails.password,
         user.password
       );
       if (!isPasswordValid) {
         throw new Error("Invalid Credentials");
+      }
+      if (unVerifiedUser) {
+        throw new Error("Account Not Activated");
       }
       return user;
     } catch (error) {
@@ -49,6 +53,9 @@ const authSlice = createSlice({
       toast.success("Logout Succesful");
     },
     updateUser: (state, action) => {
+      state.user = action.payload;
+    },
+    activatedUserLogin: (state, action) => {
       state.user = action.payload;
     },
   },
@@ -79,6 +86,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { clearMsg, logout, updateUser } = authSlice.actions;
+export const { clearMsg, logout, updateUser, activatedUserLogin } =
+  authSlice.actions;
 
 export default authSlice.reducer;

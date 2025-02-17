@@ -3,6 +3,7 @@ import "./assets/styles/App.css";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import RegistrationMsg from "./pages/RegistrationMsg";
 import Error from "./pages/Error";
 import SideNav from "./components/SideNav";
 import TopNav from "./components/TopNav";
@@ -48,6 +49,7 @@ function App() {
     location.pathname === "/" ||
     location.pathname === "/login" ||
     location.pathname === "/register" ||
+    location.pathname === "/registrationMsg" ||
     location.pathname.startsWith("/accountActivation") ||
     location.pathname === "/forgetPassword" ||
     location.pathname.startsWith("/resetPassword");
@@ -72,6 +74,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/registrationMsg" element={<RegistrationMsg />} />
           <Route
             path="/accountActivation/:receivedEmail/:otp/:receivedToken"
             element={<AccountActivation />}
