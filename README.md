@@ -6,10 +6,11 @@
 
 ### 1. **User Authentication**
 
-- **User Login**: Secure login functionality for registered users.
 - **User Registration**: Allows new users to register and create an account.
-- **Reset Password**: Users can request a password reset via email. A secure reset link will be sent, allowing them to set a new password.
-- **Password**: Passwords will be encrypted using a one-way hashing method.
+- **OTP Verification**: Sends a One-Time Password (OTP) to the user's email to verify their registration. The registration is only successful once the OTP is verified.
+- **User Login**: Secure login functionality for registered users with email and password authentication.
+- **Password Reset**: Users can request a password reset via email. A secure reset link will be sent to allow the user to set a new password.
+- **Password Encryption**: Passwords are encrypted using bcrypt (one-way hashing method) to enhance security.
 
 ### 2. **Dashboard**
 
@@ -23,6 +24,7 @@
   - Total Expenses.
 - **Pie Chart**: Visual representation of cumulative income and expenses.
 - **Recent Transactions**: Displays the last 5 transactions on the home screen.
+- **Color Theme Customization**: Each user can personalize their experience by selecting their preferred color theme. The theme is saved and persists across sessions, enhancing usability and comfort.
 
 ### 3. **Transaction Management**
 
