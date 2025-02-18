@@ -22,10 +22,13 @@ export const forgetPassword = createAsyncThunk(
         throw new Error("User Not Exist");
       }
       const token = nanoid();
-      await axios.post(`${import.meta.env.VITE_PUBLIC_RESET_LINK}`, {
-        email: mailId,
-        token: token,
-      });
+      await axios.post(
+        `${import.meta.env.VITE_PUBLIC_BACKEND_LINK}/request-resetPassword`,
+        {
+          email: mailId,
+          token: token,
+        }
+      );
       await axios.patch(
         `${import.meta.env.VITE_JSON_SERVER_URL}/users/${user.id}`,
         { token: token }

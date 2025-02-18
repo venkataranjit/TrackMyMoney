@@ -25,7 +25,7 @@ const ResetPassword = () => {
   useEffect(() => {
     dispatch(getUserName(receivedEmail));
   }, []);
-  console.log(resetState);
+
   const validationSchema = Yup.object({
     password: Yup.string()
       .required("Password is required")

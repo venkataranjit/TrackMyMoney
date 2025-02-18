@@ -20,6 +20,7 @@ import PwaBtn from "../components/PwaBtn";
 
 const Register = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.userRegistration);
   const [error, setError] = useState("");
   const [captchaError, setCaptchaError] = useState("");
@@ -27,7 +28,6 @@ const Register = () => {
     password: false,
     confirmPassword: false,
   });
-  const navigate = useNavigate();
   const buttonRef = useRef(null);
 
   const refreshCaptcha = (e) => {
@@ -80,25 +80,31 @@ const Register = () => {
   const onSubmit = async (values, { resetForm }) => {
     const hashedPassword = await bcrypt.hash(values.password.trim(), 10);
     let user_captcha_value = values.captcha;
-    if (validateCaptcha(user_captcha_value, false)) {
-      try {
-        await dispatch(
-          userRegistration({
-            firstName: values.firstName,
-            lastName: values.lastName,
-            email: values.email.trim().toLowerCase(),
-            mobile: values.mobile,
-            password: hashedPassword,
-          })
-        );
-        setCaptchaError("");
-        resetForm();
-        loadCaptchaEnginge(6);
-      } catch (error) {
-        setError("Error during user registration:", error);
-      }
-    } else {
+
+    if (!validateCaptcha(user_captcha_value, false)) {
       setCaptchaError("Captcha Does Not Match");
+      return;
+    }
+
+    try {
+      await dispatch(
+        userRegistration({
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email.trim().toLowerCase(),
+          mobile: values.mobile,
+          password: hashedPassword, // Consider hashing on the backend
+        })
+      ).unwrap(); // Ensures errors are caught properly
+
+      // Reset form, captcha, and clear errors after successful registration
+      setCaptchaError("");
+      resetForm();
+      loadCaptchaEnginge(6);
+
+      navigate("/registrationMsg"); // Navigate only after success
+    } catch (error) {
+      setError(`Error during user registration: ${error.message || error}`);
     }
   };
 
@@ -113,7 +119,6 @@ const Register = () => {
             successMsg: "",
           })
         );
-        navigate("/login");
       }, 2000);
 
       return () => {

@@ -1,11 +1,16 @@
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { editTransaction } from "../features/transactions/EditTransactionSlice";
+import { getCategory } from "../features/categories/categoriesSlice";
+import { useEffect } from "react";
 
 const EditTransaction = ({ transactionToEdit, transactions, setEditModal }) => {
   const dispatch = useDispatch();
+  const myCategories = useSelector((state) => state.categories);
+  const authUser = useSelector((state) => state.auth);
+  console.log(myCategories.categories);
   const initialValues = {
     id: transactionToEdit.id,
     amount: transactionToEdit.amount,
@@ -33,6 +38,11 @@ const EditTransaction = ({ transactionToEdit, transactions, setEditModal }) => {
     resetForm();
     setEditModal(false);
   };
+
+  useEffect(() => {
+    dispatch(getCategory(authUser.user.id));
+  }, []);
+
   return (
     <>
       <Formik
@@ -83,17 +93,8 @@ const EditTransaction = ({ transactionToEdit, transactions, setEditModal }) => {
                       touched.type && errors.type && "danger-border"
                     }`}
                   >
-                    {Array.from(
-                      new Set(
-                        transactions.transactions.map(
-                          (transaction) => transaction.type
-                        )
-                      )
-                    ).map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
+                    <option value="expense">Expense</option>
+                    <option value="income">Income</option>
                   </Field>
                   {touched.type && errors.type && (
                     <span className="danger"> {errors.type}</span>
@@ -108,15 +109,9 @@ const EditTransaction = ({ transactionToEdit, transactions, setEditModal }) => {
                       touched.category && errors.category && "danger-border"
                     }`}
                   >
-                    {Array.from(
-                      new Set(
-                        transactions.transactions.map(
-                          (transaction) => transaction.category
-                        )
-                      ) // Get unique categories
-                    ).map((category, index) => (
-                      <option key={index} value={category}>
-                        {category}
+                    {myCategories?.categories?.map((category, index) => (
+                      <option key={index} value={category.name}>
+                        {category.name}
                       </option>
                     ))}
                   </Field>

@@ -3,6 +3,7 @@ import "./assets/styles/App.css";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import RegistrationMsg from "./pages/RegistrationMsg";
 import Error from "./pages/Error";
 import SideNav from "./components/SideNav";
 import TopNav from "./components/TopNav";
@@ -13,6 +14,7 @@ import ForgetPassword from "./pages/ForgetPassword";
 import ResetPassword from "./pages/ResetPassword";
 import AccountActivation from "./pages/AccountActivation";
 import { Slide, ToastContainer } from "react-toastify";
+import ColorSwitcher from "./components/ColorSwitcher";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const AddTransaction = lazy(() => import("./pages/AddTransaction"));
@@ -48,6 +50,7 @@ function App() {
     location.pathname === "/" ||
     location.pathname === "/login" ||
     location.pathname === "/register" ||
+    location.pathname === "/registrationMsg" ||
     location.pathname.startsWith("/accountActivation") ||
     location.pathname === "/forgetPassword" ||
     location.pathname.startsWith("/resetPassword");
@@ -67,11 +70,13 @@ function App() {
         theme="colored"
         transition={Slide}
       />
+      <ColorSwitcher />
       {guest ? (
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/registrationMsg" element={<RegistrationMsg />} />
           <Route
             path="/accountActivation/:receivedEmail/:otp/:receivedToken"
             element={<AccountActivation />}
