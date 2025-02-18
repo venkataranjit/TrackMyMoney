@@ -4,7 +4,7 @@ const AvailableBalance = () => {
   const { cumulativeIncome, cumulativeExpense } = useTransactionStats();
   return (
     <>
-      <div className="card bg-secondary bg-img two-cards-height">
+      <div className="card bg-img two-cards-height available_balance">
         <div className="card-body">
           <div className="row">
             <div className="col mt-0 margin-top-lg">

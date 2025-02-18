@@ -17,6 +17,13 @@ const TopNav = ({ handleSidebar }) => {
   //     localStorage.removeItem("reduxState");
   //   }, 900000);
   // }, []);
+
+  const capitalize = (str) =>
+    str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
+  const userName = capitalize(
+    " " + userState.user.firstName + " " + userState.user.lastName + " "
+  );
   return (
     <>
       <nav className="navbar navbar-expand navbar-light navbar-bg">
@@ -42,10 +49,7 @@ const TopNav = ({ handleSidebar }) => {
                     </span>
                   )}
 
-                  {userState.user.firstName +
-                    " " +
-                    userState.user.lastName +
-                    " "}
+                  {userName}
                 </span>
               </a>
               <div className="dropdown-menu dropdown-menu-end">

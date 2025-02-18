@@ -368,7 +368,7 @@ input[type="file"]::file-selector-button:hover {
 .fokyca,
 .thead {
   min-height: 40px !important;
-  background: #899097 !important;
+  background: var(--bs-info) !important;
   color: #fff;
   margin-top: 10px;
 }
@@ -463,6 +463,9 @@ a:hover {
     width: 40px;
     border-radius: 16px;
   }
+}
+.available_balance {
+  background: var(--bs-info);
 }
 @media (min-width: 991.98px) {
   .content {
