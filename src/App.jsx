@@ -14,6 +14,7 @@ import ForgetPassword from "./pages/ForgetPassword";
 import ResetPassword from "./pages/ResetPassword";
 import AccountActivation from "./pages/AccountActivation";
 import { Slide, ToastContainer } from "react-toastify";
+import ColorSwitcher from "./components/ColorSwitcher";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const AddTransaction = lazy(() => import("./pages/AddTransaction"));
@@ -69,6 +70,7 @@ function App() {
         theme="colored"
         transition={Slide}
       />
+      <ColorSwitcher />
       {guest ? (
         <Routes>
           <Route path="/" element={<Login />} />
