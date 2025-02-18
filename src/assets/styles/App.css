@@ -358,7 +358,7 @@ input[type="file"]::file-selector-button:hover {
   opacity: 0.9;
 }
 .Toastify__toast--success {
-  background-color: #27b397 !important;
+  background-color: var(--bs-info) !important;
   color: white !important;
 }
 .Toastify__toast--error {
@@ -416,7 +416,7 @@ a:hover {
 }
 .circle-success {
   background: var(--bs-info);
-  border: 2px dashed #b2fff0;
+  border: 2px dashed #fff;
   height: 82px;
   width: 82px;
   border-radius: 41px;

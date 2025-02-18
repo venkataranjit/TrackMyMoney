@@ -73,9 +73,15 @@ const ViewTransactions = () => {
 
   function downloadPDF(array) {
     const doc = new jsPDF();
+    const logo = "/images/logo.png";
+    doc.addImage(logo, "PNG", 13, 10, 12, 13);
     doc.setFontSize(13);
-    doc.text("Transactions Report", 10, 10);
-
+    doc.setTextColor(39, 179, 151);
+    doc.setFont("helvetica", "bold");
+    doc.text("Track My Money", 27, 19);
+    doc.setTextColor(0, 0, 0);
+    doc.setFont("helvetica", "normal");
+    doc.text("Transactions Report", 13, 32);
     autoTable(doc, {
       head: [["S.No", "Amount", "Date", "Type", "Category", "Remarks"]],
       body: array.map((transaction, index) => [
@@ -86,7 +92,20 @@ const ViewTransactions = () => {
         transaction.category,
         transaction.remarks,
       ]),
-      startY: 20,
+      startY: 36,
+
+      headStyles: {
+        fillColor: [39, 179, 151], // Blue background for the header
+        textColor: [255, 255, 255], // White text in the header
+      },
+
+      didDrawCell: (data) => {
+        if (data.row.index === 0) {
+          // Check if it's the header row
+          data.cell.styles.fillColor = [39, 179, 151]; // Set header background color
+          data.cell.styles.textColor = [255, 255, 255]; // Set header text color to white
+        }
+      },
     });
 
     doc.save("transactions.pdf");
