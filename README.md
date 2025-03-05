@@ -76,7 +76,7 @@
    ```
 
 5. **Open the application**:
-   Visit `http://localhost:3000` in your browser.
+   Visit `http://localhost:5173` in your browser.
 
 ## Technologies Used
 
