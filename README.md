@@ -1,6 +1,6 @@
 # Track My Money
 
-<!-- Server Details : Github, Netlify, Render -->
+<!-- Server Details : Github, Netlify, Glitch, Render -->
 
 **Track My Money** is a React-based Vite application designed to help users efficiently track their daily expenses and manage their financial data. The application provides an intuitive and user-friendly interface, along with a comprehensive set of features to monitor income, expenses, and transactions. Below is a detailed overview of the features implemented in this project.
 
