@@ -101,7 +101,7 @@ const AddTransaction = () => {
                         <Form>
                           <div className="row">
                             <div className="col-sm-3 mb-3">
-                              <label className="form-label">Amount</label>
+                              <label className="form-label">Amount (in Rs.)</label>
                               <Field
                                 type="number"
                                 className={`form-control ${
